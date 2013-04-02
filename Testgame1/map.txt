@@ -1,0 +1,18 @@
+3
+x 1 1
+0 0 0
+S 0 2
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+x00000xxxxxxxxxxxxx000S00xxxxxxxxxx
+x000000000000000000000000xxxxxxxxxx
+x000000000000000000000000xxxxxxxxxx
+x00000xxxxx000xxxxxxxxxxxxxxxxxxxxx
+xxxxxxxxxxx000xxxxxxxxxxxxxxxxxxxxx
+xxxxxxxxxxx000xxxxxx0000000000xxxxx
+xxxxxxxxxxx000xxxxxx0000000000xxxxx
+xxxxxxxxxxx0000000000000xx0000xxxxx
+xxxxxxxxxxx0000000000000xx0000xxxxx
+xxxxxxxxxxxxxxxxxxxx0000000000xxxxx
+xxxxxxxxxxxxxxxxxxxx0000000000xxxxx
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
