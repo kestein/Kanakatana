@@ -8,9 +8,12 @@ window.onload = function(){
     game.fps = 30;
 	game.preload("map.png");
 	game.preload("player.png");
+   game.preload("NPC.png");
+   game.preload("label_bkg.png");
 	
 	var map;	
 	var player;
+   var steve;
 	var stage = new Group();
 		
     game.onload = function(){	
@@ -20,6 +23,11 @@ window.onload = function(){
 		player.image = game.assets["player.png"];
 		player.x = 50;
 		player.y = 50;
+      
+      steve = new NPC(50, 50, "test_lines.txt");
+      steve.image = game.assets["NPC.png"];
+      steve.x = 150;
+      steve.y = 150;
 		
 		player.isMoving = false;
         player.direction = 0;
@@ -55,6 +63,11 @@ window.onload = function(){
                     }
                 }
             }
+            if(player.intersect(steve)) {
+               player.x = 50;
+               player.y = 50;
+               steve.sayLines(stage, game);
+            }
         });
 		
 		loadMap(game, "map.txt", "map.png", setmap);
@@ -82,6 +95,7 @@ window.onload = function(){
 	{	
 		stage.addChild(map);
 		stage.addChild(player);
+      stage.addChild(steve);
 		game.rootScene.addChild(stage);
 		
 		game.rootScene.addEventListener('enterframe', function(e) {
