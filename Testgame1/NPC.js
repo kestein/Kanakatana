@@ -3,7 +3,9 @@
 var NPC = Class.create(Sprite, {
    initialize:function(width, height, script){
       Sprite.call(this, width, height);
-      this.lines = ["hue hue hue", "Trololo", "No really, this is dialogue"];
+      //Put this in a diff function to act as a database for quests corresponding to lines
+      this.lines = ["Who the hell do you think you are", 
+       "Do you really think YOU can beat ME!??", "My hoard of goons will show you what's what!!"];
       this.linesRead = 0;
       /*var reader1 = new XMLHttpRequest() || new ActiveXObject('MSXML2.XMLHTTP'); //for them file IO
       reader1.open('get', script, true);
@@ -34,24 +36,42 @@ var NPC = Class.create(Sprite, {
    // Put in a check to see if a label was not exited and only swap the label out
    sayLines:function(stage, game) {
       //Output each element in the lines array to the screen
-      l = new Label(this.lines[this.linesRead]);
-      var bkg = new Sprite(600, 80);
+      var bkg = new Sprite(800, 80);
+      var nxt = new Sprite(30, 30);
+      var portrait = new Sprite(60, 60);
+      var NPC = this;
+      var l = new Label(NPC.lines[NPC.linesRead]);
+      
       bkg.image = game.assets["label_bkg.png"];
       bkg.y = game.height - 80;
       bkg.x = 0;
-      l.addEventListener('touchend', function() {
+      nxt.touchEnabled = true;
+      nxt.image = game.assets["next.png"];
+      nxt.x = 50;
+      nxt.y = game.height - 50;
+      portrait.image = NPC.portrait;
+      portrait.x = game.width - 70;
+      portrait.y = game.height - 70;
+      nxt.addEventListener('touchend', function() {
          //if(stage.childNodes[3] instanceof Label) console.log("si snor");
-         stage.removeChild(this);
-         stage.removeChild(bkg);
+         if(NPC.linesRead > NPC.lines.length - 2) {
+            stage.removeChild(this);
+            stage.removeChild(bkg);
+            stage.removeChild(l);
+            stage.removeChild(portrait);
+            NPC.linesRead = 0;
+         }
+         else {
+            NPC.linesRead += 1;
+            l.text = NPC.lines[NPC.linesRead];
+         }
       });
       l.x = 50;
-      l.y = game.height - 40;
+      l.y = game.height - 80;
       stage.addChild(bkg);
       stage.addChild(l);
-      //l.buttonMode = 'right';
-      //increment the lines read var
-      this.linesRead += 1;
+      stage.addChild(nxt);
+      stage.addChild(portrait);
       //implement quest system later
-      if(this.linesRead > this.lines.length - 1) this.linesRead = 0;
    }
 });

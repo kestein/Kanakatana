@@ -8,12 +8,15 @@ window.onload = function(){
     game.fps = 30;
 	game.preload("map.png");
 	game.preload("player.png");
-   game.preload("NPC.png");
+   game.preload("steve_map_image.png");
    game.preload("label_bkg.png");
+   game.preload("next.png");
+   game.preload("steve_portrait.png")
 	
 	var map;	
 	var player;
    var steve;
+   var jane;
 	var stage = new Group();
 		
     game.onload = function(){	
@@ -25,9 +28,17 @@ window.onload = function(){
 		player.y = 50;
       
       steve = new NPC(50, 50, "test_lines.txt");
-      steve.image = game.assets["NPC.png"];
+      steve.image = game.assets["steve_map_image.png"];
+      steve.portrait = game.assets["steve_portrait.png"];
       steve.x = 150;
       steve.y = 150;
+      
+      jane = new NPC(50, 50, "test_lines.txt");
+      jane.image = game.assets["steve_portrait.png"];
+      jane.portrait = game.assets["steve_map_image.png"];
+      jane.x = 200;
+      jane.y = 200;
+      jane.lines.push("JK ;)!!");
 		
 		player.isMoving = false;
         player.direction = 0;
@@ -63,10 +74,16 @@ window.onload = function(){
                     }
                 }
             }
+            //Make an array of NPCs to do these sorts of checks
             if(player.intersect(steve)) {
                player.x = 50;
                player.y = 50;
                steve.sayLines(stage, game);
+            }
+            if(player.intersect(jane)) {
+               player.x = 50;
+               player.y = 50;
+               jane.sayLines(stage, game);
             }
         });
 		
@@ -96,6 +113,7 @@ window.onload = function(){
 		stage.addChild(map);
 		stage.addChild(player);
       stage.addChild(steve);
+      stage.addChild(jane);
 		game.rootScene.addChild(stage);
 		
 		game.rootScene.addEventListener('enterframe', function(e) {
