@@ -34,13 +34,14 @@ var NPC = Class.create(Sprite, {
    },*/
    // Add a label w/ a background to the stage group
    // Put in a check to see if a label was not exited and only swap the label out
-   sayLines:function(stage, game) {
+   sayLines:function(stage, game, listener) {
       //Output each element in the lines array to the screen
       var bkg = new Sprite(800, 80);
       var nxt = new Sprite(30, 30);
       var portrait = new Sprite(60, 60);
       var NPC = this;
       var l = new Label(NPC.lines[NPC.linesRead]);
+      var listener = listener;//The player
       
       bkg.image = game.assets["label_bkg.png"];
       bkg.y = game.height - 80;
@@ -60,18 +61,23 @@ var NPC = Class.create(Sprite, {
             stage.removeChild(l);
             stage.removeChild(portrait);
             NPC.linesRead = 0;
+            listener.isListeningToNPC = false;
          }
          else {
             NPC.linesRead += 1;
             l.text = NPC.lines[NPC.linesRead];
+            console.log(NPC.linesRead);
          }
       });
       l.x = 50;
       l.y = game.height - 80;
+      console.log(NPC.isTalking);
+      console.log("hit");
       stage.addChild(bkg);
       stage.addChild(l);
       stage.addChild(nxt);
       stage.addChild(portrait);
+      
       //implement quest system later
    }
 });

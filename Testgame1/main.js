@@ -17,6 +17,7 @@ window.onload = function(){
 	var player;
    var steve;
    var jane;
+   var collidedEntity;
 	var stage = new Group();
 		
     game.onload = function(){	
@@ -26,6 +27,7 @@ window.onload = function(){
 		player.image = game.assets["player.png"];
 		player.x = 50;
 		player.y = 50;
+      player.isListeningToNPC = false;
       
       steve = new NPC(50, 50, "test_lines.txt");
       steve.image = game.assets["steve_map_image.png"];
@@ -36,10 +38,16 @@ window.onload = function(){
       jane = new NPC(50, 50, "test_lines.txt");
       jane.image = game.assets["steve_portrait.png"];
       jane.portrait = game.assets["steve_map_image.png"];
-      jane.x = 200;
+      jane.x = 100;
       jane.y = 200;
       jane.lines.push("JK ;)!!");
-		
+      
+      entities = new Array();
+      entities.push(steve);
+      entities.push(jane);
+      
+     // game.keybind(71, 'thing');//bind the g key to action thing
+      
 		player.isMoving = false;
         player.direction = 0;
         player.addEventListener('enterframe', function() {
@@ -75,16 +83,7 @@ window.onload = function(){
                 }
             }
             //Make an array of NPCs to do these sorts of checks
-            if(player.intersect(steve)) {
-               player.x = 50;
-               player.y = 50;
-               steve.sayLines(stage, game);
-            }
-            if(player.intersect(jane)) {
-               player.x = 50;
-               player.y = 50;
-               jane.sayLines(stage, game);
-            }
+            checkCollisions(player, entities);
         });
 		
 		loadMap(game, "map.txt", "map.png", setmap);
@@ -96,6 +95,31 @@ window.onload = function(){
 		init();
 	}
 	
+   //Use a button press to trigger conversation with NPCs
+function checkCollisions(player, entities) {
+   for(var t = 0; t < entities.length; t++) {
+      if(player.intersect(entities[t])) {
+         player.isMoving = false;
+         if(player.direction == 0) {//moving up
+            player.y += 5;
+         }
+         if(player.direction == 2) {//moving down
+            player.y -= 5;
+         }
+         if(player.direction == 1) {//moving right
+            player.x -= 5;
+         }
+         if(player.direction == 3) {//moving left
+            player.x += 5;
+         }
+         if(!player.isListeningToNPC) {
+            entities[t].sayLines(stage, game, player);
+            player.isListeningToNPC = true;
+         }
+      }
+   }
+}
+   
 	function replacemap(newmap)
 	{
 		stage.removeChild(player);
