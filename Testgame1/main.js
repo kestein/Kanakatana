@@ -1,6 +1,7 @@
 
 enchant();
-
+var map;
+var entities;
 
 window.onload = function(){
     var game = new Game(800, 600);
@@ -13,7 +14,7 @@ window.onload = function(){
    game.preload("next.png");
    game.preload("steve_portrait.png")
 	
-	var map;	
+	
 	var player;
    var steve;
    var jane;
@@ -23,7 +24,7 @@ window.onload = function(){
     game.onload = function(){	
 		
 		/** player things **/
-		player = new Sprite(50, 50);
+		player = new Player(50, 50);
 		player.image = game.assets["player.png"];
 		player.x = 50;
 		player.y = 50;
@@ -48,43 +49,7 @@ window.onload = function(){
       
      // game.keybind(71, 'thing');//bind the g key to action thing
       
-		player.isMoving = false;
-        player.direction = 0;
-        player.addEventListener('enterframe', function() {
-            this.frame = this.direction;
-            if (this.isMoving) {
-                this.moveBy(this.vx, this.vy);
- 
-                if ((this.vx && (this.x) % 50 == 0) || (this.vy && this.y % 50 == 0)) {
-                    this.isMoving = false;
-                }
-            } else {
-                this.vx = this.vy = 0;
-                if (game.input.left) {
-                    this.direction = 3;
-                    this.vx = -5;
-                } else if (game.input.right) {
-                    this.direction = 1;
-                    this.vx = 5;
-                } else if (game.input.up) {
-                    this.direction = 0;
-                    this.vy = -5;
-                } else if (game.input.down) {
-                    this.direction = 2;
-                    this.vy = 5;
-                }
-                if (this.vx || this.vy) {
-                    var x = this.x + (this.vx ? this.vx / Math.abs(this.vx) * 50 : 0);
-                    var y = this.y + (this.vy ? this.vy / Math.abs(this.vy) * 50 : 0);
-                    if (0 <= x && x < map.width && 0 <= y && y < map.height && !map.hitTest(x, y)) {
-                        this.isMoving = true;
-                        arguments.callee.call(this);
-                    }
-                }
-            }
-            //Make an array of NPCs to do these sorts of checks
-            checkCollisions(player, entities);
-        });
+		
 		
 		loadMap(game, "map.txt", "map.png", setmap);
     };
@@ -153,6 +118,39 @@ function checkCollisions(player, entities) {
 				loadMap(game, "map2.txt", "map.png", replacemap);
 			}
 		});
+		//handles player movement while clicking. it adds a modifier to make the movement relative to the map and not the screen
+		game.rootScene.addEventListener('touchstart', function(evt) {
+			//console.log(map.collisionData.length);
+			var xModifier = 0;
+			var yModifier = 0;
+			
+			if(player.x < game.width/2) {
+				xModifier = 0;
+			}
+			else if(player.x > (map.tileWidth * map.collisionData[0].length) - game.width/2) {
+				xModifier = player.x - game.width/2 + player.width/2;
+			}
+			else if(player.x > game.width/2) {
+				xModifier = player.x - game.width/2  + player.width/2;
+			}
+			
+			if(player.y < game.height/2) {
+				yModifier = 0;
+			}
+			else if(player.y > (map.tileHeight * map.collisionData.length) - game.height/2) {
+				yModifier = player.y - game.height/2 + player.height/2;
+			}
+			else if(player.y > game.height/2) {
+				yModifier = player.y - game.height/2 + player.height/2;
+			}
+			
+			/*if(player.y > game.height/2) {
+				yModifier = player.y - game.width/2 + player.width/2;
+			}*/
+			
+			
+			player.targetClick(evt.localX + xModifier, evt.localY + yModifier);
+        });
 
 		var pad = new Pad();
 		pad.x = 0;
