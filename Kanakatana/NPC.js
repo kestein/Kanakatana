@@ -3,6 +3,7 @@
 var NPC = Class.create(Sprite, {
    initialize:function(width, height, script){
       Sprite.call(this, width, height);
+	  this.name = "NPC";
       //Put this in a diff function to act as a database for quests corresponding to lines
       this.lines = ["Who the hell do you think you are", 
        "Do you really think YOU can beat ME!??", "My hoard of goons will show you what's what!!"];

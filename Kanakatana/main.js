@@ -8,7 +8,10 @@ window.onload = function(){
 	
     game.fps = 30;
 	game.preload("map.png");
+	game.preload("snail.png");
+	game.preload("map1.png");
 	game.preload("player.png");
+	game.preload("chars.gif");
    game.preload("steve_map_image.png");
    game.preload("label_bkg.png");
    game.preload("next.png");
@@ -16,42 +19,52 @@ window.onload = function(){
 	
 	
 	var player;
-   var steve;
-   var jane;
-   var collidedEntity;
+	var steve;
+	var jane;
+	var enemy1;
+	var collidedEntity;
 	var stage = new Group();
+	
 		
     game.onload = function(){	
 		
 		/** player things **/
-		player = new Player(50, 50);
-		player.image = game.assets["player.png"];
+		player = new Player(32, 32);
+		player.image = game.assets["chars.gif"];
 		player.x = 50;
 		player.y = 50;
       player.isListeningToNPC = false;
       
-      steve = new NPC(50, 50, "test_lines.txt");
-      steve.image = game.assets["steve_map_image.png"];
-      steve.portrait = game.assets["steve_portrait.png"];
+      steve = new NPC(32, 32, "test_lines.txt");
+      steve.image = game.assets["chars.gif"];
+      steve.portrait = game.assets["chars.gif"];
+	  steve.frame = 1;
       steve.x = 150;
       steve.y = 150;
       
-      jane = new NPC(50, 50, "test_lines.txt");
-      jane.image = game.assets["steve_portrait.png"];
-      jane.portrait = game.assets["steve_map_image.png"];
+      jane = new NPC(32, 32, "test_lines.txt");
+      jane.image = game.assets["chars.gif"];
+      jane.portrait = game.assets["chars.gif"];
+	  jane.frame = 7;
       jane.x = 100;
       jane.y = 200;
       jane.lines.push("JK ;)!!");
+	  
+	  enemy1 = new Enemy(32, 32, player);
+      enemy1.image = game.assets["snail.png"];
+      enemy1.x = 600;
+      enemy1.y = 150;
       
       entities = new Array();
       entities.push(steve);
       entities.push(jane);
+	  entities.push(enemy1);
       
      // game.keybind(71, 'thing');//bind the g key to action thing
       
 		
 		
-		loadMap(game, "map.txt", "map.png", setmap);
+		loadMap(game, "map.txt", "map1.png", setmap);
     };
 	
 	function setmap(newmap)
@@ -101,8 +114,9 @@ function checkCollisions(player, entities) {
 	{	
 		stage.addChild(map);
 		stage.addChild(player);
-      stage.addChild(steve);
-      stage.addChild(jane);
+		stage.addChild(steve);
+		stage.addChild(jane);
+		stage.addChild(enemy1);
 		game.rootScene.addChild(stage);
 		
 		game.rootScene.addEventListener('enterframe', function(e) {
@@ -113,7 +127,7 @@ function checkCollisions(player, entities) {
 			stage.x = x;
 			stage.y = y;
 			
-			if (player.x / 50 == 22 && player.y / 50 == 1)
+			if (player.x / 48 == 22 && player.y / 50 == 1)
 			{		
 				loadMap(game, "map2.txt", "map.png", replacemap);
 			}

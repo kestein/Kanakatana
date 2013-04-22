@@ -1,8 +1,22 @@
 //Takes in an array of entities and sees if a collision happens
 function checkCollisions(player) {
+
    var ch = 0;
    for(var t = 0; t < entities.length; t++) {
+   //console.log(entities[t]);
+		if(entities[t].name == 'Enemy' && player.within(entities[t], 160)) {
+			entities[t].enraged = true;
+		}
+		else if(entities[t].name == 'Enemy') {
+			entities[t].enraged = false;
+		}
       if(player.intersect(entities[t])) {
+	  if(entities[t].name == 'Enemy') {		//enemy sends player back to start
+			player.x = 50;
+			player.y = 50;
+			player.moveArray.length = 0;
+			break;
+		 }
          player.isMoving = false;
          if(player.direction == 0) {//moving up
 			//diagonal checks
@@ -58,9 +72,13 @@ function checkCollisions(player) {
 			player.moveArray.length = 0;
 			//this.isMoving = false;
          }
+		 
       }
    }
-   if(map.hitTest(player.x, player.y)) {
+   if(map.hitTest(player.x, player.y) 
+   || map.hitTest(player.x + player.width, player.y + player.height)
+   || map.hitTest(player.x, player.y + player.height)
+   || map.hitTest(player.x + player.width, player.y)) {
 		if(player.direction == 0) {//moving up
 			/*if(player.x - player.endCoordinate.x < 0) {//r
 				player.x -= 1;

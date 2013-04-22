@@ -49,7 +49,7 @@ function loadMap(game, mapname, maptex, callback)
 	{
 		if (!config)
 		{
-			map = new Map(50, 50);
+			map = new Map(48, 48);
 			map.image = game.assets[maptex];
 		
 			data = new Array();

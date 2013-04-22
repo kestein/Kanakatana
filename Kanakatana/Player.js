@@ -5,7 +5,7 @@ var Player = Class.create(Sprite, {
 		Sprite.call(this, width, height);
 		/** click to move things **/
 		this.moveArrayIndex = 0;
-		this.direction = 0;
+		this.frame = 5;
 		this.moveArray = [];
 		this.isMoving = false;
 		this.speed = 3;
@@ -70,24 +70,28 @@ var Player = Class.create(Sprite, {
 			this.moveArray = this.calcStraightLine(startCoordinates, endCoordinates);
 		}
 		if(Math.abs(this.x - clickX) > Math.abs(this.y - clickY)) {
-				console.log(this.direction);
+				//console.log(this.direction);
 				if(this.x < clickX) {
 					this.direction = 1;
+					this.frame =23;
 				}
 				else {
 					this.direction = 3;
+					this.frame = 14;
 				}
 			}
 			else {
-				console.log(this.direction);
+				//console.log(this.direction);
 				if(this.y < clickY) {
 					this.direction = 2;
+					this.frame = 5;
 				}
 				else {
 					this.direction = 0;
+					this.frame = 32;
 				}
 			}
-			this.frame = this.direction;
+			//this.frame = (this.direction *9) + 5;
 	},
 	
 	moveToClick:function() {
