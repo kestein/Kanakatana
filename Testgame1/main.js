@@ -8,12 +8,16 @@ window.onload = function(){
     game.fps = 30;
 	game.preload("map.png");
 	game.preload("player.png");
-   game.preload("NPC.png");
+   game.preload("steve_map_image.png");
    game.preload("label_bkg.png");
+   game.preload("next.png");
+   game.preload("steve_portrait.png")
 	
 	var map;	
 	var player;
    var steve;
+   var jane;
+   var collidedEntity;
 	var stage = new Group();
 		
     game.onload = function(){	
@@ -23,12 +27,27 @@ window.onload = function(){
 		player.image = game.assets["player.png"];
 		player.x = 50;
 		player.y = 50;
+      player.isListeningToNPC = false;
       
       steve = new NPC(50, 50, "test_lines.txt");
-      steve.image = game.assets["NPC.png"];
+      steve.image = game.assets["steve_map_image.png"];
+      steve.portrait = game.assets["steve_portrait.png"];
       steve.x = 150;
       steve.y = 150;
-		
+      
+      jane = new NPC(50, 50, "test_lines.txt");
+      jane.image = game.assets["steve_portrait.png"];
+      jane.portrait = game.assets["steve_map_image.png"];
+      jane.x = 100;
+      jane.y = 200;
+      jane.lines.push("JK ;)!!");
+      
+      entities = new Array();
+      entities.push(steve);
+      entities.push(jane);
+      
+     // game.keybind(71, 'thing');//bind the g key to action thing
+      
 		player.isMoving = false;
         player.direction = 0;
         player.addEventListener('enterframe', function() {
@@ -63,11 +82,8 @@ window.onload = function(){
                     }
                 }
             }
-            if(player.intersect(steve)) {
-               player.x = 50;
-               player.y = 50;
-               steve.sayLines(stage, game);
-            }
+            //Make an array of NPCs to do these sorts of checks
+            checkCollisions(player, entities);
         });
 		
 		loadMap(game, "map.txt", "map.png", setmap);
@@ -79,6 +95,31 @@ window.onload = function(){
 		init();
 	}
 	
+   //Use a button press to trigger conversation with NPCs
+function checkCollisions(player, entities) {
+   for(var t = 0; t < entities.length; t++) {
+      if(player.intersect(entities[t])) {
+         player.isMoving = false;
+         if(player.direction == 0) {//moving up
+            player.y += 5;
+         }
+         if(player.direction == 2) {//moving down
+            player.y -= 5;
+         }
+         if(player.direction == 1) {//moving right
+            player.x -= 5;
+         }
+         if(player.direction == 3) {//moving left
+            player.x += 5;
+         }
+         if(!player.isListeningToNPC) {
+            entities[t].sayLines(stage, game, player);
+            player.isListeningToNPC = true;
+         }
+      }
+   }
+}
+   
 	function replacemap(newmap)
 	{
 		stage.removeChild(player);
@@ -96,6 +137,7 @@ window.onload = function(){
 		stage.addChild(map);
 		stage.addChild(player);
       stage.addChild(steve);
+      stage.addChild(jane);
 		game.rootScene.addChild(stage);
 		
 		game.rootScene.addEventListener('enterframe', function(e) {
