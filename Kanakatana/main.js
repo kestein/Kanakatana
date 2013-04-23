@@ -157,13 +157,8 @@ function checkCollisions(player, entities) {
 			else if(player.y > game.height/2) {
 				yModifier = player.y - game.height/2 + player.height/2;
 			}
-			
-			/*if(player.y > game.height/2) {
-				yModifier = player.y - game.width/2 + player.width/2;
-			}*/
-			
-			
-			player.targetClick(evt.localX + xModifier, evt.localY + yModifier);
+					
+			player.targetClick(evt.localX + xModifier - player.width/2, evt.localY + yModifier - player.height/2);
         });
 
 		var pad = new Pad();

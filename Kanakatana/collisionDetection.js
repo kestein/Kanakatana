@@ -2,6 +2,8 @@
 function checkCollisions(player) {
 
    var ch = 0;
+   var dx = 0;
+   var dy = 0;
    for(var t = 0; t < entities.length; t++) {
    //console.log(entities[t]);
 		if(entities[t].name == 'Enemy' && player.within(entities[t], 160)) {
@@ -75,61 +77,27 @@ function checkCollisions(player) {
 		 
       }
    }
-   if(map.hitTest(player.x, player.y) 
-   || map.hitTest(player.x + player.width, player.y + player.height)
-   || map.hitTest(player.x, player.y + player.height)
-   || map.hitTest(player.x + player.width, player.y)) {
-		if(player.direction == 0) {//moving up
-			/*if(player.x - player.endCoordinate.x < 0) {//r
-				player.x -= 1;
-			}
-			if(player.x - player.endCoordinate.x > 0) {//left
-				player.x += 1;
-			}
-			else {*/
-				player.y += 1;
-		//	}
-			player.moveArray.length = 0;
-			//this.isMoving = false;
-         }
-         if(player.direction == 2) {//moving down
-			/*if(player.x - player.endCoordinate.x < 0) {//right
-				player.x -= 1;
-			}
-			if(player.x - player.endCoordinate.x > 0) {//left
-				player.x += 1;
-			}
-			else {*/
-				player.y -= 1;
-			//}
-			player.moveArray.length = 0;
-			//this.isMoving = false;
-         }
-         if(player.direction == 1) {//moving right
-		    /*if(player.y - player.endCoordinate.y < 0) {//up
-				player.y += 1;
-			}
-			if(player.y - player.endCoordinate.y > 0) {//down
-				player.y -= 1;
-			}
-			else {*/
-				player.x -= 1;
-	//		}
-			player.moveArray.length = 0;
-			//this.isMoving = false;
-         }
-         if(player.direction == 3) {//moving left
-	    	/*if(player.y - player.endCoordinate.y < 0) {
-				player.y += 1;
-			}
-			if(player.y - player.endCoordinate.y > 0) {
-				player.y -= 1;
-			}
-			else {*/
-				player.x += 1;
-//			}
-			player.moveArray.length = 0;
-			//this.isMoving = false;
-         }
+   //check colission with walls
+   if(map.hitTest(player.x, player.y)) {	//top left
+		dx += 1;
+		dy += 1;
+		player.moveArray.length = 0;
    }
+   if(map.hitTest(player.x + player.width, player.y)) {	//top right
+		dx -= 1;
+		dy += 1;
+		player.moveArray.length = 0;
+   }
+   if(map.hitTest(player.x, player.y + player.height)) {		//bottom left
+		dx += 1;
+		dy -= 1;
+		player.moveArray.length = 0;
+   }
+   if(map.hitTest(player.x + player.width, player.y + player.height)) {	//bottom right
+		dx -= 1;
+		dy -= 1;
+		player.moveArray.length = 0;
+   }
+   player.x += dx;
+   player.y += dy;
 }
