@@ -1,0 +1,10 @@
+-Have a start<Name of quest> function()
+   -initialize any variables
+   -call the first player/scene/line function
+-Create function pointers like a movie script
+   -indicate person saying, scene(which map), and what line number they are on
+-Call saylines to go through all of that person's lines
+-When finished, go to the function passed into saylines 
+-repeat until function pointer is null
+   -Quest is completed
+   -Do win conditions
