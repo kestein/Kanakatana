@@ -40,12 +40,17 @@ var steveS1Line2 = function() {
 }
 
 var steveS2Line1 = function() { 
-   //Transport us to the next map we are going to. Put some animation in before this
+   //Map is loading too fast and this set of lines is getting put on the screen before the new map is loaded
    loadMap(game, "map2.txt", "map.png", replacemap);
    steve.lines = ["If you want to see your precious classroom again you're going to have to prove your worth.",
                "If you manage to defeat my legion of goons you will be brought back.",
                "It's not ilke I want to train you or anything, I just wana troll you that's all.",
                "BEGONE!!!"];
+   //sayLines(playerS2Line1, steve);
+   setTimeout(runSteveS2Line1, 100);
+}
+
+var runSteveS2Line1 = function() {
    sayLines(playerS2Line1, steve);
 }
 
@@ -59,7 +64,7 @@ var steveS2Line2 = function() {
    //Check to see if win conditions have been met
    steve.lines = [".......", "How did you defeat my legion of goons?!", 
                "I knew I should have spent more money on training than costumes.",
-               "Oh bummer is me."];
+               "Bum out."];
    sayLines(playerS1Line2, steve);
 }
 
@@ -67,6 +72,10 @@ var playerS1Line2 = function() {
    //transport us back to the classroom
    loadMap(game, "map.txt", "map1.png", replacemap);
    IQPlayer.lines = ["What a real jerk move man."];
+   setTimeout(runPlayerS1Line2, 100);
+}
+
+var runPlayerS1Line2 = function() {
    sayLines(steveS1Line3, IQPlayer);
 }
 
@@ -81,7 +90,6 @@ var playerS1Line3 = function() {
 }
 
 function sayLines(nextLine, speaker) {
-console.log("hit");
    var bkg = new Sprite(game_g.width, game_g.height/6);
    var nxt = new Sprite(30, 30);
    var portrait = new Sprite(60, 60);
@@ -131,7 +139,7 @@ console.log("hit");
    stage_g.addChild(portrait);  
 }
 
-var replacemap = function(newmap)
+   var replacemap = function(newmap)
 	{
 		stage.removeChild(IQPlayer);
 		stage.removeChild(map);
