@@ -1,24 +1,26 @@
 var stage_g;
 var game_g;
 var steve;
-var player;
+var IQPlayer;
 
-function startIntroQuest(stage, game, people) {
+//function startIntroQuest(stage, game, people) {
+function startIntroQuest(player) {
+   IQPlayer = player;
    stage_g = stage;
    game_g = game;
-   entites = people; //all of the talkable people on the map
+   people = entities; //all of the talkable people on the map
    //Set the NPC's for this interaction
    for(var g = 0; g < people.length; g++) {
-      if(people[g].name == "player") {
+      /*if(people[g].name == "player") {
          player = people[g];
          continue;
-      }
-      if(people[g].name = "steve") {
+      }*/
+      if(people[g].name == "steve") {
          steve = people[g];
          continue;
       }
    }
-   //immobilize the player
+   
    steveS1Line1();
 }
 
@@ -28,8 +30,8 @@ var steveS1Line1 = function() {
 }
 
 var playerS1Line1 = function() {
-   player.lines = ["What is that supposed to mean?", "Am I stuck here or something?"];
-   sayLines(steveS1Line2, player);
+   IQPlayer.lines = ["What is that supposed to mean?", "Am I stuck here or something?"];
+   sayLines(steveS1Line2, IQPlayer);
 }
 
 var steveS1Line2 = function() {
@@ -39,7 +41,7 @@ var steveS1Line2 = function() {
 
 var steveS2Line1 = function() { 
    //Transport us to the next map we are going to. Put some animation in before this
-   //loadMap(game, "map2.txt", "map.png", replacemap);
+   loadMap(game, "map2.txt", "map.png", replacemap);
    steve.lines = ["If you want to see your precious classroom again you're going to have to prove your worth.",
                "If you manage to defeat my legion of goons you will be brought back.",
                "It's not ilke I want to train you or anything, I just wana troll you that's all.",
@@ -48,8 +50,8 @@ var steveS2Line1 = function() {
 }
 
 var playerS2Line1 = function() {
-   player.lines = ["Super..."];
-   sayLines(steveS2Line2, player);
+   IQPlayer.lines = ["Super..."];
+   sayLines(steveS2Line2, IQPlayer);
 }
 
 var steveS2Line2 = function() {
@@ -63,9 +65,9 @@ var steveS2Line2 = function() {
 
 var playerS1Line2 = function() {
    //transport us back to the classroom
-   //loadMap(game, "map.txt", "map.png", replacemap);
-   player.lines = ["What a real jerk move man."];
-   sayLiens(steveS1Line3, player);
+   loadMap(game, "map.txt", "map1.png", replacemap);
+   IQPlayer.lines = ["What a real jerk move man."];
+   sayLines(steveS1Line3, IQPlayer);
 }
 
 var steveS1Line3 = function() {
@@ -74,11 +76,12 @@ var steveS1Line3 = function() {
 }
 
 var playerS1Line3 = function() {
-   player.lines = ["HNGRAAAAAAAAA"];
-   sayLines(null, player);
+   IQPlayer.lines = ["HNGRAAAAAAAAA"];
+   sayLines(null, IQPlayer);
 }
 
 function sayLines(nextLine, speaker) {
+console.log("hit");
    var bkg = new Sprite(game_g.width, game_g.height/6);
    var nxt = new Sprite(30, 30);
    var portrait = new Sprite(60, 60);
@@ -119,6 +122,7 @@ function sayLines(nextLine, speaker) {
    });
    l.x = 50;
    l.y = game_g.height - 80;
+   console.log(speaker.linesRead);
    l.text = speaker.lines[speaker.linesRead];
    
    stage_g.addChild(bkg);
@@ -126,3 +130,15 @@ function sayLines(nextLine, speaker) {
    stage_g.addChild(nxt);
    stage_g.addChild(portrait);  
 }
+
+var replacemap = function(newmap)
+	{
+		stage.removeChild(IQPlayer);
+		stage.removeChild(map);
+		map = newmap;
+		stage.addChild(map);
+		stage.addChild(IQPlayer);
+		
+		IQPlayer.x = 50;
+		IQPlayer.y = 50;
+	}

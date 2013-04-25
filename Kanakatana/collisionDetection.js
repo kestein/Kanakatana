@@ -74,7 +74,7 @@ function checkCollisions(player) {
 			player.moveArray.length = 0;
 			//this.isMoving = false;
          }
-		 
+		 if(entities[t] instanceof NPC) startIntroQuest(player);
       }
    }
    //check colission with walls

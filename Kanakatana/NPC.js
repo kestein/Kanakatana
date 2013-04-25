@@ -8,31 +8,7 @@ var NPC = Class.create(Sprite, {
       this.lines = ["Who the hell do you think you are", 
        "Do you really think YOU can beat ME!??", "My hoard of goons will show you what's what!!"];
       this.linesRead = 0;
-      /*var reader1 = new XMLHttpRequest() || new ActiveXObject('MSXML2.XMLHTTP'); //for them file IO
-      reader1.open('get', script, true);
-      reader1.onreadystatechange = function() {
-         lines = new Array();
-         if (reader1.responseText != null && reader1.responseText != "")
-         {
-            var t = reader1.responseText.split('\n'); //array of phrases for the NPC to say
-            for(var a in t) {
-               console.log("a is " + a);
-               lines.push(t[a]);
-            }
-            console.log("lines is " + lines[1]);
-            console.log("t is " + t[1]);
-         }
-      };
-      reader1.send(null);*/
-      //console.log(lines[0]);
    },
-   /*parseNPCWords:function() {
-      if (reader1.responseText != null && reader1.responseText != "")
-      {
-         lines = reader1.responseText.split('\n'); //array of phrases for the NPC to say
-         //console.log(lines[3]);
-      }
-   },*/
    // Add a label w/ a background to the stage group
    // Put in a check to see if a label was not exited and only swap the label out
    sayLines:function(stage, game, listener) {

@@ -2,9 +2,11 @@
 enchant();
 var map;
 var entities;
+var game;
+var stage;
 
 window.onload = function(){
-    var game = new Game(800, 600);
+    game = new Game(800, 600);
 	
     game.fps = 30;
 	game.preload("map.png");
@@ -23,7 +25,7 @@ window.onload = function(){
 	var jane;
 	var enemy1;
 	var collidedEntity;
-	var stage = new Group();
+	stage = new Group();
 	
 		
     game.onload = function(){	
@@ -33,12 +35,15 @@ window.onload = function(){
 		player.image = game.assets["chars.gif"];
 		player.x = 50;
 		player.y = 50;
+      player.name = "player";
       player.isListeningToNPC = false;
+      player.linesRead = 0;
       
       steve = new NPC(32, 32, "test_lines.txt");
       steve.image = game.assets["chars.gif"];
       steve.portrait = game.assets["chars.gif"];
 	  steve.frame = 1;
+     steve.name = "steve";
       steve.x = 150;
       steve.y = 150;
       
@@ -46,6 +51,7 @@ window.onload = function(){
       jane.image = game.assets["chars.gif"];
       jane.portrait = game.assets["chars.gif"];
 	  jane.frame = 7;
+     jane.name = "jane";
       jane.x = 100;
       jane.y = 200;
       jane.lines.push("JK ;)!!");
@@ -53,6 +59,7 @@ window.onload = function(){
 	  enemy1 = new Enemy(32, 32, player);
       enemy1.image = game.assets["snail.png"];
       enemy1.x = 600;
+      enemy1.name = "enemy1";
       enemy1.y = 150;
       
       entities = new Array();
@@ -60,6 +67,7 @@ window.onload = function(){
       entities.push(jane);
 	  entities.push(enemy1);
       
+      console.log(entities);
      // game.keybind(71, 'thing');//bind the g key to action thing
       
 		
@@ -98,7 +106,7 @@ function checkCollisions(player, entities) {
    }
 }
    
-	function replacemap(newmap)
+	var replacemap = function(newmap)
 	{
 		stage.removeChild(player);
 		stage.removeChild(map);
@@ -109,7 +117,7 @@ function checkCollisions(player, entities) {
 		player.x = 50;
 		player.y = 50;
 	}
-	
+   
 	function init()
 	{	
 		stage.addChild(map);
