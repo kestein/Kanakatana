@@ -5,6 +5,7 @@ var Player = Class.create(Sprite, {
 		Sprite.call(this, width, height);
 		/** click to move things **/
 		this.moveArrayIndex = 0;
+		this.alive = true;
 		this.frame = 5;
 		this.moveArray = [];
 		this.isMoving = false;
