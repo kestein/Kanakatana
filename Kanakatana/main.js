@@ -4,6 +4,8 @@ var map;
 var entities;
 var game;
 var stage;
+var hud;
+
 
 window.onload = function(){
     game = new Game(800, 600);
@@ -18,6 +20,11 @@ window.onload = function(){
    game.preload("label_bkg.png");
    game.preload("next.png");
    game.preload("steve_portrait.png")
+   game.preload("enpitsu1.png");
+   game.preload("enpitsu2.png");
+   game.preload("e.jpg");
+   
+   game.keybind(81, 'a');		//sets 'q' to the "a button"
 	
 	
 	var player;
@@ -25,7 +32,9 @@ window.onload = function(){
 	var jane;
 	var enemy1;
 	var collidedEntity;
+	var e1;
 	stage = new Group();
+	hud = new Group();
 	
 		
     game.onload = function(){	
@@ -51,7 +60,7 @@ window.onload = function(){
       jane.image = game.assets["chars.gif"];
       jane.portrait = game.assets["chars.gif"];
 	  jane.frame = 7;
-     jane.name = "jane";
+	  jane.name = "jane";
       jane.x = 100;
       jane.y = 200;
       jane.lines.push("JK ;)!!");
@@ -59,17 +68,20 @@ window.onload = function(){
 	  enemy1 = new Enemy(32, 32, player);
       enemy1.image = game.assets["snail.png"];
       enemy1.x = 600;
-      enemy1.name = "enemy1";
+      //enemy1.name = "enemy1";
       enemy1.y = 150;
-      
+	  
+	  e1 = new E(96, 96, player);
+	  e1.image = game.assets["e.jpg"];
+	  e1.x = 700;
+      e1.y = 150;
+	  
       entities = new Array();
       entities.push(steve);
       entities.push(jane);
 	  entities.push(enemy1);
-      
-      console.log(entities);
-     // game.keybind(71, 'thing');//bind the g key to action thing
-      
+	  entities.push(e1);
+	  
 		
 		
 		loadMap(game, "map.txt", "map1.png", setmap);
@@ -125,7 +137,9 @@ function checkCollisions(player, entities) {
 		stage.addChild(steve);
 		stage.addChild(jane);
 		stage.addChild(enemy1);
+		hud.addChild(e1);//remove this
 		game.rootScene.addChild(stage);
+		game.rootScene.addChild(hud);
 		
 		game.rootScene.addEventListener('enterframe', function(e) {
 			var x = Math.min((game.width  - 50) / 2 - player.x, 0);
@@ -134,7 +148,6 @@ function checkCollisions(player, entities) {
 			y = Math.max(game.height, y + map.height) - map.height;
 			stage.x = x;
 			stage.y = y;
-			
 			if (player.x / 48 == 22 && player.y / 50 == 1)
 			{		
 				loadMap(game, "map2.txt", "map.png", replacemap);
@@ -165,9 +178,14 @@ function checkCollisions(player, entities) {
 			else if(player.y > game.height/2) {
 				yModifier = player.y - game.height/2 + player.height/2;
 			}
-					
-			player.targetClick(evt.localX + xModifier - player.width/2, evt.localY + yModifier - player.height/2);
+			if(evt.localX < 700) {		//hack. fix this when implementing ability pannel.
+				player.targetClick(evt.localX + xModifier - player.width/2, evt.localY + yModifier - player.height/2);
+			}
         });
+		
+		game.rootScene.addEventListener('enterframe', function() {
+			collideEntities();
+		});
 
 		var pad = new Pad();
 		pad.x = 0;

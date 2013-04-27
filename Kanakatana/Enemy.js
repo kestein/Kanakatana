@@ -9,17 +9,17 @@ var Enemy = Class.create (Sprite, {
 		this.yPath = [400,150];
 		this.speed = 2;
 		this.vx = 0;
-		this.name = "Enemy";
+		this.name = "Enemy";		//used in collision detection.
 		this.vy = 0;
 		this.targetNode = 0;
-		this.enraged = false;
+		this.enraged = false;		//determines if headding towards player
 		this.targetOfRage = player;
 		this.moveArray = [];
 		this.speed = 2;
 		this.startCoordinate = this.coordinates(this.x,this.y);
 		this.firstCoordinate = this.coordinates(this.xPath[this.targetNode],this.yPath[this.targetNode]);
 		this.moveArrayIndex = 0;
-		console.log(this.moveArrayIndex);
+		this.dead = false;
 		
 		
 		this.addEventListener('enterframe', function() {	
@@ -33,7 +33,7 @@ var Enemy = Class.create (Sprite, {
 			this.x = X;
 			this.y = Y;
 	},
-	
+	//see player.calcStraightLine.
 	calcStraightLine:function(startCoordinates, endCoordinates) {
 			var coordinatesArray = [];
 			// Translate coordinates
@@ -68,13 +68,16 @@ var Enemy = Class.create (Sprite, {
 			// Return the result
     return coordinatesArray;
 	},
+	
+	//sets the enemy's target to the next coordinate in its path. loops back to first target when route is completed
 	changeTarget:function() {
-	console.log(this.targetNode);
 		this.targetNode++;
 		if(this.targetNode == this.xPath.length) {
 			this.targetNode = 0;
 		}
 	},
+	
+	//moves the enemy to their current target. if enraged, it moves toward the player.
 	moveToTarget:function() {
 		if(this.enraged == false) {
 			if(this.x < this.xPath[this.targetNode]) {
@@ -137,6 +140,8 @@ var Enemy = Class.create (Sprite, {
 			moveArray = [];
 		}*/
 	},
+	
+	//no use yet.
 	enrage: function() {
 			if (this.enraged == true) {
 			

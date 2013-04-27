@@ -9,20 +9,22 @@ var Player = Class.create(Sprite, {
 		this.frame = 5;
 		this.moveArray = [];
 		this.isMoving = false;
+		this.direction = 2;
 		this.speed = 3;
 		this.endCoordinate =  this.coordinates(0,0);
 		
 		this.addEventListener('enterframe', function() {
-		this.checkNPC();
 		this.moveToClick();
+		if(!this.age %100) {console.log("hoseshoseshoses");} //delete this
 		})
+		
    },
-   
+   //This is used to make calcStraightLine work. A pair of X and Y coordinates
    coordinates:function(X, Y) {
 			this.x = X;
 			this.y = Y;
 	},
-	
+	//Bresenham's line algorithm, generates an array of points to move the player along while moving.
    calcStraightLine:function(startCoordinates, endCoordinates) {
 			var coordinatesArray = [];
 			// Translate coordinates
@@ -49,7 +51,6 @@ var Player = Class.create(Sprite, {
 				err += dx;
 				y1 += sy;
 			}
-			//console.log(x1-x2);
 			// Set coordinates
 			coordinatesArray.push(new this.coordinates(y1, x1));
 			if (Math.abs(x1-x2)<0.0001 && Math.abs(y1-y2)<0.0001) break;
@@ -57,7 +58,7 @@ var Player = Class.create(Sprite, {
 			// Return the result
     return coordinatesArray;
 	},
-	
+	//this function gets called by an event listener. It uses calcStreightLine to make an array for the player to traverse.
 	targetClick:function(clickX, clickY) {
 	this.moveArray = [];
 	this.moveArrayIndex = 0;
@@ -95,6 +96,7 @@ var Player = Class.create(Sprite, {
 			//this.frame = (this.direction *9) + 5;
 	},
 	
+	//Moves the player to the clicked my traversing through the array 'speed' steps at a time.
 	moveToClick:function() {
 		var tempCoordinate = new this.coordinates(this.x, this.y);
 		if(this.moveArrayIndex <= this.moveArray.length 
@@ -113,10 +115,6 @@ var Player = Class.create(Sprite, {
 		//check collisions here
 		checkCollisions(this);
 	},
-	
-	checkNPC:function() {
-		
-	}
 	
 	
 });

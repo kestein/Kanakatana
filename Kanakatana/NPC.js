@@ -17,6 +17,7 @@ var NPC = Class.create(Sprite, {
       var nxt = new Sprite(30, 30);
       var portrait = new Sprite(60, 60);
       var NPC = this;
+	  this.dead = false;
       var l = new Label(NPC.lines[NPC.linesRead]);
       var listener = listener;//The player
       
