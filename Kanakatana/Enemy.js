@@ -20,11 +20,13 @@ var Enemy = Class.create (Sprite, {
 		this.firstCoordinate = this.coordinates(this.xPath[this.targetNode],this.yPath[this.targetNode]);
 		this.moveArrayIndex = 0;
 		this.dead = false;
+		this.health = 2;
 		
 		
 		this.addEventListener('enterframe', function() {	
 		this.moveToTarget();
 		this.enrage();
+		this.checkIfDead();
 		
 			
         });
@@ -142,10 +144,20 @@ var Enemy = Class.create (Sprite, {
 	},
 	
 	//no use yet.
-	enrage: function() {
+	enrage:function() {
 			if (this.enraged == true) {
 			
 			}
+			else {
+			
+			}
+	},
+	
+	//checks health and kills the enemy if its health is low enough
+	checkIfDead:function() {
+		if(this.health <= 0) {
+			this.dead = true;
+		}
 	}
 	
 	

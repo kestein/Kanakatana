@@ -75,6 +75,7 @@ function checkCollisions(player) {
 				player.moveArray.length = 0;
 				//this.isMoving = false;
 			}
+			player.isListeningToNPC = true;
 		 }
 		 if(entities[t] instanceof NPC && !player.isListeningTospeaker) {
          startIntroQuest(player);
@@ -111,12 +112,12 @@ function collideEntities() {
 	for(var i = 0; i < entities.length; i++) {
 		for(var j = 0; j < entities.length; j++) {
 			if(entities[i].name == "Enpitsu" && entities[j].name == "Enemy" && entities[j].intersect(entities[i])) {
-				stage.removeChild(entities[i]);
-				stage.removeChild(entities[j]);
-				//entities.pop(entities[i]);
-				//entities.pop(entities[j]);
+				
+				entities[i].dead = true;
+				entities[j].health-= entities[i].damage;
 			}
 		}
 	}
+	cleanEntities();
 
 }
