@@ -12,7 +12,7 @@ var Player = Class.create(Sprite, {
 		this.direction = 2;
 		this.speed = 3;
 		this.endCoordinate =  this.coordinates(0,0);
-		
+		this.isListeningToNPC = true;
 		this.addEventListener('enterframe', function() {
 		this.moveToClick();
 		if(!this.age %100) {console.log("hoseshoseshoses");} //delete this
@@ -100,7 +100,7 @@ var Player = Class.create(Sprite, {
 	moveToClick:function() {
 		var tempCoordinate = new this.coordinates(this.x, this.y);
 		if(this.moveArrayIndex <= this.moveArray.length 
-		&& typeof this.moveArray[this.moveArrayIndex] !== 'undefined') {
+		&& typeof this.moveArray[this.moveArrayIndex] !== 'undefined' && !this.isListeningToNPC) {
 				
 				tempCoordinate = this.moveArray[this.moveArrayIndex];
 				//console.log(this.moveArray);

@@ -5,7 +5,7 @@ function checkCollisions(player) {
    var dx = 0;
    var dy = 0;
    for(var t = 0; t < entities.length; t++) {
-   console.log(entities[t].name);
+   //console.log(entities[t].name);
 		if(entities[t].name == 'Enemy' && player.within(entities[t], 160)) {	//Enemies attack player if close
 			
 			entities[t].enraged = true;
@@ -76,6 +76,7 @@ function checkCollisions(player) {
 				player.moveArray.length = 0;
 				//this.isMoving = false;
 			}
+			player.isListeningToNPC = true;
 		 }
 		 if(entities[t] instanceof NPC) startIntroQuest(player);
       }
@@ -110,12 +111,12 @@ function collideEntities() {
 	for(var i = 0; i < entities.length; i++) {
 		for(var j = 0; j < entities.length; j++) {
 			if(entities[i].name == "Enpitsu" && entities[j].name == "Enemy" && entities[j].intersect(entities[i])) {
-				stage.removeChild(entities[i]);
-				stage.removeChild(entities[j]);
-				//entities.pop(entities[i]);
-				//entities.pop(entities[j]);
+				
+				entities[i].dead = true;
+				entities[j].health-= entities[i].damage;
 			}
 		}
 	}
+	cleanEntities();
 
 }

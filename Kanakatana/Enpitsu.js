@@ -17,6 +17,7 @@ var Enpitsu = Class.create (Sprite, {
 		this.vx = 0;
 		this.vy = 0;
 		this.dead = false;
+		this.damage = 1;
 		if(this.direction == 0 ||this.direction == 2) {		//chooses what image file to use
 			this.image = game.assets["enpitsu2.png"];
 		}
