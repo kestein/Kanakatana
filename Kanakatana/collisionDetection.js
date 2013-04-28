@@ -79,6 +79,7 @@ function checkCollisions(player) {
 		 }
 		 if(entities[t] instanceof NPC && !player.isListeningTospeaker) {
          startIntroQuest(player);  
+         player.isListeningToNPC = true;
        }
       }
    }

@@ -8,6 +8,7 @@ var numEnemies = 0;//total number of enemies that you will fight in the quest
 //function startIntroQuest(stage, game, prevAcivityPeople) {
 function startIntroQuest(player) {
    IQPlayer = player;
+   console.log(player);
    stage_g = stage;
    game_g = game;
    prevAcivityPeople = new Array();
@@ -21,7 +22,6 @@ function startIntroQuest(player) {
          continue;
       }
    }
-   player.isListeningTospeaker = true;
    steveS1Line1();
 }
 
@@ -56,6 +56,7 @@ var runSteveS2Line1 = function() {
 
 var playerS2Line1 = function() {
    IQPlayer.lines = ["Super..."];
+   IQPlayer.isListeningToNPC = false;
    sayLines(steveS2Line2, IQPlayer);
 }
 
@@ -78,6 +79,7 @@ var checkWinCondition = function() {
       }
    }
    if(enemiesLeft == 0) {
+      IQPlayer.isListeningToNPC = true;
       steve.lines = ["How did you defeat my legion of goons?!", 
                "I knew I should have spent more money on training than costumes.",
                "Bum out."];
@@ -180,7 +182,6 @@ var introQuestCombatMap = function(newmap) {
    stage_g.addChild(enemy1);
    entities.push(enemy1);
    numEnemies += 1;
-   if(enemy1.targetOfRage === IQPlayer) console.log("yolo");
    
    IQPlayer.x = 64;
    IQPlayer.y = 64;
