@@ -78,7 +78,7 @@ function checkCollisions(player) {
 			player.isListeningToNPC = true;
 		 }
 		 if(entities[t] instanceof NPC && !player.isListeningTospeaker) {
-         startIntroQuest(player);
+         startIntroQuest(player);  
        }
       }
    }

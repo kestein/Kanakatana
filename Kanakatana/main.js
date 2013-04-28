@@ -8,16 +8,15 @@ var hud;
 
 
 window.onload = function(){
-    game = new Game(800, 600);
+    game = new Game(480, 320);//30x20 text files
 	
     game.fps = 30;
-	game.preload("map.png");
    game.preload("maphome.gif");
 	game.preload("snail.png");
-	game.preload("map1.png");
+	game.preload("map1.gif");
 	game.preload("player.png");
 	game.preload("chars.gif");
-   game.preload("steve_map_image.png");
+   game.preload("player_portrait.png");
    game.preload("label_bkg.png");
    game.preload("next.png");
    game.preload("steve_portrait.png")
@@ -42,19 +41,20 @@ window.onload = function(){
 		/** player things **/
 		player = new Player(32, 32);
 		player.image = game.assets["chars.gif"];
+      player.portrait = game.assets["player_portrait.png"];
 		player.x = 150;
-		player.y = 100;
+		player.y = 10;
       player.name = "player";
       player.isListeningToNPC = false;
       player.linesRead = 0;
       
       steve = new NPC(32, 32, "test_lines.txt");
       steve.image = game.assets["chars.gif"];
-      steve.portrait = game.assets["chars.gif"];
+      steve.portrait = game.assets["steve_portrait.png"];
 	  steve.frame = 1;
      steve.name = "steve";
-      steve.x = 150;
-      steve.y = 150;
+      steve.x = 100;
+      steve.y = 30;
       
       jane = new NPC(32, 32, "test_lines.txt");
       jane.image = game.assets["chars.gif"];
@@ -65,7 +65,7 @@ window.onload = function(){
       jane.y = 200;
       jane.lines.push("JK ;)!!");
 	  
-	  enemy1 = new Enemy(32, 32, player);
+	   enemy1 = new Enemy(32, 32, player);
       enemy1.image = game.assets["snail.png"];
       enemy1.x = 600;
       //enemy1.name = "enemy1";
@@ -84,7 +84,7 @@ window.onload = function(){
 	  
 		
 		
-		loadMap(game, "map.txt", "map1.png", setmap);
+		loadMap(game, "maphome.txt", "maphome.gif", setmap);
     };
 	
 	function setmap(newmap)
@@ -178,19 +178,14 @@ function checkCollisions(player, entities) {
 			else if(player.y > game.height/2) {
 				yModifier = player.y - game.height/2 + player.height/2;
 			}
-			if(evt.localX < 700) {		//hack. fix this when implementing ability pannel.
+			//if(evt.localX < 700) {		//hack. fix this when implementing ability pannel.
 				player.targetClick(evt.localX + xModifier - player.width/2, evt.localY + yModifier - player.height/2);
-			}
+		//	}
         });
 		
 		game.rootScene.addEventListener('enterframe', function() {
 			collideEntities();
 		});
-
-		var pad = new Pad();
-		pad.x = 0;
-		pad.y = 0;
-		game.rootScene.addChild(pad);
 	}
 	game.start();
 };
