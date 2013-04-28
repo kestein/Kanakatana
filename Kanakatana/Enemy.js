@@ -7,15 +7,14 @@ var Enemy = Class.create (Sprite, {
 		//vars for movement.
 		this.xPath = [600,600];
 		this.yPath = [400,150];
-		this.speed = 2;
-		this.vx = 0;
+		this.speed = 5;
 		this.name = "Enemy";		//used in collision detection.
+		this.vx = 0;				//dertermines direction to move.
 		this.vy = 0;
 		this.targetNode = 0;
 		this.enraged = false;		//determines if headding towards player
 		this.targetOfRage = player;
 		this.moveArray = [];
-		this.speed = 2;
 		this.startCoordinate = this.coordinates(this.x,this.y);
 		this.firstCoordinate = this.coordinates(this.xPath[this.targetNode],this.yPath[this.targetNode]);
 		this.moveArrayIndex = 0;
@@ -79,41 +78,51 @@ var Enemy = Class.create (Sprite, {
 		}
 	},
 	
-	//moves the enemy to their current target. if enraged, it moves toward the player.
+	//moves the enemy to their current target. if enraged, it moves toward the player. modifiers handle adjusting speed
+	//when the enemy nears the node.
 	moveToTarget:function() {
-		if(this.enraged == false) {
+		//console.log(this.y - this.yPath[this.targetNode]);
+		if(this.enraged == false) {			//this is if Enemy is following its normal course
 			if(this.x < this.xPath[this.targetNode]) {
-				vx= 1;
+				vx= this.speed;
 			}
 			else if(this.x > this.xPath[this.targetNode]) {
-				vx= -1;
+				vx= -this.speed;
 			}
 			else {
-				vx= -0;
+				vx= 0;
 			}
 			if(this.y < this.yPath[this.targetNode]) {
-				vy= 1;
+				vy= this.speed;
 			}
 			else if(this.y > this.yPath[this.targetNode]) {
-				vy= -1;
+				vy= -this.speed;
 			}
 			else {
-				vy= -0;
+				vy= 0;
 			}
-			this.moveTo( this.x + vx , this.y + vy);
+			if(Math.abs(vx) > Math.abs(this.x - this.xPath[this.targetNode])) {
+				vx = this.x - this.xPath[this.targetNode];
+			}
+			if(Math.abs(vy) > Math.abs(this.y - this.yPath[this.targetNode])) {
+				vy = this.y - this.yPath[this.targetNode];
+			}
+			//vx = Math.min(Math.abs(vx), Math.abs(this.x - this.xPath[this.targetNode]));
+			//vy = Math.min(Math.abs(vy), Math.abs(this.y - this.yPath[this.targetNode]));
+			this.moveTo( this.x + vx, this.y + vy);
 			if(this.x == this.xPath[this.targetNode] && this.y == this.yPath[this.targetNode]) {
 				this.changeTarget();
 			}
 		}
-		else {
+		else {					//the enemy is actively persuing the player
 			if(this.x < this.targetOfRage.x) {
-				vx= 1;
+				vx= this.speed;
 			}
 			else if(this.x > this.targetOfRage.x) {
 				vx= -1;
 			}
 			else {
-				vx= -0;
+				vx= 0;
 			}
 			if(this.y < this.targetOfRage.y) {
 				vy= 1;
@@ -122,9 +131,9 @@ var Enemy = Class.create (Sprite, {
 				vy= -1;
 			}
 			else {
-				vy= -0;
+				vy= 0;
 			}
-			this.moveTo( this.x + vx , this.y + vy);
+			this.moveTo( this.x + vx, this.y + vy);
 		}
 		
 		/*var tempCoordinate = this.coordinates(this.x, this.y);

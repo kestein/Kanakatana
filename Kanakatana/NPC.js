@@ -40,6 +40,7 @@ var NPC = Class.create(Sprite, {
             stage.removeChild(portrait);
             NPC.linesRead = 0;
             listener.isListeningToNPC = false;
+			console.log(listener.isListeningToNPC);
          }
          else {
             NPC.linesRead += 1;

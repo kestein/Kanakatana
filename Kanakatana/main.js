@@ -66,6 +66,7 @@ window.onload = function(){
       jane.lines.push("JK ;)!!");
 	  
 	   enemy1 = new Enemy(32, 32, player);
+	  enemy1 = new Snail(32, 32, player);
       enemy1.image = game.assets["snail.png"];
       enemy1.x = 600;
       //enemy1.name = "enemy1";
