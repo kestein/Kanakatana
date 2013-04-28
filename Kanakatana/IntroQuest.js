@@ -11,16 +11,12 @@ function startIntroQuest(player) {
    people = entities; //all of the talkable people on the map
    //Set the NPC's for this interaction
    for(var g = 0; g < people.length; g++) {
-      /*if(people[g].name == "player") {
-         player = people[g];
-         continue;
-      }*/
       if(people[g].name == "steve") {
          steve = people[g];
          continue;
       }
    }
-   
+   player.isListeningTospeaker = true;
    steveS1Line1();
 }
 
@@ -40,8 +36,7 @@ var steveS1Line2 = function() {
 }
 
 var steveS2Line1 = function() { 
-   //Map is loading too fast and this set of lines is getting put on the screen before the new map is loaded
-   loadMap(game, "map2.txt", "map.png", replacemap);
+   loadMap(game, "map.txt", "map.png", introQuestCombatMap);
    steve.lines = ["If you want to see your precious classroom again you're going to have to prove your worth.",
                "If you manage to defeat my legion of goons you will be brought back.",
                "It's not ilke I want to train you or anything, I just wana troll you that's all.",
@@ -70,7 +65,7 @@ var steveS2Line2 = function() {
 
 var playerS1Line2 = function() {
    //transport us back to the classroom
-   loadMap(game, "map.txt", "map1.png", replacemap);
+   loadMap(game, "map.txt", "map1.png", introQuestHomeMap);
    IQPlayer.lines = ["What a real jerk move man."];
    setTimeout(runPlayerS1Line2, 100);
 }
@@ -130,7 +125,6 @@ function sayLines(nextLine, speaker) {
    });
    l.x = 50;
    l.y = game_g.height - 80;
-   console.log(speaker.linesRead);
    l.text = speaker.lines[speaker.linesRead];
    
    stage_g.addChild(bkg);
@@ -139,14 +133,35 @@ function sayLines(nextLine, speaker) {
    stage_g.addChild(portrait);  
 }
 
-   var replacemap = function(newmap)
-	{
-		stage.removeChild(IQPlayer);
-		stage.removeChild(map);
-		map = newmap;
-		stage.addChild(map);
-		stage.addChild(IQPlayer);
-		
-		IQPlayer.x = 50;
-		IQPlayer.y = 50;
-	}
+var introQuestCombatMap = function(newmap) {
+   stage_g.removeChild(IQPlayer);
+   stage_g.removeChild(map);
+   var e_len = entities.length;
+   for(var h = 0; h < e_len; h ++) {
+      stage_g.removeChild(entities[h]);
+      entities.pop(h);
+   }
+   map = newmap;
+   entities.push();
+   stage_g.addChild(map);
+   stage_g.addChild(IQPlayer);
+   
+   IQPlayer.x = 50;
+   IQPlayer.y = 50;
+}
+
+var introQuestHomeMap = function(newmap) {
+   stage_g.removeChild(IQPlayer);
+   stage_g.removeChild(map);
+   var e_len = entities.length;
+   for(var h = 0; h < e_len; h ++) {
+      stage_g.removeChild(entities[h]);
+      entities.pop(h);
+   }
+   map = newmap;
+   stage_g.addChild(map);
+   stage_g.addChild(IQPlayer);
+   
+   IQPlayer.x = 50;
+   IQPlayer.y = 50;
+}

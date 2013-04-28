@@ -5,9 +5,8 @@ function checkCollisions(player) {
    var dx = 0;
    var dy = 0;
    for(var t = 0; t < entities.length; t++) {
-   console.log(entities[t].name);
 		if(entities[t].name == 'Enemy' && player.within(entities[t], 160)) {	//Enemies attack player if close
-			
+
 			entities[t].enraged = true;
 		}
 		else if(entities[t].name == 'Enemy') {
@@ -77,7 +76,9 @@ function checkCollisions(player) {
 				//this.isMoving = false;
 			}
 		 }
-		 if(entities[t] instanceof NPC) startIntroQuest(player);
+		 if(entities[t] instanceof NPC && !player.isListeningTospeaker) {
+         startIntroQuest(player);
+       }
       }
    }
    //check colission with walls against corners of player

@@ -12,6 +12,7 @@ window.onload = function(){
 	
     game.fps = 30;
 	game.preload("map.png");
+   game.preload("maphome.gif");
 	game.preload("snail.png");
 	game.preload("map1.png");
 	game.preload("player.png");
@@ -38,12 +39,11 @@ window.onload = function(){
 	
 		
     game.onload = function(){	
-		
 		/** player things **/
 		player = new Player(32, 32);
 		player.image = game.assets["chars.gif"];
-		player.x = 50;
-		player.y = 50;
+		player.x = 150;
+		player.y = 100;
       player.name = "player";
       player.isListeningToNPC = false;
       player.linesRead = 0;
