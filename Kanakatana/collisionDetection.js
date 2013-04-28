@@ -20,7 +20,7 @@ function checkCollisions(player) {
 			break;
 		 }
          player.isMoving = false;
-		 if(entities[t].name == "NPC") {
+		 if(entities[t] instanceof NPC) {
 			if(player.direction == 0 && player.endCoordinate) {//moving up
 				//diagonal checks
 				if(player.x - player.endCoordinate.x < 0) {//r
@@ -111,7 +111,7 @@ function checkCollisions(player) {
 function collideEntities() {
 	for(var i = 0; i < entities.length; i++) {
 		for(var j = 0; j < entities.length; j++) {
-			if(entities[i].name == "Enpitsu" && entities[j].name == "Enemy" && entities[j].intersect(entities[i])) {
+			if(entities[i] instanceof Enpitsu && entities[j] instanceof Enemy && entities[j].intersect(entities[i])) {
 				
 				entities[i].dead = true;
 				entities[j].health-= entities[i].damage;
