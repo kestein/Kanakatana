@@ -7,7 +7,7 @@ var prevAcivityPeople; //all of the talkable people from the previous place
 var numEnemies = 0;//total number of enemies that you will fight in the quest
 
 //function startIntroQuest(stage, game, prevAcivityPeople) {
-function startIntroQuest(player) {
+function startQ2(player) {
    IQPlayer = player;
    stage_g = stage;
    game_g = game;
@@ -23,25 +23,25 @@ function startIntroQuest(player) {
          continue;
       }
    }
-   steveS1Line1();
+   steveS1Line1Q2();
 }
 
-var steveS1Line1 = function() {
-   steve.lines = ["Welcome to the intro quest", "We hope you enjoy your stay"];
-   sayLines(playerS1Line1, steve);
+var steveS1Line1Q2 = function() {
+   steve.lines = ["Welcome to the int- err, second quest", "We hope you enjoy your stay"];
+   sayLines(playerS1Line1Q2, steve);
 }
 
-var playerS1Line1 = function() {
-   IQPlayer.lines = ["What is that supposed to mean?", "Am I stuck here or something?"];
-   sayLines(steveS1Line2, IQPlayer);
+var playerS1Line1Q2 = function() {
+   IQPlayer.lines = ["What is that supposed to mean?", "Am I stuck here or something?", "Woah, deja vu..."];
+   sayLines(steveS1Line2Q2, IQPlayer);
 }
 
-var steveS1Line2 = function() {
+var steveS1Line2Q2 = function() {
    steve.lines = ["Oh, you'll find out soon enough", "MUUUHHAHAHAHAHAHAA"];
-   sayLines(steveS2Line1, steve);
+   sayLines(steveS2Line1Q2, steve);
 }
 
-var steveS2Line1 = function() { 
+var steveS2Line1Q2 = function() { 
    loadMap(game_g, "map1.txt", "map1.gif", introQuestCombatMap);
    game_g.rootScene.addChild(hud_g);
    steve.lines = ["If you want to see your precious classroom again you're going to have to prove your worth.",
@@ -49,28 +49,28 @@ var steveS2Line1 = function() {
                "It's not ilke I want to train you or anything, I just wana troll you that's all.",
                "BEGONE!!!"];
    //sayLines(playerS2Line1, steve);
-   setTimeout(runSteveS2Line1, 100);
+   setTimeout(runSteveS2Line1Q2, 100);
 }
 
-var runSteveS2Line1 = function() {
-   sayLines(playerS2Line1, steve);
+var runSteveS2Line1Q2 = function() {
+   sayLines(playerS2Line1Q2, steve);
 }
 
-var playerS2Line1 = function() {
+var playerS2Line1Q2 = function() {
    IQPlayer.lines = ["Super..."];
    IQPlayer.isListeningToNPC = false;
-   sayLines(steveS2Line2, IQPlayer);
+   sayLines(steveS2Line2Q2, IQPlayer);
 }
 
-var steveS2Line2 = function() {
-   game.rootScene.addEventListener('enterframe', checkWinCondition);
+var steveS2Line2Q2 = function() {
+   game.rootScene.addEventListener('enterframe', checkWinConditionQ2);
    /*steve.lines = ["How did you defeat my legion of goons?!", 
                "I knew I should have spent more money on training than costumes.",
                "Bum out."];
    sayLines(playerS1Line2, steve);*/
 }
 
-var checkWinCondition = function() {
+var checkWinConditionQ2 = function() {
    var enemiesLeft = 0;
    if(entities.length == 0) {
       enemiesLeft = 0;
@@ -85,34 +85,34 @@ var checkWinCondition = function() {
       steve.lines = ["How did you defeat my legion of goons?!", 
                "I knew I should have spent more money on training than costumes.",
                "Bum out."];
-      sayLines(playerS1Line2, steve);
+      sayLines(playerS1Line2Q2, steve);
    }
 }
 
-var playerS1Line2 = function() {
+var playerS1Line2Q2 = function() {
    //transport us back to the classroom
-   game.rootScene.removeEventListener('enterframe', checkWinCondition);
+   game.rootScene.removeEventListener('enterframe', checkWinConditionQ2);
    game_g.rootScene.removeChild(hud_g);
    loadMap(game_g, "maphome.txt", "maphome.gif", homeMap);
    IQPlayer.lines = ["What a real jerk move man."];
-   setTimeout(runPlayerS1Line2, 100);
+   setTimeout(runPlayerS1Line2Q2, 100);
 }
 
-var runPlayerS1Line2 = function() {
-   sayLines(steveS1Line3, IQPlayer);
+var runPlayerS1Line2Q2 = function() {
+   sayLines(steveS1Line3Q2, IQPlayer);
 }
 
-var steveS1Line3 = function() {
+var steveS1Line3Q2 = function() {
    steve.lines = ["Congratulations, you passed the test.", "Most people would beat me up now, but yo-"];
-   sayLines(playerS1Line3, steve);
+   sayLines(playerS1Line3Q2, steve);
 }
 
-var playerS1Line3 = function() {
+var playerS1Line3Q2 = function() {
    IQPlayer.lines = ["HNGRAAAAAAAAA"];
-   sayLines(endIntroQuest, IQPlayer);
+   sayLines(endIntroQuestQ2, IQPlayer);
 }
 
-var endIntroQuest = function() {
+var endIntroQuestQ2 = function() {
    IQPlayer.isListeningToNPC = false;
    IQPlayer.quests.pop();
    console.log("You the baddest snail murker this side o da nississippi");
