@@ -5,18 +5,24 @@ function sayLines(nextLine, speaker) {
    var speaker = speaker;
    var l = new Label();
    var queueNextLine = nextLine;
+   var screenOffsetX = 0;
+   var screenOffsetY = 0;
    
    bkg.image = game_g.assets["label_bkg.png"];
    bkg.y = game_g.height - 50;
-   bkg.x = 0;
+   if(IQPlayer.x > game_g.width/2) {
+      screenOffsetX = IQPlayer.x - game_g.width/2 + 25;
+   }
+   if(IQPlayer.x - game_g.width/2)
+   bkg.x = 0 + screenOffsetX;
    
    portrait.image = speaker.portrait;
-   portrait.x = game_g.width - 60;
+   portrait.x = game_g.width - 60 + screenOffsetX;
    portrait.y = game_g.height - 53;
    
    nxt.touchEnabled = true;
    nxt.image = game_g.assets["next.png"];
-   nxt.x = 370;
+   nxt.x = 370 + + screenOffsetX;
    nxt.y = game_g.height - 30;
    
    nxt.addEventListener('touchend', function() {
@@ -36,7 +42,7 @@ function sayLines(nextLine, speaker) {
          l.text = speaker.lines[speaker.linesRead];
       }
    });
-   l.x = 50;
+   l.x = 50 + screenOffsetX;
    l.y = game_g.height - 40;
    l.text = speaker.lines[speaker.linesRead];
    
