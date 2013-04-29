@@ -65,23 +65,23 @@ window.onload = function(){
       jane.y = 200;
       jane.lines.push("JK ;)!!");
 	  
-	   enemy1 = new Enemy(32, 32, player);
+	   /*enemy1 = new Enemy(32, 32, player);
 	  enemy1 = new Snail(32, 32, player);
       enemy1.image = game.assets["snail.png"];
       enemy1.x = 600;
       //enemy1.name = "enemy1";
-      enemy1.y = 150;
+      enemy1.y = 150;*/
 	  
 	  e1 = new E(96, 96, player);
 	  e1.image = game.assets["e.jpg"];
-	  e1.x = 700;
+	  e1.x = 400;
       e1.y = 150;
 	  
       entities = new Array();
       entities.push(steve);
       entities.push(jane);
-	  entities.push(enemy1);
-	  entities.push(e1);
+	  //entities.push(enemy1);
+	  //entities.push(e1);
 	  
 		
 		
@@ -137,10 +137,10 @@ function checkCollisions(player, entities) {
 		stage.addChild(player);
 		stage.addChild(steve);
 		stage.addChild(jane);
-		stage.addChild(enemy1);
+		//stage.addChild(enemy1);
 		hud.addChild(e1);//remove this
 		game.rootScene.addChild(stage);
-		game.rootScene.addChild(hud);
+		//game.rootScene.addChild(hud);
 		
 		game.rootScene.addEventListener('enterframe', function(e) {
 			var x = Math.min((game.width  - 50) / 2 - player.x, 0);

@@ -1,5 +1,6 @@
 var stage_g;
 var game_g;
+var hud_g;
 var steve;
 var IQPlayer;
 var prevAcivityPeople; //all of the talkable people from the previous place
@@ -8,9 +9,9 @@ var numEnemies = 0;//total number of enemies that you will fight in the quest
 //function startIntroQuest(stage, game, prevAcivityPeople) {
 function startIntroQuest(player) {
    IQPlayer = player;
-   console.log(player);
    stage_g = stage;
    game_g = game;
+   hud_g = hud;
    prevAcivityPeople = new Array();
    for(var f = 0; f < entities.length; f++) {
       prevAcivityPeople.push(entities[f]);
@@ -41,7 +42,8 @@ var steveS1Line2 = function() {
 }
 
 var steveS2Line1 = function() { 
-   loadMap(game, "map1.txt", "map1.gif", introQuestCombatMap);
+   loadMap(game_g, "map1.txt", "map1.gif", introQuestCombatMap);
+   game_g.rootScene.addChild(hud_g);
    steve.lines = ["If you want to see your precious classroom again you're going to have to prove your worth.",
                "If you manage to defeat my legion of goons you will be brought back.",
                "It's not ilke I want to train you or anything, I just wana troll you that's all.",
@@ -89,7 +91,9 @@ var checkWinCondition = function() {
 
 var playerS1Line2 = function() {
    //transport us back to the classroom
-   loadMap(game, "maphome.txt", "maphome.gif", introQuestHomeMap);
+   game.rootScene.removeEventListener('enterframe', checkWinCondition);
+   game_g.rootScene.removeChild(hud_g);
+   loadMap(game_g, "maphome.txt", "maphome.gif", introQuestHomeMap);
    IQPlayer.lines = ["What a real jerk move man."];
    setTimeout(runPlayerS1Line2, 100);
 }
@@ -109,32 +113,31 @@ var playerS1Line3 = function() {
 }
 
 var endIntroQuest = function() {
-   IQPlayer.isListeningTospeaker = false;
+   IQPlayer.isListeningToNPC = false;
+   
    console.log("You the baddest snail murker this side o da nississippi");
 }
 
 function sayLines(nextLine, speaker) {
    var bkg = new Sprite(game_g.width, game_g.height/6);
-   var nxt = new Sprite(15, 15);
+   var nxt = new Sprite(30, 30);
    var portrait = new Sprite(60, 60);
    var speaker = speaker;
    var l = new Label();
    var queueNextLine = nextLine;
    
    bkg.image = game_g.assets["label_bkg.png"];
-   bkg.y = game.height - 50;
+   bkg.y = game_g.height - 50;
    bkg.x = 0;
    
    portrait.image = speaker.portrait;
    portrait.x = game_g.width - 60;
    portrait.y = game_g.height - 53;
-   console.log(portrait.y);
-   console.log(portrait.x);
    
    nxt.touchEnabled = true;
    nxt.image = game_g.assets["next.png"];
-   nxt.x = 50;
-   nxt.y = game_g.height - 20;
+   nxt.x = 370;
+   nxt.y = game_g.height - 30;
    
    nxt.addEventListener('touchend', function() {
       //When the current speaker has said all of his lines
@@ -173,10 +176,10 @@ var introQuestCombatMap = function(newmap) {
    }
    map = newmap;
    stage_g.addChild(map);
-   enemy1 = new Enemy(32, 32, IQPlayer);
+   enemy1 = new Snail(32, 32, IQPlayer);
    enemy1.image = game.assets["snail.png"];
    enemy1.name = "Enemy";
-   enemy1.x = 600;
+   enemy1.x = 300;
    enemy1.y = 150;
    stage_g.addChild(IQPlayer);
    stage_g.addChild(enemy1);
@@ -195,7 +198,6 @@ var introQuestHomeMap = function(newmap) {
    stage_g.addChild(map);
    for(var h = 0; h < e_len; h ++) {
       entities.push(prevAcivityPeople[h]);
-      console.log(entities[h].name);
       stage_g.addChild(entities[h]);
    }
    stage_g.addChild(IQPlayer);
