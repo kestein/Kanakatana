@@ -16,9 +16,9 @@ window.onload = function(){
 	
 	
 	var player;
-   var steve;
-   var jane;
-   var collidedEntity;
+	var steve;
+	var jane;
+	var collidedEntity;
 	var stage = new Group();
 		
     game.onload = function(){	
@@ -28,24 +28,24 @@ window.onload = function(){
 		player.image = game.assets["player.png"];
 		player.x = 50;
 		player.y = 50;
-      player.isListeningToNPC = false;
+		player.isListeningToNPC = false;
       
-      steve = new NPC(50, 50, "test_lines.txt");
-      steve.image = game.assets["steve_map_image.png"];
-      steve.portrait = game.assets["steve_portrait.png"];
-      steve.x = 150;
-      steve.y = 150;
+		steve = new NPC(50, 50, "test_lines.txt");
+		steve.image = game.assets["steve_map_image.png"];
+		steve.portrait = game.assets["steve_portrait.png"];
+		steve.x = 150;
+		steve.y = 150;
       
-      jane = new NPC(50, 50, "test_lines.txt");
-      jane.image = game.assets["steve_portrait.png"];
-      jane.portrait = game.assets["steve_map_image.png"];
-      jane.x = 100;
-      jane.y = 200;
-      jane.lines.push("JK ;)!!");
+		jane = new NPC(50, 50, "test_lines.txt");
+		jane.image = game.assets["steve_portrait.png"];
+		jane.portrait = game.assets["steve_map_image.png"];
+		jane.x = 100;
+		jane.y = 200;
+		jane.lines.push("JK ;)!!");
       
-      entities = new Array();
-      entities.push(steve);
-      entities.push(jane);
+		entities = new Array();
+		entities.push(steve);
+		entities.push(jane);
       
      // game.keybind(71, 'thing');//bind the g key to action thing
       

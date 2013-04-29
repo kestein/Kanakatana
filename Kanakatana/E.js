@@ -3,6 +3,7 @@ var E = Class.create (Sprite, {
 	initialize:function(width, height, player) {
 		Sprite.call(this, width, height);
 		this.name = "E";
+		this.image = game.assets["e.png"];
 		this.frame = 0;
 		
 		this.addEventListener('touchstart', function() {
