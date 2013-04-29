@@ -72,10 +72,10 @@ window.onload = function(){
       //enemy1.name = "enemy1";
       enemy1.y = 150;*/
 	  
-	  e1 = new E(96, 96, player);
+	  e1 = new E(32, 32, player);
 	  e1.image = game.assets["e.jpg"];
-	  e1.x = 400;
-      e1.y = 150;
+	  e1.x = 432;
+      e1.y = 214;
 	  
       entities = new Array();
       entities.push(steve);

@@ -1,5 +1,6 @@
 //This acts as an addition to the sprite class. I decided to move Player to its own class since main.js
 //will be getting pretty big eventually.
+//REMEMBER TO PUSH QUESTS INTO THE AVAILABLE QUEST ARRAY
 var Player = Class.create(Sprite, {
    initialize:function(width, height) {
 		Sprite.call(this, width, height);
@@ -13,11 +14,19 @@ var Player = Class.create(Sprite, {
 		this.speed = 3;
 		this.endCoordinate =  this.coordinates(0,0);
 		this.isListeningToNPC = false;
+      this.quests = new Array();
+      this.quests.push(startQ2);
+      this.quests.push(startIntroQuest);
+      
 		this.addEventListener('enterframe', function() {
-		this.moveToClick();
-		if(!this.age %100) {console.log("hoseshoseshoses");} //delete this
+         this.moveToClick();
+         if(!this.age %100) {console.log("hoseshoseshoses");} //delete this
 		})
 		
+   },
+   //Creates the array of quests for the palyer
+   addQuests:function() {
+      this.quests.push(startIntroQuest);
    },
    //This is used to make calcStraightLine work. A pair of X and Y coordinates
    coordinates:function(X, Y) {

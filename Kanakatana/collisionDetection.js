@@ -75,10 +75,10 @@ function checkCollisions(player) {
 				player.moveArray.length = 0;
 				//this.isMoving = false;
 			}
-			player.isListeningToNPC = true;
+			//player.isListeningToNPC = true;
 		 }
-		 if(entities[t] instanceof NPC && !player.isListeningTospeaker) {
-         startIntroQuest(player);  
+		 if(entities[t] instanceof NPC && !player.isListeningTospeaker && player.quests.length > 0) {
+         player.quests[player.quests.length - 1](player);
          player.isListeningToNPC = true;
        }
       }

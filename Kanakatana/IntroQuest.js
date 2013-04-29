@@ -114,7 +114,7 @@ var playerS1Line3 = function() {
 
 var endIntroQuest = function() {
    IQPlayer.isListeningToNPC = false;
-   
+   IQPlayer.quests.pop();
    console.log("You the baddest snail murker this side o da nississippi");
 }
 
