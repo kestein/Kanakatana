@@ -5,8 +5,8 @@ var Snail = Class.create (Enemy, {
 	initialize:function(width, height, player) {
 		Enemy.call(this, width, height);
 		//vars for movement.
-		this.xPath = [600,600];
-		this.yPath = [400,150];
+		this.xPath = [400,400];
+		this.yPath = [300,150];
 		this.speed = 2;
 		this.vx = 0;
 		this.name = "Enemy";		//used in collision detection.
