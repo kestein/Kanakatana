@@ -63,11 +63,11 @@ var runSteveS2Line1Q2 = function() {
 
 var playerS2Line1Q2 = function() {
    IQPlayer.lines = ["Super..."];
-   IQPlayer.isListeningToNPC = false;
    sayLines(steveS2Line2Q2, IQPlayer);
 }
 
 var steveS2Line2Q2 = function() {
+   IQPlayer.isListeningToNPC = false;
    game.rootScene.addEventListener('enterframe', checkWinConditionQ2);
    /*steve.lines = ["How did you defeat my legion of goons?!", 
                "I knew I should have spent more money on training than costumes.",
