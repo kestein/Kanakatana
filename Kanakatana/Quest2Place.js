@@ -8,10 +8,15 @@ var numEnemies = 0;//total number of enemies that you will fight in the quest
 
 //function startIntroQuest(stage, game, prevAcivityPeople) {
 function startQ2(player) {
+//hack
+	  hud.addChild(u1);
+	  //end hack
    IQPlayer = player;
    stage_g = stage;
    game_g = game;
    hud_g = hud;
+   
+   
    prevAcivityPeople = new Array();
    for(var f = 0; f < entities.length; f++) {
       prevAcivityPeople.push(entities[f]);

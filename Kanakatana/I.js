@@ -1,30 +1,54 @@
-//Handles the button the player presses. THis ability throws a pencil in the direction the player is currently facing.
-var I = Class.create (Sprite, {
+//Handles the button the player presses. THis ability throws 4 squids in the cardinal directions. they slow enemies.
+var I = Class.create (Ability, {
 	initialize:function(width, height, player) {
 		Sprite.call(this, width, height);
 		this.name = "I";
 		this.image = game.assets["i.png"];
 		this.frame = 0;
+		this.localPlayer = player;
+		this.s1;
+		this.s2;
+		this.s3;
+		this.s4;
+		
+		this.ready = false;
+		this.chargeRate = 0.02;
+		this.opacity = 0;
 		
 		this.addEventListener('touchstart', function() {
-			this.makeSquids(player);
+			if(this.ready) {
+				this.makeSquids(this.localPlayer);
+				this.reset();
+			}
 			
+		})
+		
+		this.addEventListener('enterframe', function() {
+			this.cooldown();
 		})
 	},
 	
 	makeSquids:function(player) {
-		var s1 = new Squid(50, 50, player, 0);
-		var s2 = new Squid(50, 50, player, 1);
-		var s3 = new Squid(50, 50, player, 2);
-		var s4 = new Squid(50, 50, player, 3);
-		entities.push(s1);
-		stage.addChild(s1);
-		entities.push(s2);
-		stage.addChild(s2);
-		entities.push(s3);
-		stage.addChild(s3);
-		entities.push(s4);
-		stage.addChild(s4);
+		this.s1 = new Ika(50, 50, player, 0);
+		this.s2 = new Ika(50, 50, player, 1);
+		this.s3 = new Ika(50, 50, player, 2);
+		this.s4 = new Ika(50, 50, player, 3);
+		this.s1.x = player.x;
+		this.s1.y = player.y;
+		this.s2.x = player.x;
+		this.s2.y = player.y;
+		this.s3.x = player.x;
+		this.s3.y = player.y;
+		this.s4.x = player.x;
+		this.s4.y = player.y;
+		entities.push(this.s1);
+		stage.addChild(this.s1);
+		entities.push(this.s2);
+		stage.addChild(this.s2);
+		entities.push(this.s3);
+		stage.addChild(this.s3);
+		entities.push(this.s4);
+		stage.addChild(this.s4);
 	}
 		
 });

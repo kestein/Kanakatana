@@ -21,6 +21,9 @@ var Enemy = Class.create (Sprite, {
 		this.dead = false;
 		this.health = 2;
 		
+		this.slowed = false;
+		this.slowSpeed = 1;
+		
 		
 		this.addEventListener('enterframe', function() {	
 		this.moveToTarget();
@@ -81,22 +84,26 @@ var Enemy = Class.create (Sprite, {
 	//moves the enemy to their current target. if enraged, it moves toward the player. modifiers handle adjusting speed
 	//when the enemy nears the node.
 	moveToTarget:function() {
-		//console.log(this.y - this.yPath[this.targetNode]);
+		//console.log(this.slowed);
+		var tempSpeed = this.speed;
+		if(this.slowed) {
+			tempSpeed = this.slowSpeed;
+		}
 		if(this.enraged == false) {			//this is if Enemy is following its normal course
 			if(this.x < this.xPath[this.targetNode]) {
-				vx= this.speed;
+				vx= tempSpeed;
 			}
 			else if(this.x > this.xPath[this.targetNode]) {
-				vx= -this.speed;
+				vx= -tempSpeed;
 			}
 			else {
 				vx= 0;
 			}
 			if(this.y < this.yPath[this.targetNode]) {
-				vy= this.speed;
+				vy= tempSpeed;
 			}
 			else if(this.y > this.yPath[this.targetNode]) {
-				vy= -this.speed;
+				vy= -tempSpeed;
 			}
 			else {
 				vy= 0;
@@ -116,19 +123,19 @@ var Enemy = Class.create (Sprite, {
 		}
 		else {					//the enemy is actively persuing the player
 			if(this.x < this.targetOfRage.x) {
-				vx= this.speed;
+				vx= tempSpeed;
 			}
 			else if(this.x > this.targetOfRage.x) {
-				vx= -1;
+				vx= -tempSpeed;
 			}
 			else {
 				vx= 0;
 			}
 			if(this.y < this.targetOfRage.y) {
-				vy= 1;
+				vy= tempSpeed;
 			}
 			else if(this.y > this.targetOfRage.y) {
-				vy= -1;
+				vy= -tempSpeed;
 			}
 			else {
 				vy= 0;

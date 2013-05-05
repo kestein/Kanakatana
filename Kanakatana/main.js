@@ -23,6 +23,11 @@ window.onload = function(){
    game.preload("enpitsu1.png");
    game.preload("enpitsu2.png");
    game.preload("e.jpg");
+   game.preload("i.jpg");
+   game.preload("ika.png");
+   game.preload("u.jpg");
+   game.preload("usagi.png");
+   
    
    game.keybind(81, 'a');		//sets 'q' to the "a button"
 	
@@ -76,6 +81,16 @@ window.onload = function(){
 	  e1.image = game.assets["e.jpg"];
 	  e1.x = 432;
       e1.y = 214;
+	  
+	  i1 = new I(32, 32, player);
+	  i1.image = game.assets["i.jpg"];
+	  i1.x = 432;
+      i1.y = 114;
+	  
+	  u1 = new U(32, 32, player);
+	  u1.image = game.assets["u.jpg"];
+	  u1.x = 432;
+      u1.y = 14;
 	  
       entities = new Array();
       entities.push(steve);
@@ -138,7 +153,9 @@ function checkCollisions(player, entities) {
 		stage.addChild(steve);
 		stage.addChild(jane);
 		//stage.addChild(enemy1);
-		hud.addChild(e1);//remove this
+		hud.addChild(e1);
+		hud.addChild(i1);
+		//hud.addChild(u1);
 		game.rootScene.addChild(stage);
 		//game.rootScene.addChild(hud);
 		
@@ -162,26 +179,33 @@ function checkCollisions(player, entities) {
 			
 			if(player.x < game.width/2) {
 				xModifier = 0;
+				console.log("x left");
 			}
 			else if(player.x > (map.tileWidth * map.collisionData[0].length) - game.width/2) {
 				xModifier = player.x - game.width/2 + player.width/2;
+				console.log("x mid");
 			}
 			else if(player.x > game.width/2) {
 				xModifier = player.x - game.width/2  + player.width/2;
+				console.log("x right");
 			}
 			
 			if(player.y < game.height/2) {
 				yModifier = 0;
+				console.log("y top");
 			}
 			else if(player.y > (map.tileHeight * map.collisionData.length) - game.height/2) {
 				yModifier = player.y - game.height/2 + player.height/2;
+				console.log("y mid");
 			}
 			else if(player.y > game.height/2) {
 				yModifier = player.y - game.height/2 + player.height/2;
+				console.log("y bot");
 			}
-			//if(evt.localX < 700) {		//hack. fix this when implementing ability pannel.
+			if(evt.localX < 430) {		//hack. fix this when implementing ability pannel.
 				player.targetClick(evt.localX + xModifier - player.width/2, evt.localY + yModifier - player.height/2);
-		//	}
+				//player.targetClick(player.x + evt.localX, evt.localY + pla.y);
+			}
         });
 		
 		game.rootScene.addEventListener('enterframe', function() {
