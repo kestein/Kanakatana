@@ -174,37 +174,9 @@ function checkCollisions(player, entities) {
 		//handles player movement while clicking. it adds a modifier to make the movement relative to the map and not the screen
 		game.rootScene.addEventListener('touchstart', function(evt) {
 			//console.log(map.collisionData.length);
-			var xModifier = 0;
-			var yModifier = 0;
-			
-			if(player.x < game.width/2) {
-				xModifier = 0;
-				console.log("x left");
-			}
-			else if(player.x > (map.tileWidth * map.collisionData[0].length) - game.width/2) {
-				xModifier = player.x - game.width/2 + player.width/2;
-				console.log("x mid");
-			}
-			else if(player.x > game.width/2) {
-				xModifier = player.x - game.width/2  + player.width/2;
-				console.log("x right");
-			}
-			
-			if(player.y < game.height/2) {
-				yModifier = 0;
-				console.log("y top");
-			}
-			else if(player.y > (map.tileHeight * map.collisionData.length) - game.height/2) {
-				yModifier = player.y - game.height/2 + player.height/2;
-				console.log("y mid");
-			}
-			else if(player.y > game.height/2) {
-				yModifier = player.y - game.height/2 + player.height/2;
-				console.log("y bot");
-			}
 			if(evt.localX < 430) {		//hack. fix this when implementing ability pannel.
-				player.targetClick(evt.localX + xModifier - player.width/2, evt.localY + yModifier - player.height/2);
-				//player.targetClick(player.x + evt.localX, evt.localY + pla.y);
+				player.targetClick(-stage.x + evt.localX - player.width/2, evt.localY - stage.y - player.height/2 );
+				console.log(entities);
 			}
         });
 		

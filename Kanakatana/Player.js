@@ -20,7 +20,7 @@ var Player = Class.create(Sprite, {
       
 		this.addEventListener('enterframe', function() {
          this.moveToClick();
-         if(!this.age %100) {console.log("hoseshoseshoses");} //delete this
+		 this.walkAnimation();
 		})
 		
    },
@@ -116,7 +116,7 @@ var Player = Class.create(Sprite, {
 				
 				this.moveTo(tempCoordinate.y, tempCoordinate.x);
 				this.moveArrayIndex+= this.speed;
-				isMoving = true;
+				this.isMoving = true;
 			} else {
 				this.moveArrayIndex = 0;
 				this.moveArray = [];
@@ -125,6 +125,17 @@ var Player = Class.create(Sprite, {
 		//check collisions here
 		checkCollisions(this);
 	},
+	
+	walkAnimation:function() {
+		if(this.age % 4  == 0 && this.isMoving == true && this.image == game.assets["chars.gif"]) {
+			if(this.frame == 5 || this.frame == 14 || this.frame == 23 || this.frame == 32) {
+				this.frame = this.frame-2;
+			}
+			else {
+				this.frame++;
+			}
+		}
+	}
 	
 	
 });
