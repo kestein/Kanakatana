@@ -91,6 +91,7 @@ var checkWinConditionQ2 = function() {
                "I knew I should have spent more money on training than costumes.",
                "Bum out."];
       sayLines(playerS1Line2Q2, steve);
+      game.rootScene.removeEventListener('enterframe', checkWinConditionQ2);
    }
 }
 

@@ -5,7 +5,7 @@ var entities;
 var game;
 var stage;
 var hud;
-
+var textDisplay;
 
 window.onload = function(){
     game = new Game(480, 320);//30x20 text files
@@ -40,7 +40,8 @@ window.onload = function(){
 	var e1;
 	stage = new Group();
 	hud = new Group();
-	
+	textDisplay = new Group();
+   
 		
     game.onload = function(){	
 		/** player things **/
@@ -157,6 +158,7 @@ function checkCollisions(player, entities) {
 		hud.addChild(i1);
 		//hud.addChild(u1);
 		game.rootScene.addChild(stage);
+      game.rootScene.addChild(textDisplay);
 		//game.rootScene.addChild(hud);
 		
 		game.rootScene.addEventListener('enterframe', function(e) {

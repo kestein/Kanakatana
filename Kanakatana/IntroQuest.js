@@ -86,12 +86,13 @@ var checkWinCondition = function() {
                "I knew I should have spent more money on training than costumes.",
                "Bum out."];
       sayLines(playerS1Line2, steve);
+      game.rootScene.removeEventListener('enterframe', checkWinCondition);
    }
 }
 
 var playerS1Line2 = function() {
    //transport us back to the classroom
-   game.rootScene.removeEventListener('enterframe', checkWinCondition);
+   //game.rootScene.removeEventListener('enterframe', checkWinCondition);
    game_g.rootScene.removeChild(hud_g);
    loadMap(game_g, "maphome.txt", "maphome.gif", homeMap);
    IQPlayer.lines = ["What a real jerk move man."];
@@ -113,6 +114,8 @@ var playerS1Line3 = function() {
 }
 
 var endIntroQuest = function() {
+   IQPlayer.lines = [];
+   steve.lines = [];
    IQPlayer.isListeningToNPC = false;
    IQPlayer.quests.pop();
    console.log("You the baddest snail murker this side o da nississippi");
