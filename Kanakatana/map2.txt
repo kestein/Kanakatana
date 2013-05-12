@@ -1,0 +1,45 @@
+20
+q 0 0
+w 0 1
+e 0 2
+r 0 3
+t 0 4
+y 0 5
+u 0 6
+i 0 7
+o 0 8 
+a 1 9
+s 1 10
+d 1 11
+f 1 12
+g 1 13
+h 1 14
+j 1 15
+k 1 16
+l 1 17
+_ 0 18
+/ 1 19
+
+tiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii/
+y________________________________________/
+rtttttttttttttttttttttttttttttttttttttttt/
+rtttttttttttttttttttttttttttttttttttttttt/
+rtttttttttttttttttttttttttttttt//tttttttt/
+rtttttttttttttttttttttttttttttt//////tttt/
+rttttttttttttttttttttttttt////////////////
+rtttttttttttttttttttttttttttttt///////////
+rtttttttttttttttttttttttttttttt///////////
+rtttttttttttttttttttttttttt///////ttttttt/
+rtttttttttttttttttttttttttttttttttttttttt/
+rtttttttt______tttttttttttttttttttttttttt/
+rttttttt________ttttttttttttttttttttttttt/
+rttttttt________ttttttttttttttttttttttttt/
+rtttttttt______tttttttttttttttttttttttttt/
+rttttttttttttttttttttttttttt_______tttttt/
+rtttttttttttttttttttttttttt__asssd_tttttt/
+rtttttttttttttttttttttttttt_aggggh_tttttt/
+rtttttttttttttttttttttttttt_jggggh_tttttt/
+rttttttttttttttttttttttttttt_fggggd_ttttt/
+rttttttttttttttttttttttttttt_jkkkkl_ttttt/
+rttttttttttttttttttttttttttt________ttttt/
+//////////////////////////////////////////

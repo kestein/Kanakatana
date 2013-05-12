@@ -47,7 +47,7 @@ var steveS1Line2Q2 = function() {
 }
 
 var steveS2Line1Q2 = function() { 
-   loadMap(game_g, "map1.txt", "map1.gif", introQuestCombatMap);
+   loadMap(game_g, "map2.txt", "map1.gif", quest2CombatMap);
    game_g.rootScene.addChild(hud_g);
    steve.lines = ["If you want to see your precious classroom again you're going to have to prove your worth.",
                "If you manage to defeat my legion of goons you will be brought back.",
