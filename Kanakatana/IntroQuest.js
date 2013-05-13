@@ -27,26 +27,28 @@ function startIntroQuest(player) {
 }
 
 var steveS1Line1 = function() {
-   steve.lines = ["Welcome to the intro quest", "We hope you enjoy your stay"];
+   steve.lines = ["Welcome to the first day of class", "Pop quiz!"];
    sayLines(playerS1Line1, steve);
 }
 
 var playerS1Line1 = function() {
-   IQPlayer.lines = ["What is that supposed to mean?", "Am I stuck here or something?"];
+   IQPlayer.lines = ["What!? Are you kidding me?!", "You haven't even lectured us?","How is this fair?"];
    sayLines(steveS1Line2, IQPlayer);
 }
 
 var steveS1Line2 = function() {
-   steve.lines = ["Oh, you'll find out soon enough", "MUUUHHAHAHAHAHAHAA"];
+   steve.lines = ["Oh, fine. Here is how it works", "You get thrown into a magical dungeon.", "You have some kana with magical powers",
+   "Use these kana to defeat the enemies.", "There. Happy?"];
    sayLines(steveS2Line1, steve);
 }
 
 var steveS2Line1 = function() { 
    loadMap(game_g, "map1.txt", "map1.gif", introQuestCombatMap);
    game_g.rootScene.addChild(hud_g);
-   steve.lines = ["If you want to see your precious classroom again you're going to have to prove your worth.",
-               "If you manage to defeat my legion of goons you will be brought back.",
-               "It's not ilke I want to train you or anything, I just wana troll you that's all.",
+   steve.lines = ["If you manage to defeat my legion of goons, you will have proven you know Japanese",
+               "Wait...",
+			   "Maybe I should have thought this out a little more.",
+               "...",
                "BEGONE!!!"];
    //sayLines(playerS2Line1, steve);
    setTimeout(runSteveS2Line1, 100);
@@ -57,7 +59,7 @@ var runSteveS2Line1 = function() {
 }
 
 var playerS2Line1 = function() {
-   IQPlayer.lines = ["Super..."];
+   IQPlayer.lines = ["I think we need a new teacher."];
    sayLines(steveS2Line2, IQPlayer);
 }
 
@@ -83,7 +85,7 @@ var checkWinCondition = function() {
    if(enemiesLeft == 0) {
       IQPlayer.isListeningToNPC = true;
       steve.lines = ["How did you defeat my legion of goons?!", 
-               "I knew I should have spent more money on training than costumes.",
+               "I knew naming my pet snail 'Legion of goons' wouldnt actually make him powerful",
                "Bum out."];
       sayLines(playerS1Line2, steve);
    }
@@ -94,7 +96,7 @@ var playerS1Line2 = function() {
    game.rootScene.removeEventListener('enterframe', checkWinCondition);
    game_g.rootScene.removeChild(hud_g);
    loadMap(game_g, "maphome.txt", "maphome.gif", homeMap);
-   IQPlayer.lines = ["What a real jerk move man."];
+   IQPlayer.lines = ["This is rediculous. I wouldn't be supprised if", " you are replaced by next monday."];
    setTimeout(runPlayerS1Line2, 100);
 }
 

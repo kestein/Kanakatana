@@ -32,12 +32,12 @@ function startQ2(player) {
 }
 
 var steveS1Line1Q2 = function() {
-   steve.lines = ["Welcome to the int- err, second quest", "We hope you enjoy your stay"];
+   steve.lines = ["Well...", "Pop Quiz time"];
    sayLines(playerS1Line1Q2, steve);
 }
 
 var playerS1Line1Q2 = function() {
-   IQPlayer.lines = ["What is that supposed to mean?", "Am I stuck here or something?", "Woah, deja vu..."];
+   IQPlayer.lines = ["Again?", "Seriously, Who decided that", "hiring you was a good idea?"];
    sayLines(steveS1Line2Q2, IQPlayer);
 }
 
@@ -51,7 +51,7 @@ var steveS2Line1Q2 = function() {
    game_g.rootScene.addChild(hud_g);
    steve.lines = ["If you want to see your precious classroom again you're going to have to prove your worth.",
                "If you manage to defeat my legion of goons you will be brought back.",
-               "It's not ilke I want to train you or anything, I just wana troll you that's all.",
+               "Also, I have tenure.",
                "BEGONE!!!"];
    //sayLines(playerS2Line1, steve);
    setTimeout(runSteveS2Line1Q2, 100);
@@ -62,7 +62,7 @@ var runSteveS2Line1Q2 = function() {
 }
 
 var playerS2Line1Q2 = function() {
-   IQPlayer.lines = ["Super..."];
+   IQPlayer.lines = ["Somehow, I don't believe him."];
    sayLines(steveS2Line2Q2, IQPlayer);
 }
 
