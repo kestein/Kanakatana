@@ -8,6 +8,7 @@ var numEnemies = 0;//total number of enemies that you will fight in the quest
 
 //function startIntroQuest(stage, game, prevAcivityPeople) {
 function startQ2(player) {
+	player.unlockedAbilities += 2;		//is this a hack? it may actually work. will need lvl 3 to see.
    IQPlayer = player;
    stage_g = stage;
    game_g = game;

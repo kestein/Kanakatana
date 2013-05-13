@@ -1,4 +1,6 @@
-//Handles the button the player presses. THis ability throws a pencil in the direction the player is currently facing.
+//Handles the button the player presses. This ability transforms the player into a speedy bunny.
+//the associated functions are stored in player, as the ability still needs to be handled even after the
+// 'U' class sprite dissapears
 var U = Class.create (Ability, {
 	initialize:function(width, height, player, handler) {
 		Sprite.call(this, width, height);
@@ -9,7 +11,7 @@ var U = Class.create (Ability, {
 		this.frame = 0;
 		this.romanji = false;
 		
-		this.duration = 0;
+		this.bunnyDuration = 0;
 		
 		this.ready = false;
 		this.chargeRate = 0.02;
@@ -21,15 +23,15 @@ var U = Class.create (Ability, {
 		this.storeFrame;
 		this.storeSpeed;
 		this.addEventListener('touchstart', function() {
-		console.log(this.ready);
 			if(this.ready && !this.romanji) {
 				handler.swapAll();
 				handler.currentAbility = this;
 			}
 			else if(this.ready && this.romanji && handler.currentAbility == this) {
-				this.becomeBunny(player);
+				player.becomeBunny();
 				this.reset();
 				handler.swapAll();
+				handler.pickNewAbility(player);
 			}
 			else if(this.ready && this.romanji) {
 				handler.swapAll();
@@ -39,38 +41,8 @@ var U = Class.create (Ability, {
 		
 		this.addEventListener('enterframe', function() {
 			this.cooldown();
-			this.timeDown(player);
 			
 		})
-	},
-	
-	becomeBunny:function(player) {
-		this.storeImage = player.image;
-		this.storeFrame = player.frame;
-		this.storeSpeed = player.speed;
-		player.image = game.assets["usagi.png"];
-		player.frame = 0;
-		player.speed = player.speed * 2;
-		this.duration = 100;
-		this.isBunny = true;
-	},
-	
-	timeDown:function(player) {
-	//console.log(player);
-		if (this.duration > 0) {
-			this.duration--;
-		}
-		else if(this.isBunny){
-			this.duration = 0;
-			this.isBunny = false;
-			this.becomeHuman(player);
-		}
-	},
-	
-	becomeHuman:function(player) {
-		player.image = player.image = game.assets["chars.gif"];
-		player.frame = this.storeFrame;
-		player.speed = this.storeSpeed;
 	}
 		
 });

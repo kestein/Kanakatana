@@ -14,6 +14,16 @@ var Player = Class.create(Sprite, {
 		this.speed = 3;
 		this.endCoordinate =  this.coordinates(0,0);
 		this.isListeningToNPC = false;
+		//abilities
+		this.unlockedAbilities = 5;
+		//u
+		this.storeImage;
+		this.storeFrame;
+		this.storeSpeed;
+		this.isBunny = false;
+		this.bunnyDuration = 0;
+		
+		//quests
       this.quests = new Array();
       this.quests.push(startQ2);
       this.quests.push(startIntroQuest);
@@ -21,6 +31,7 @@ var Player = Class.create(Sprite, {
 		this.addEventListener('enterframe', function() {
          this.moveToClick();
 		 this.walkAnimation();
+		 this.timeDown();
 		})
 		
    },
@@ -125,7 +136,7 @@ var Player = Class.create(Sprite, {
 		//check collisions here
 		checkCollisions(this);
 	},
-	
+	//animates the players walk cycle
 	walkAnimation:function() {
 		if(this.age % 4  == 0 && this.isMoving == true && this.image == game.assets["chars.gif"]) {
 			if(this.frame == 5 || this.frame == 14 || this.frame == 23 || this.frame == 32) {
@@ -135,6 +146,35 @@ var Player = Class.create(Sprite, {
 				this.frame++;
 			}
 		}
+	},
+	
+	becomeBunny:function() {
+		this.storeImage = this.image;
+		this.storeFrame = this.frame;
+		this.storeSpeed = this.speed;
+		this.image = game.assets["usagi.png"];
+		this.frame = 0;
+		this.speed = this.speed * 2;
+		this.bunnyDuration = 100;
+		this.isBunny = true;
+	},
+	
+	timeDown:function() {
+	//console.log(player);
+		if (this.bunnyDuration > 0) {
+			this.bunnyDuration--;
+		}
+		else if(this.isBunny){
+			this.bunnyDuration = 0;
+			this.isBunny = false;
+			this.becomeHuman();
+		}
+	},
+	
+	becomeHuman:function(player) {
+		this.image = game.assets["chars.gif"];
+		this.frame = this.storeFrame;
+		this.speed = this.storeSpeed;
 	}
 	
 	

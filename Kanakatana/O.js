@@ -15,7 +15,6 @@ var O = Class.create (Ability, {
 		this.chargeRate = 0.02;
 		this.opacity = 0;
 		this.addEventListener('touchstart', function() {
-		console.log(this.ready);
 			if(this.ready && !this.romanji) {
 			handler.currentAbility = this;
 				handler.swapAll();
@@ -24,6 +23,7 @@ var O = Class.create (Ability, {
 				this.makeRiceBall(player);
 				this.reset();
 				handler.swapAll();
+				handler.pickNewAbility(player);
 			}
 			else if(this.ready && this.romanji) {
 				handler.currentAbility = null;

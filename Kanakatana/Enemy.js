@@ -7,7 +7,7 @@ var Enemy = Class.create (Sprite, {
 		//vars for movement.
 		this.xPath = [600,600];
 		this.yPath = [400,150];
-		this.speed = 5;
+		this.speed = 2;
 		this.name = "Enemy";		//used in collision detection.
 		this.vx = 0;				//dertermines direction to move.
 		this.vy = 0;
@@ -24,10 +24,17 @@ var Enemy = Class.create (Sprite, {
 		this.slowed = false;
 		this.slowSpeed = 1;
 		
+		this.stunned = false;
+		this.stunTimer = 0;
 		
-		this.addEventListener('enterframe', function() {	
-		   this.moveToTarget();
+		
+		this.addEventListener('enterframe', function() {
+
+			if (!this.stunned){
+				this.moveToTarget();
+			}
 		   this.enrage();
+		   this.isStunned();
 		   this.checkIfDead();
 		
 			
@@ -89,6 +96,9 @@ var Enemy = Class.create (Sprite, {
 		if(this.slowed) {
 			tempSpeed = this.slowSpeed;
 		}
+		if (this.stunned) {
+			tempSpeed = 0;
+		}
 		if(this.enraged == false) {			//this is if Enemy is following its normal course
 			if(this.x < this.xPath[this.targetNode]) {
 				vx= tempSpeed;
@@ -142,21 +152,6 @@ var Enemy = Class.create (Sprite, {
 			}
 			this.moveTo( this.x + vx, this.y + vy);
 		}
-		
-		/*var tempCoordinate = this.coordinates(this.x, this.y);
-		console.log(this.x);
-		var tempTarget = this.coordinates(this.xPath[this.targetNode], this.yPath[this.targetNode]);
-		this.moveArray = this.calcStraightLine(tempCoordinate, tempTarget);
-		if(this.moveArrayIndex <= this.moveArray.length) {
-				
-		tempCoordinate = this.moveArray[this.moveArrayIndex];
-		console.log("ping");
-		this.moveTo(tempCoordinate.y, tempCoordinate.x);
-		moveArrayIndex++;
-		} else {
-			moveArrayIndex = 0;
-			moveArray = [];
-		}*/
 	},
 	
 	//no use yet.
@@ -174,7 +169,18 @@ var Enemy = Class.create (Sprite, {
 		if(this.health <= 0) {
 			this.dead = true;
 		}
-	}
+	},
+	
+	isStunned:function() {
+		if(this.stunTimer > 0) {
+			this.stunTimer--;
+			this.stunned = true;
+		}
+		else {
+			this.stunned = false;
+			this.stunTimer = 0;
+		}
+	},
 	
 	
 });

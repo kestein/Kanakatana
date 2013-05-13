@@ -30,6 +30,7 @@ window.onload = function(){
    game.preload("u.jpg");
    game.preload("o.jpg");
    game.preload("usagi.png");
+   game.preload("awa.png");
    game.preload("a_romanji.png");
    game.preload("i_romanji.png");
    game.preload("u_romanji.png");
@@ -79,32 +80,6 @@ window.onload = function(){
       jane.y = 200;
       jane.lines.push("JK ;)!!");
 	  
-	   /*enemy1 = new Enemy(32, 32, player);
-	  enemy1 = new Snail(32, 32, player);
-      enemy1.image = game.assets["snail.png"];
-      enemy1.x = 600;
-      //enemy1.name = "enemy1";
-      enemy1.y = 150;*/
-	  
-	  /*e1 = new E(32, 32, player);
-	  //e1.image = game.assets["e.jpg"];
-	  e1.x = 432;
-      e1.y = 214;
-      
-      o1 = new O(32, 32, player);
-      //o1.image = game.assets["o.jpg"];
-      o1.x = 432;
-      o1.y = 114;
-	  
-	  i1 = new I(32, 32, player);
-	  //i1.image = game.assets["i.jpg"];
-	  i1.x = 432;
-      i1.y = 114;
-	  
-	  u1 = new U(32, 32, player);
-	  //u1.image = game.assets["u.jpg"];
-	  u1.x = 432;
-      u1.y = 14;*/
 	  
 	  abilityHandler = new AbilityHandler(32, 32, player);
 	  abilityHandler.x = 432;
@@ -113,10 +88,7 @@ window.onload = function(){
 	  
       entities = new Array();
       entities.push(steve);
-      entities.push(jane);
-	  //entities.push(enemy1);
-	  //entities.push(e1);
-	  
+      entities.push(jane);  
 		
 		
 		loadMap(game, "maphome.txt", "maphome.gif", setmap);
@@ -171,15 +143,9 @@ function checkCollisions(player, entities) {
 		stage.addChild(player);
 		stage.addChild(steve);
 		stage.addChild(jane);
-		//stage.addChild(enemy1);
 		hud.addChild(abilityHandler);
-		//hud.addChild(e1);
-      //hud.addChild(o1);
-		//hud.addChild(i1);
-		//hud.addChild(u1);
 		game.rootScene.addChild(stage);
       game.rootScene.addChild(textDisplay);
-		//game.rootScene.addChild(hud);
 		
 		game.rootScene.addEventListener('enterframe', function(e) {
 			var x = Math.min((game.width  - 50) / 2 - player.x, 0);
@@ -195,7 +161,6 @@ function checkCollisions(player, entities) {
 		});
 		//handles player movement while clicking. it adds a modifier to make the movement relative to the map and not the screen
 		game.rootScene.addEventListener('touchstart', function(evt) {
-			//console.log(map.collisionData.length);
 			if(evt.localX > 34) {		//hack. fix this when implementing ability pannel.
 				player.targetClick(-stage.x + evt.localX - player.width/2, evt.localY - stage.y - player.height/2 );
 			}

@@ -18,7 +18,6 @@ var I = Class.create (Ability, {
 		this.chargeRate = 0.02;
 		this.opacity = 0;
 		this.addEventListener('touchstart', function() {
-		console.log(this.ready);
 			if(this.ready && !this.romanji) {
 				handler.swapAll();
 				handler.currentAbility = this;
@@ -27,6 +26,7 @@ var I = Class.create (Ability, {
 				this.makeSquids(this.localPlayer);	
 				this.reset();
 				handler.swapAll();
+				handler.pickNewAbility(player);
 			}
 			else if(this.ready && this.romanji) {
 				handler.swapAll();

@@ -1,11 +1,11 @@
 //Handles the button the player presses. THis ability throws a pencil in the direction the player is currently facing.
-var E = Class.create (Ability, {
+var A = Class.create (Ability, {
 	initialize:function(width, height, player, handler) {
 		Sprite.call(this, width, height);
-		this.name = "E";
-		this.abilityNum = 3;
-		this.image = game.assets["e.jpg"];
-		this.image2 = game.assets["e_romanji.png"];
+		this.name = "A";
+		this.abilityNum = 0;
+		this.image = game.assets["a.jpg"];
+		this.image2 = game.assets["a_romanji.png"];
 		this.frame = 0;
 		this.romanji = false;
 		
@@ -13,19 +13,19 @@ var E = Class.create (Ability, {
 		this.chargeRate = 0.02;
 		this.opacity = 0;
 		this.addEventListener('touchstart', function() {
-			if(this.ready && !this.romanji) {
-				handler.currentAbility = this;
-				handler.swapAll();
-			}
-			else if(this.ready && this.romanji && handler.currentAbility == this) {
-				this.makePencil(player);
+			if(this.ready && this.romanji && handler.currentAbility == this) {
+				this.makeBubble(player);
 				this.reset();
 				handler.swapAll();
 				handler.pickNewAbility(player);
 			}
 			else if(this.ready && this.romanji) {
-				handler.currentAbility = null;
 				handler.swapAll();
+				handler.currentAbility = null;
+			}
+			else if(this.ready) {
+				handler.swapAll();
+				handler.currentAbility = this;
 			}
 		});
 		
@@ -34,10 +34,10 @@ var E = Class.create (Ability, {
 		})
 	},
 	
-	makePencil:function(player) {
-		var enpitsu = new Enpitsu(50, 50, player);
-		entities.push(enpitsu);
-		stage.addChild(enpitsu);
+	makeBubble:function(player) {
+		var awa = new Awa(64, 64, player);
+		entities.push(awa);
+		stage.addChild(awa);
 	}
 		
 });
