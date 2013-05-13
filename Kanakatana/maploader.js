@@ -82,8 +82,8 @@ function loadMap(game, mapname, maptex, callback)
 			map.collisionData = collision;
 			
 			console.log("W = " + mapw + " H = " + maph);
-			console.log(data);
-			console.log(collision);
+			//console.log(data);
+			//console.log(collision);
 				
 			console.log("map creation complete");
 			config = true;

@@ -30,6 +30,11 @@ window.onload = function(){
    game.preload("u.jpg");
    game.preload("o.jpg");
    game.preload("usagi.png");
+   game.preload("a_romanji.png");
+   game.preload("i_romanji.png");
+   game.preload("u_romanji.png");
+   game.preload("e_romanji.png");
+   game.preload("o_romanji.png");
    
    
    game.keybind(81, 'a');		//sets 'q' to the "a button"
@@ -81,7 +86,7 @@ window.onload = function(){
       //enemy1.name = "enemy1";
       enemy1.y = 150;*/
 	  
-	  e1 = new E(32, 32, player);
+	  /*e1 = new E(32, 32, player);
 	  //e1.image = game.assets["e.jpg"];
 	  e1.x = 432;
       e1.y = 214;
@@ -99,12 +104,12 @@ window.onload = function(){
 	  u1 = new U(32, 32, player);
 	  //u1.image = game.assets["u.jpg"];
 	  u1.x = 432;
-      u1.y = 14;
+      u1.y = 14;*/
 	  
 	  abilityHandler = new AbilityHandler(32, 32, player);
 	  abilityHandler.x = 432;
 	  abilityHandler.y = 0;
-	  console.log(abilityHandler.x);
+	  //console.log(abilityHandler.x);
 	  
       entities = new Array();
       entities.push(steve);

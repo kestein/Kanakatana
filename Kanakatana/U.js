@@ -1,11 +1,13 @@
 //Handles the button the player presses. THis ability throws a pencil in the direction the player is currently facing.
 var U = Class.create (Ability, {
-	initialize:function(width, height, player) {
+	initialize:function(width, height, player, handler) {
 		Sprite.call(this, width, height);
 		this.name = "U";
 		this.abilityNum = 2;
 		this.image = game.assets["u.jpg"];
+		this.image2 = game.assets["u_romanji.png"];
 		this.frame = 0;
+		this.romanji = false;
 		
 		this.duration = 0;
 		
@@ -18,12 +20,20 @@ var U = Class.create (Ability, {
 		this.storeImage;
 		this.storeFrame;
 		this.storeSpeed;
-		
 		this.addEventListener('touchstart', function() {
-			if(this.ready) {
+		console.log(this.ready);
+			if(this.ready && !this.romanji) {
+				handler.swapAll();
+				handler.currentAbility = this;
+			}
+			else if(this.ready && this.romanji && handler.currentAbility == this) {
 				this.becomeBunny(player);
 				this.reset();
-				//console.log(player);
+				handler.swapAll();
+			}
+			else if(this.ready && this.romanji) {
+				handler.swapAll();
+				handler.currentAbility = null;
 			}
 		});
 		
@@ -59,7 +69,6 @@ var U = Class.create (Ability, {
 	
 	becomeHuman:function(player) {
 		player.image = player.image = game.assets["chars.gif"];
-		console.log(player);
 		player.frame = this.storeFrame;
 		player.speed = this.storeSpeed;
 	}

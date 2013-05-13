@@ -1,12 +1,14 @@
 //Handles the button the player presses. THis ability throws 4 squids in the cardinal directions. they slow enemies.
 var I = Class.create (Ability, {
-	initialize:function(width, height, player) {
+	initialize:function(width, height, player, handler) {
 		Sprite.call(this, width, height);
 		this.name = "I";
 		this.abilityNum = 1;
 		this.image = game.assets["i.jpg"];
+		this.image2 = game.assets["i_romanji.png"];
 		this.frame = 0;
 		this.localPlayer = player;
+		this.romanji = false;
 		this.s1;
 		this.s2;
 		this.s3;
@@ -15,12 +17,22 @@ var I = Class.create (Ability, {
 		this.ready = false;
 		this.chargeRate = 0.02;
 		this.opacity = 0;
-		
 		this.addEventListener('touchstart', function() {
-			if(this.ready) {
-				this.makeSquids(this.localPlayer);
-				this.reset();
+		console.log(this.ready);
+			if(this.ready && !this.romanji) {
+				handler.swapAll();
+				handler.currentAbility = this;
 			}
+			else if(this.ready && this.romanji && handler.currentAbility == this) {
+				this.makeSquids(this.localPlayer);	
+				this.reset();
+				handler.swapAll();
+			}
+			else if(this.ready && this.romanji) {
+				handler.swapAll();
+				handler.currentAbility = null;
+			}
+			
 			
 		})
 		

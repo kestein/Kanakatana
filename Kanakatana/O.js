@@ -2,21 +2,32 @@
 //after x amnt of frames, the onigiri goes away
 //when an onigiri is on the map, all enemies.targetOfRage = onigiri
 var O = Class.create (Ability, {
-	initialize:function(width, height, player) {
+	initialize:function(width, height, player, handler) {
 		Sprite.call(this, width, height);
 		this.name = "O";
 		this.abilityNum = 4;
 		this.image = game.assets["o.jpg"];
+		this.image2 = game.assets["o_romanji.png"];
 		this.frame = 0;
+		this.romanji = false;
 		
 		this.ready = false;
 		this.chargeRate = 0.02;
 		this.opacity = 0;
-		
 		this.addEventListener('touchstart', function() {
-			if(this.ready) {
+		console.log(this.ready);
+			if(this.ready && !this.romanji) {
+			handler.currentAbility = this;
+				handler.swapAll();
+			}
+			else if(this.ready && this.romanji && handler.currentAbility == this) {
 				this.makeRiceBall(player);
 				this.reset();
+				handler.swapAll();
+			}
+			else if(this.ready && this.romanji) {
+				handler.currentAbility = null;
+				handler.swapAll();
 			}
 		});
 		
