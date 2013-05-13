@@ -35,12 +35,21 @@ var quest2CombatMap = function(newmap) {
    enemy1 = new Snail(32, 32, IQPlayer);
    enemy1.image = game.assets["snail.png"];
    enemy1.name = "Enemy";
-   enemy1.x = 300;
+   enemy1.x = 500;
    enemy1.y = 150;
+   
+   enemy2 = new Snail(32, 32, IQPlayer);
+   enemy2.image = game.assets["snail.png"];
+   enemy2.name = "Enemy";
+   enemy2.x = 300;
+   enemy2.y = 150;
+   
    stage_g.addChild(IQPlayer);
    stage_g.addChild(enemy1);
+   stage_g.addChild(enemy2);
    entities.push(enemy1);
-   numEnemies += 1;
+   entities.push(enemy2);
+   numEnemies += 2;
    
    IQPlayer.x = 64;
    IQPlayer.y = 64;

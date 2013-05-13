@@ -88,7 +88,7 @@ window.onload = function(){
       o1 = new O(32, 32, player);
       o1.image = game.assets["o.jpg"];
       o1.x = 432;
-      o1.y = 214;
+      o1.y = 114;
 	  
 	  i1 = new I(32, 32, player);
 	  i1.image = game.assets["i.jpg"];
@@ -161,9 +161,9 @@ function checkCollisions(player, entities) {
 		stage.addChild(steve);
 		stage.addChild(jane);
 		//stage.addChild(enemy1);
-		//hud.addChild(e1);
+		hud.addChild(e1);
       hud.addChild(o1);
-		hud.addChild(i1);
+		//hud.addChild(i1);
 		//hud.addChild(u1);
 		game.rootScene.addChild(stage);
       game.rootScene.addChild(textDisplay);
