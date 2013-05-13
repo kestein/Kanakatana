@@ -5,7 +5,7 @@ var entities;
 var game;
 var stage;
 var hud;
-
+var textDisplay;
 
 window.onload = function(){
     game = new Game(480, 320);//30x20 text files
@@ -22,10 +22,12 @@ window.onload = function(){
    game.preload("steve_portrait.png")
    game.preload("enpitsu1.png");
    game.preload("enpitsu2.png");
+   game.preload("onigiri.png");
    game.preload("e.jpg");
    game.preload("i.jpg");
    game.preload("ika.png");
    game.preload("u.jpg");
+   game.preload("o.jpg");
    game.preload("usagi.png");
    
    
@@ -40,7 +42,8 @@ window.onload = function(){
 	var e1;
 	stage = new Group();
 	hud = new Group();
-	
+	textDisplay = new Group();
+   
 		
     game.onload = function(){	
 		/** player things **/
@@ -52,7 +55,7 @@ window.onload = function(){
       player.name = "player";
       player.isListeningToNPC = false;
       player.linesRead = 0;
-      
+           
       steve = new NPC(32, 32, "test_lines.txt");
       steve.image = game.assets["chars.gif"];
       steve.portrait = game.assets["steve_portrait.png"];
@@ -81,6 +84,11 @@ window.onload = function(){
 	  e1.image = game.assets["e.jpg"];
 	  e1.x = 432;
       e1.y = 214;
+      
+      o1 = new O(32, 32, player);
+      o1.image = game.assets["o.jpg"];
+      o1.x = 432;
+      o1.y = 114;
 	  
 	  i1 = new I(32, 32, player);
 	  i1.image = game.assets["i.jpg"];
@@ -154,9 +162,11 @@ function checkCollisions(player, entities) {
 		stage.addChild(jane);
 		//stage.addChild(enemy1);
 		hud.addChild(e1);
-		hud.addChild(i1);
+      hud.addChild(o1);
+		//hud.addChild(i1);
 		//hud.addChild(u1);
 		game.rootScene.addChild(stage);
+      game.rootScene.addChild(textDisplay);
 		//game.rootScene.addChild(hud);
 		
 		game.rootScene.addEventListener('enterframe', function(e) {

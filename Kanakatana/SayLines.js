@@ -28,12 +28,17 @@ function sayLines(nextLine, speaker) {
    nxt.addEventListener('touchend', function() {
       //When the current speaker has said all of his lines
       if(speaker.linesRead > speaker.lines.length - 2) {
-         stage_g.removeChild(this);
+         /*stage_g.removeChild(this);
          stage_g.removeChild(bkg);
          stage_g.removeChild(l);
-         stage_g.removeChild(portrait);
+         stage_g.removeChild(portrait);*/
+         textDisplay.removeChild(bkg);
+         textDisplay.removeChild(l);
+         textDisplay.removeChild(nxt);
+         textDisplay.removeChild(portrait);
          speaker.linesRead = 0;
          if(queueNextLine !== null) {
+            console.log(queueNextLine);
             queueNextLine();
          }
       }
@@ -46,8 +51,12 @@ function sayLines(nextLine, speaker) {
    l.y = game_g.height - 40;
    l.text = speaker.lines[speaker.linesRead];
    
-   stage_g.addChild(bkg);
+   /*stage_g.addChild(bkg);
    stage_g.addChild(l);
    stage_g.addChild(nxt);
-   stage_g.addChild(portrait);  
+   stage_g.addChild(portrait);  */
+   textDisplay.addChild(bkg);
+   textDisplay.addChild(l);
+   textDisplay.addChild(nxt);
+   textDisplay.addChild(portrait);
 }

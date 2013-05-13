@@ -44,6 +44,7 @@ var steveS1Line2 = function() {
 
 var steveS2Line1 = function() { 
    loadMap(game_g, "map1.txt", "map1.gif", introQuestCombatMap);
+   //loadMap(game_g, "map2.txt", "map1.gif", quest2CombatMap);
    game_g.rootScene.addChild(hud_g);
    steve.lines = ["If you manage to defeat my legion of goons, you will have proven you know Japanese",
                "Wait...",
@@ -88,12 +89,13 @@ var checkWinCondition = function() {
                "I knew naming my pet snail 'Legion of goons' wouldnt actually make him powerful",
                "Bum out."];
       sayLines(playerS1Line2, steve);
+      game.rootScene.removeEventListener('enterframe', checkWinCondition);
    }
 }
 
 var playerS1Line2 = function() {
    //transport us back to the classroom
-   game.rootScene.removeEventListener('enterframe', checkWinCondition);
+   //game.rootScene.removeEventListener('enterframe', checkWinCondition);
    game_g.rootScene.removeChild(hud_g);
    loadMap(game_g, "maphome.txt", "maphome.gif", homeMap);
    IQPlayer.lines = ["This is rediculous. I wouldn't be supprised if", " you are replaced by next monday."];
@@ -115,6 +117,8 @@ var playerS1Line3 = function() {
 }
 
 var endIntroQuest = function() {
+   IQPlayer.lines = [];
+   steve.lines = [];
    IQPlayer.isListeningToNPC = false;
    IQPlayer.quests.pop();
    console.log("You the baddest snail murker this side o da nississippi");

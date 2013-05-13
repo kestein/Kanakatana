@@ -26,9 +26,9 @@ var Enemy = Class.create (Sprite, {
 		
 		
 		this.addEventListener('enterframe', function() {	
-		this.moveToTarget();
-		this.enrage();
-		this.checkIfDead();
+		   this.moveToTarget();
+		   this.enrage();
+		   this.checkIfDead();
 		
 			
         });
