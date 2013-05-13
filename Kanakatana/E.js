@@ -3,7 +3,8 @@ var E = Class.create (Ability, {
 	initialize:function(width, height, player) {
 		Sprite.call(this, width, height);
 		this.name = "E";
-		this.image = game.assets["e.png"];
+		this.abilityNum = 3;
+		this.image = game.assets["e.jpg"];
 		this.frame = 0;
 		
 		this.ready = false;

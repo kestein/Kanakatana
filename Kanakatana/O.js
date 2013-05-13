@@ -5,6 +5,7 @@ var O = Class.create (Ability, {
 	initialize:function(width, height, player) {
 		Sprite.call(this, width, height);
 		this.name = "O";
+		this.abilityNum = 4;
 		this.image = game.assets["o.jpg"];
 		this.frame = 0;
 		

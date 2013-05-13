@@ -24,6 +24,7 @@ window.onload = function(){
    game.preload("enpitsu2.png");
    game.preload("onigiri.png");
    game.preload("e.jpg");
+   game.preload("a.jpg");
    game.preload("i.jpg");
    game.preload("ika.png");
    game.preload("u.jpg");
@@ -81,24 +82,29 @@ window.onload = function(){
       enemy1.y = 150;*/
 	  
 	  e1 = new E(32, 32, player);
-	  e1.image = game.assets["e.jpg"];
+	  //e1.image = game.assets["e.jpg"];
 	  e1.x = 432;
       e1.y = 214;
       
       o1 = new O(32, 32, player);
-      o1.image = game.assets["o.jpg"];
+      //o1.image = game.assets["o.jpg"];
       o1.x = 432;
       o1.y = 114;
 	  
 	  i1 = new I(32, 32, player);
-	  i1.image = game.assets["i.jpg"];
+	  //i1.image = game.assets["i.jpg"];
 	  i1.x = 432;
       i1.y = 114;
 	  
 	  u1 = new U(32, 32, player);
-	  u1.image = game.assets["u.jpg"];
+	  //u1.image = game.assets["u.jpg"];
 	  u1.x = 432;
       u1.y = 14;
+	  
+	  abilityHandler = new AbilityHandler(32, 32, player);
+	  abilityHandler.x = 432;
+	  abilityHandler.y = 0;
+	  console.log(abilityHandler.x);
 	  
       entities = new Array();
       entities.push(steve);
@@ -161,8 +167,9 @@ function checkCollisions(player, entities) {
 		stage.addChild(steve);
 		stage.addChild(jane);
 		//stage.addChild(enemy1);
-		hud.addChild(e1);
-      hud.addChild(o1);
+		hud.addChild(abilityHandler);
+		//hud.addChild(e1);
+      //hud.addChild(o1);
 		//hud.addChild(i1);
 		//hud.addChild(u1);
 		game.rootScene.addChild(stage);
@@ -184,9 +191,8 @@ function checkCollisions(player, entities) {
 		//handles player movement while clicking. it adds a modifier to make the movement relative to the map and not the screen
 		game.rootScene.addEventListener('touchstart', function(evt) {
 			//console.log(map.collisionData.length);
-			if(evt.localX < 430) {		//hack. fix this when implementing ability pannel.
+			if(evt.localX > 34) {		//hack. fix this when implementing ability pannel.
 				player.targetClick(-stage.x + evt.localX - player.width/2, evt.localY - stage.y - player.height/2 );
-				console.log(entities);
 			}
         });
 		
