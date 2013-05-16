@@ -1,15 +1,3 @@
-Generic event class:
-specific to each quest/ event in the game
-make a 2D array with Speakers and the lines they are going to say
-(give player a prompt for if he want to goto next map)
-Go to next map
-make new array for NPC lines
-spawn map stuff (enemies, treasure, etc.)
-check for win condition
-go back to first map
-give NPC's final lines to say
-end event
-increment global event stack pointer
+To do for this week:
 
-
-Mod the player class to have a portrait entity and a lines variable
+-   fill stuff in   -
