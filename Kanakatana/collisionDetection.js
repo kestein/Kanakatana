@@ -5,7 +5,7 @@ function checkCollisions(player) {
    var dx = 0;
    var dy = 0;
    for(var t = 0; t < entities.length; t++) {
-		if(entities[t].name == 'Enemy' && player.within(entities[t], 160)) {	//Enemies attack player if close
+		if(entities[t].name == 'Enemy' && player.within(entities[t], entities[t].enrageDistance)) {	//Enemies attack player if close
 
 			entities[t].enraged = true;
 		}
@@ -13,7 +13,7 @@ function checkCollisions(player) {
 			entities[t].enraged = false;
 		}
       if(player.intersect(entities[t])) {
-		if(entities[t].name == 'Enemy') {		//enemy sends player back to start
+		if(entities[t] instanceof Enemy && entities[t].stunned == false) {		//enemy sends player back to start
 			player.x = 50;
 			player.y = 50;
 			player.moveArray.length = 0;
@@ -21,6 +21,21 @@ function checkCollisions(player) {
 		 }
          player.isMoving = false;
 		 if(entities[t] instanceof NPC) {
+			if(player.x > entities[t].x) {
+				player.x += player.speed;
+			}
+			else if(player.x < entities[t].x) {
+				player.x -= player.speed;
+			}
+			if(player.y > entities[t].y) {
+				player.y += player.speed;
+			}
+			else if(player.y < entities[t].y) {
+				player.y -= player.speed;
+			}
+			player.moveArray.length = 0;
+		 }
+		/* if(entities[t] instanceof NPC) {
 			if(player.direction == 0 && player.endCoordinate) {//moving up
 				//diagonal checks
 				if(player.x - player.endCoordinate.x < 0) {//r
@@ -76,8 +91,8 @@ function checkCollisions(player) {
 				//this.isMoving = false;
 			}
 			//player.isListeningToNPC = true;
-		 }
-		 if(entities[t] instanceof NPC && !player.isListeningTospeaker && player.quests.length > 0) {
+		 }*/
+		 if(entities[t] instanceof NPC && !player.isListeningToNPC && player.quests.length > 0) {
          player.quests[player.quests.length - 1](player);
          player.isListeningToNPC = true;
        }

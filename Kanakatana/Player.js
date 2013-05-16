@@ -11,7 +11,7 @@ var Player = Class.create(Sprite, {
 		this.moveArray = [];
 		this.isMoving = false;
 		this.direction = 2;
-		this.speed = 3;
+		this.speed = 4;
 		this.endCoordinate =  this.coordinates(0,0);
 		this.isListeningToNPC = false;
 		//abilities
@@ -91,26 +91,34 @@ var Player = Class.create(Sprite, {
 			this.endCoordinate = endCoordinates;
 			this.moveArray = this.calcStraightLine(startCoordinates, endCoordinates);
 		}
-		if(Math.abs(this.x - clickX) > Math.abs(this.y - clickY)) {
-				//console.log(this.direction);
+		if(Math.abs(this.x - clickX) > Math.abs(this.y - clickY) && this.image == game.assets["player.png"]) {
 				if(this.x < clickX) {
 					this.direction = 1;
-					this.frame =23;
+					this.frame =8;
 				}
 				else {
 					this.direction = 3;
-					this.frame = 14;
+					this.frame = 5;
 				}
 			}
-			else {
-				//console.log(this.direction);
+			else if(this.image == game.assets["player.png"]) {
 				if(this.y < clickY) {
 					this.direction = 2;
-					this.frame = 5;
+					this.frame = 2;
 				}
 				else {
 					this.direction = 0;
-					this.frame = 32;
+					this.frame = 11;
+				}
+			}
+			else if (this.image == game.assets["usagi2.png"]) {
+				if(this.x < clickX) {
+					this.direction = 1;
+					this.frame = 0;
+				}
+				else {
+					this.direction = 3;
+					this.frame = 1;
 				}
 			}
 			//this.frame = (this.direction *9) + 5;
@@ -138,13 +146,16 @@ var Player = Class.create(Sprite, {
 	},
 	//animates the players walk cycle
 	walkAnimation:function() {
-		if(this.age % 4  == 0 && this.isMoving == true && this.image == game.assets["chars.gif"]) {
-			if(this.frame == 5 || this.frame == 14 || this.frame == 23 || this.frame == 32) {
+		if(this.age % 3  == 0 && this.isMoving == true && this.image == game.assets["player.png"]) {
+			if(this.frame == 5 || this.frame == 2 || this.frame == 8 || this.frame == 11) {
 				this.frame = this.frame-2;
 			}
 			else {
 				this.frame++;
 			}
+		}
+		if(this.age %1 == 0) {		//debug
+			//console.log(this.y);
 		}
 	},
 	
@@ -152,7 +163,7 @@ var Player = Class.create(Sprite, {
 		this.storeImage = this.image;
 		this.storeFrame = this.frame;
 		this.storeSpeed = this.speed;
-		this.image = game.assets["usagi.png"];
+		this.image = game.assets["usagi2.png"];
 		this.frame = 0;
 		this.speed = this.speed * 2;
 		this.bunnyDuration = 100;
@@ -172,7 +183,7 @@ var Player = Class.create(Sprite, {
 	},
 	
 	becomeHuman:function(player) {
-		this.image = game.assets["chars.gif"];
+		this.image = game.assets["player.png"];
 		this.frame = this.storeFrame;
 		this.speed = this.storeSpeed;
 	}

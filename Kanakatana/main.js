@@ -29,7 +29,7 @@ window.onload = function(){
    game.preload("ika.png");
    game.preload("u.jpg");
    game.preload("o.jpg");
-   game.preload("usagi.png");
+   game.preload("usagi2.png");
    game.preload("awa.png");
    game.preload("a_romanji.png");
    game.preload("i_romanji.png");
@@ -54,8 +54,8 @@ window.onload = function(){
 		
     game.onload = function(){	
 		/** player things **/
-		player = new Player(32, 32);
-		player.image = game.assets["chars.gif"];
+		player = new Player(16, 22);
+		player.image = game.assets["player.png"];
       player.portrait = game.assets["player_portrait.png"];
 		player.x = 150;
 		player.y = 10;

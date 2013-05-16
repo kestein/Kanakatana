@@ -7,12 +7,16 @@ var Enemy = Class.create (Sprite, {
 		//vars for movement.
 		this.xPath = [600,600];
 		this.yPath = [400,150];
-		this.speed = 2;
+		this.pathReverse = false;
+		this.speed = 0;
 		this.name = "Enemy";		//used in collision detection.
 		this.vx = 0;				//dertermines direction to move.
 		this.vy = 0;
 		this.targetNode = 0;
+		this.lastVisitedNode = 0;
+		this.faceToWallCount = 0;
 		this.enraged = false;		//determines if headding towards player
+		this.enrageDistance = 200;
 		this.targetOfRage = player;
 		this.moveArray = [];
 		this.startCoordinate = this.coordinates(this.x,this.y);
@@ -33,10 +37,10 @@ var Enemy = Class.create (Sprite, {
 			if (!this.stunned){
 				this.moveToTarget();
 			}
-		   this.enrage();
-		   this.isStunned();
-		   this.checkIfDead();
-		
+			this.collideWithWalls();
+			this.enrage();
+			this.isStunned();
+			this.checkIfDead();
 			
         });
 	},
@@ -82,9 +86,20 @@ var Enemy = Class.create (Sprite, {
 	
 	//sets the enemy's target to the next coordinate in its path. loops back to first target when route is completed
 	changeTarget:function() {
-		this.targetNode++;
-		if(this.targetNode == this.xPath.length) {
-			this.targetNode = 0;
+		this.lastVisitedNode = this.targetNode;
+		if(!this.pathReverse) {
+			this.targetNode++;
+			if(this.targetNode == this.xPath.length) {
+				this.targetNode = 0;
+				this.pathReverse = true;
+			}
+		}
+		else {
+			this.targetNode--;
+			if(this.targetNode == -1) {
+				this.targetNode = 0;
+				this.pathReverse = false;
+			}
 		}
 	},
 	
@@ -92,13 +107,7 @@ var Enemy = Class.create (Sprite, {
 	//when the enemy nears the node.
 	moveToTarget:function() {
 		//console.log(this.slowed);
-		var tempSpeed = this.speed;
-		if(this.slowed) {
-			tempSpeed = this.slowSpeed;
-		}
-		if (this.stunned) {
-			tempSpeed = 0;
-		}
+		var tempSpeed = this.setSpeed();
 		if(this.enraged == false) {			//this is if Enemy is following its normal course
 			if(this.x < this.xPath[this.targetNode]) {
 				vx= tempSpeed;
@@ -124,8 +133,6 @@ var Enemy = Class.create (Sprite, {
 			if(Math.abs(vy) > Math.abs(this.y - this.yPath[this.targetNode])) {
 				vy = this.y - this.yPath[this.targetNode];
 			}
-			//vx = Math.min(Math.abs(vx), Math.abs(this.x - this.xPath[this.targetNode]));
-			//vy = Math.min(Math.abs(vy), Math.abs(this.y - this.yPath[this.targetNode]));
 			this.moveTo( this.x + vx, this.y + vy);
 			if(this.x == this.xPath[this.targetNode] && this.y == this.yPath[this.targetNode]) {
 				this.changeTarget();
@@ -181,6 +188,65 @@ var Enemy = Class.create (Sprite, {
 			this.stunTimer = 0;
 		}
 	},
+	//check colission with walls against corners of enemy
+	collideWithWalls: function() {
+		var dx = 0;
+		var dy = 0;
+		var tempSpeed = this.setSpeed();
+   if(map.hitTest(this.x, this.y)) {	//top left
+		dx += this.speed;
+		dy += this.speed;
+		this.moveArray.length = 0;
+   }
+   if(map.hitTest(this.x + this.width, this.y)) {	//top right
+		dx -= this.speed;
+		dy += this.speed;
+		this.moveArray.length = 0;
+   }
+   if(map.hitTest(this.x, this.y + this.height)) {		//bottom left
+		dx += this.speed;
+		dy -= this.speed;
+		this.moveArray.length = 0;
+   }
+   if(map.hitTest(this.x + this.width, this.y + this.height)) {	//bottom right
+		dx -= this.speed;
+		dy -= this.speed;
+		this.moveArray.length = 0;
+		}
+		this.x +=  dx;
+		this.y +=  dy;
+		if (dx != 0 || dy != 0) {
+			this.faceToWallCount++;
+		}
+		if (this.faceToWallCount >= 1) {
+			this.faceToWallCount = 0;
+			this.giveUpOnNode();
+		}
+		
+	},
+	
+	setSpeed:function() {
+		var tempSpeed;
+		if(this.slowed) {
+			tempSpeed = this.slowSpeed;
+		}
+		if (this.stunned) {
+			tempSpeed = 0;
+		}
+		else {
+			tempSpeed = this.speed;
+		}
+		
+		return tempSpeed;
+	},
+	
+	giveUpOnNode:function() {
+		var tempNode;
+		this.pathReverse = !this.pathReverse;
+		tempNode = this.targetNode;
+		this.targetNode = this.lastVisitedNode;
+		this.lastVisitedNode = tempNode;
+	}
 	
 	
 });

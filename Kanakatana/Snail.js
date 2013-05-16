@@ -13,19 +13,20 @@ var Snail = Class.create (Enemy, {
 		this.vy = 0;
 		this.targetNode = 0;
 		this.enraged = false;		//determines if headding towards player
+		this.enrageDistance = 150;
 		this.targetOfRage = player;
 		this.moveArray = [];
 		this.startCoordinate = this.coordinates(this.x,this.y);
 		this.firstCoordinate = this.coordinates(this.xPath[this.targetNode],this.yPath[this.targetNode]);
 		this.moveArrayIndex = 0;
 		this.dead = false;
+		
 		this.health = 2;
 		
-		
 		this.addEventListener('enterframe', function() {	
-		this.moveToTarget();
+		//this.moveToTarget();
 		this.enrage();
-		this.checkIfDead();
+		//this.checkIfDead();
 		
 			
         });

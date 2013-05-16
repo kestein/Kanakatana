@@ -20,8 +20,8 @@ var Awa = Class.create (Sprite, {
 	},
 	
 	stayOnPlayer:function(player) {
-		this.x = player.x - player.width/2;
-		this.y = player.y - player.height/2;
+		this.x = player.x - this.width/2 + player.width/2;
+		this.y = player.y - this.height/2 + player.height/2;
 	},
 	
 	tick:function() {
