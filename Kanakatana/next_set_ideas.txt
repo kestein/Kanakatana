@@ -16,9 +16,13 @@ words for i
    isu - chair
    imo - potato
    ibiki - snoring
+   inazuma - lightning	***
    
+words for ka
+   katana - katana ***
+
 words for ki
-   kizuna - shackles (bond b/w ppl)
+   kizuna - shackles (bond b/w ppl) ***
    kirai - hate
    kirakira - twinkle, glisten
    kijutsu - magic
@@ -33,18 +37,19 @@ words for ku
    kugi - nail
    kuro - black
    kurukuru - spinning
+   kusari - chain ***
    
 words for ke
    keitai - mobile phone
    keisatsu - police
    kenjutsu - fencing
-   ketsueki - blood
+   ketsueki - blood ***
    
 words for ko
    kokoro - heart
    kosoku - light speed
    kosuiryo - rainfall, precipitation
-   koru - to freeze
+   koru - to freeze ***
    kogeru - to be burned
    komorigasa - umbrella
    kosokoso suru - sneak

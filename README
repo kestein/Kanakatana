@@ -1,3 +1,28 @@
 To do for this week:
 
--   fill stuff in   -
+Change Ika to Inazuma(Lightning) - cameron
+-----------------------
+Set Enemy To sccept its movepaths in its constructor - cameron
+-----------------------
+develop new enemy type - cameron
+-----------------------
+NEW ABILITY - Ka - Katana - Cameron
+	I will use old code from Ika for this one.
+-----------------------
+NEW ABILITY - Ki - Kirikabu - Tree Stump - Kevin
+	Create a Target that follows the cursor, upon clicking, place the treestump in a spot.
+	It deals 1 damage upon being placed, then blocks enemy movement.
+-----------------------
+NEW ABILITY - Ku - Kusari - Chain - Cameron or Kevin
+	fires a projectile that leashes the enemy to the player. stuns the enemy and forces
+	them to move the same distance as the player, until its duration expires.
+-----------------------
+NEW ABILITY - Ke - Ketsueki - Blood - Kevin
+	fires a projectile that shoots out in a streight line, then returns to the player. It changes color
+	if it hits an enemy. (later it will restore health, but I dont have that implemented yet, so I can add 
+	that later.
+-----------------------
+NEW ABILITY - Koru - to Freeze - Kevin
+	Create a target target that follows the cursor. upon clicking. Fires a  steam of
+	ice bullets at the target location. Deals damage 1 and stuns enemies.
+-----------------------
