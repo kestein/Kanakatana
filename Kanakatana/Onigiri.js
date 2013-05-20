@@ -9,11 +9,11 @@
       this.vx = 0;
       this.vy = 0;
       
-      for(var i = 0; i < entities.length; i++) {
+      /*for(var i = 0; i < entities.length; i++) {
 			if(entities[i] instanceof Enemy) {
 				entities[i].targetOfRage = this;
 			}
-		}
+		}*/
       
       this.addEventListener('enterframe', function() {
          //remove the onigiri after age > 600
@@ -31,6 +31,11 @@
          }
          else {
             this.moveOnigiri();
+            for(var i = 0; i < entities.length; i++) {
+			      if(entities[i] instanceof Enemy) {
+				      entities[i].targetOfRage = this;
+			      }
+		      }
          }
 		});
    },

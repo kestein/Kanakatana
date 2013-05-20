@@ -29,6 +29,7 @@ window.onload = function(){
    game.preload("ika.png");
    game.preload("u.jpg");
    game.preload("o.jpg");
+   game.preload("ko.jpg");
    game.preload("usagi2.png");
    game.preload("awa.png");
    game.preload("a_romanji.png");
@@ -36,6 +37,7 @@ window.onload = function(){
    game.preload("u_romanji.png");
    game.preload("e_romanji.png");
    game.preload("o_romanji.png");
+   game.preload("ko_romanji.png");
    
    
    game.keybind(81, 'a');		//sets 'q' to the "a button"
