@@ -17,7 +17,7 @@ function loadMap(game, mapname, maptex, callback)
 	function parseMapData() { 
 		if (reader1.responseText != null && reader1.responseText != "")
 		{
-			console.log(reader1.responseText);
+			//console.log(reader1.responseText);
 			raw = reader1.responseText.split('\n');
 			num = parseInt(raw[0], 10);
 			mapinfo = new Array();

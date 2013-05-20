@@ -36,6 +36,7 @@ var Awa = Class.create (Sprite, {
 			if(entities[i] instanceof Enemy && this.intersect(entities[i])) {
 				entities[i].stunTimer = 80;
 				entities[i].stunned = true;
+				this.dead = true;
 			}
 		}
 	}

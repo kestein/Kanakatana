@@ -68,8 +68,6 @@ var AbilityHandler = Class.create (Sprite, {
 			if(array[i] == null) {		//hack
 				return false;
 			}
-			console.log(array[i].abilityNum);
-			console.log(ability);
 			if(array[i].abilityNum == ability) {
 				return true;
 			}

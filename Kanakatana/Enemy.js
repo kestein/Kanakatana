@@ -2,11 +2,12 @@
 //to be able to handle all enemies or to not be directly used and be inherited by all enemy types.
 
 var Enemy = Class.create (Sprite, {
-	initialize:function(width, height, player) {
+	initialize:function(width, height, xp, yp, player) {
 		Sprite.call(this, width, height);
 		//vars for movement.
-		this.xPath = [600,600];
-		this.yPath = [400,150];
+		this.xPath = xp;
+		this.yPath = yp;
+		console.log("xp: " + xp + "yp: " + yp);
 		this.pathReverse = false;
 		this.speed = 0;
 		this.name = "Enemy";		//used in collision detection.
@@ -86,6 +87,7 @@ var Enemy = Class.create (Sprite, {
 	
 	//sets the enemy's target to the next coordinate in its path. loops back to first target when route is completed
 	changeTarget:function() {
+		console.log(this.lastVisitedNode);
 		this.lastVisitedNode = this.targetNode;
 		if(!this.pathReverse) {
 			this.targetNode++;
@@ -218,7 +220,7 @@ var Enemy = Class.create (Sprite, {
 		if (dx != 0 || dy != 0) {
 			this.faceToWallCount++;
 		}
-		if (this.faceToWallCount >= 1) {
+		if (this.faceToWallCount >= 3) {
 			this.faceToWallCount = 0;
 			this.giveUpOnNode();
 		}
@@ -242,6 +244,9 @@ var Enemy = Class.create (Sprite, {
 	
 	giveUpOnNode:function() {
 		var tempNode;
+		console.log(this.targetNode);
+		console.log(this.lastVisitedNode);
+		console.log(this.pathReverse);
 		this.pathReverse = !this.pathReverse;
 		tempNode = this.targetNode;
 		this.targetNode = this.lastVisitedNode;

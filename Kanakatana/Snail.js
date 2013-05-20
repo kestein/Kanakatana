@@ -2,11 +2,11 @@
 //to be able to handle all enemies or to not be directly used and be inherited by all enemy types.
 
 var Snail = Class.create (Enemy, {
-	initialize:function(width, height, player, xp, yp) {
-		Enemy.call(this, width, height, xp, yp);
+	initialize:function(width, height, xp, yp, player) {
+		Enemy.call(this, width, height, xp, yp, player);
 		//vars for movement.
-		this.xPath = [320,320];
-		this.yPath = [100,350];
+		//this.xPath = xp;
+		//this.yPath = yp;
 		this.speed = 2;
 		this.vx = 0;
 		this.name = "Enemy";		//used in collision detection.
@@ -14,7 +14,6 @@ var Snail = Class.create (Enemy, {
 		this.targetNode = 0;
 		this.enraged = false;		//determines if headding towards player
 		this.enrageDistance = 150;
-		this.targetOfRage = player;
 		this.moveArray = [];
 		this.startCoordinate = this.coordinates(this.x,this.y);
 		this.firstCoordinate = this.coordinates(this.xPath[this.targetNode],this.yPath[this.targetNode]);

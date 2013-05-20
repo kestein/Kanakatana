@@ -8,7 +8,7 @@ var introQuestCombatMap = function(newmap) {
    }
    map = newmap;
    stage_g.addChild(map);
-   enemy1 = new Snail(32, 32, IQPlayer);
+   enemy1 = new Snail(32, 32, [100,300], [150,150], IQPlayer);
    enemy1.image = game.assets["snail.png"];
    enemy1.name = "Enemy";
    enemy1.x = 300;
@@ -32,13 +32,13 @@ var quest2CombatMap = function(newmap) {
    }
    map = newmap;
    stage_g.addChild(map);
-   enemy1 = new Snail(32, 32, IQPlayer);
+   enemy1 = new Snail(32, 32, [600,600], [400,150], IQPlayer);
    enemy1.image = game.assets["snail.png"];
    enemy1.name = "Enemy";
    enemy1.x = 500;
    enemy1.y = 150;
    
-   enemy2 = new Snail(32, 32, IQPlayer);
+   enemy2 = new Snail(32, 32, [600,600], [400,150], IQPlayer);
    enemy2.image = game.assets["snail.png"];
    enemy2.name = "Enemy";
    enemy2.x = 300;
