@@ -11,9 +11,10 @@
       this.targetX = targetX;
       this.targetY = targetY;
       this.slope = (this.targetY - this.y)/(this.targetX - this.x);
-      
+            
       this.addEventListener('enterframe', function() {
          //remove the koru once it is offscreen
+         console.log("made it");
          if(this.x >= game.width || this.y >= game.height || this.x < 0 || this.y < 0) {
             for(var i = 0; i < entities.length; i++) {
                //remove the koru from entities

@@ -19,13 +19,13 @@ var KO = Class.create (Ability, {
 		this.chargeRate = 0.02;
 		this.opacity = 0;
 		this.addEventListener('touchstart', function() {
-			if(this.ready && !this.romanji) {
+			/*if(this.ready && !this.romanji) {
 			handler.currentAbility = this;
 				handler.swapAll();
 			}
 			else if(this.ready && this.romanji && handler.currentAbility == this) {
             //make a label to ask where the player wants to fire the bullet
-            game.rootScene.addEventListener('touchstart', getCoords(evt)) 
+            game.rootScene.addEventListener('touchstart', getCoords(evt)); 
 				this.reset();
 				handler.swapAll();
 				handler.pickNewAbility(player);
@@ -34,18 +34,16 @@ var KO = Class.create (Ability, {
 				handler.currentAbility = null;
 				handler.swapAll();
 			}
+		});*/
+         this.makeKoru(player, 50, 50);
 		});
-		
 		this.addEventListener('enterframe', function() {
 			this.cooldown();
 		})
 	},
-	getCoords:function(evt) {
-      this.makeKoru(player, evt.x, evt.y);
-      game.rootScene.removeEventListener(getCoords);
-   }
 	makeKoru :function(player, targetX, targetY) {
-		var Koru  = new Koru (25, 25, player, targetX, targetY);
+   console.log("tx " + targetX + "ty " + targetY);
+		var koru = new Koru(25, 25, player, targetX, targetY);
 		entities.push(Koru);
 		stage.addChild(Koru);
 	}	
