@@ -2,6 +2,7 @@
 enchant();
 var map;
 var entities;
+var activeTarget;
 var game;
 var stage;
 var hud;
@@ -11,33 +12,42 @@ window.onload = function(){
     game = new Game(480, 320);//30x20 text files
 	
     game.fps = 30;
-   game.preload("maphome.gif");
+	game.preload("maphome.gif");
 	game.preload("snail.png");
 	game.preload("map1.gif");
 	game.preload("player.png");
 	game.preload("chars.gif");
-   game.preload("player_portrait.png");
-   game.preload("label_bkg.png");
-   game.preload("next.png");
-   game.preload("steve_portrait.png")
-   game.preload("enpitsu1.png");
-   game.preload("enpitsu2.png");
-   game.preload("onigiri.png");
-   game.preload("e.jpg");
-   game.preload("a.jpg");
-   game.preload("i.jpg");
-   game.preload("ika.png");
-   game.preload("u.jpg");
-   game.preload("o.jpg");
-   game.preload("ko.jpg");
-   game.preload("usagi2.png");
-   game.preload("awa.png");
-   game.preload("a_romanji.png");
-   game.preload("i_romanji.png");
-   game.preload("u_romanji.png");
-   game.preload("e_romanji.png");
-   game.preload("o_romanji.png");
-   game.preload("ko_romanji.png");
+	game.preload("player_portrait.png");
+	game.preload("label_bkg.png");
+	game.preload("next.png");
+	game.preload("steve_portrait.png")
+	game.preload("enpitsu1.png");
+	game.preload("enpitsu2.png");
+	game.preload("onigiri.png");
+	game.preload("usagi2.png");
+	game.preload("awa.png");
+	game.preload("ika.png");
+	game.preload("Inazuma.png");
+	game.preload("a.jpg");
+	game.preload("i.jpg");
+	game.preload("u.jpg");
+	game.preload("e.jpg");
+	game.preload("o.jpg");
+	game.preload("ka.jpg");
+	game.preload("ki.jpg");
+	game.preload("ku.jpg");
+	game.preload("ke.jpg");
+	game.preload("ko.jpg");
+	game.preload("a_romanji.png");
+	game.preload("i_romanji.png");
+	game.preload("u_romanji.png");
+	game.preload("e_romanji.png");
+	game.preload("o_romanji.png");
+	game.preload("ka_romanji.png");
+	game.preload("ki_romanji.png");
+	game.preload("ku_romanji.png");
+	game.preload("ke_romanji.png");
+	game.preload("ko_romanji.png");
    
    
    game.keybind(81, 'a');		//sets 'q' to the "a button"

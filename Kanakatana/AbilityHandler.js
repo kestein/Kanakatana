@@ -119,8 +119,6 @@ var AbilityHandler = Class.create (Sprite, {
 	pickNewAbility:function(player) {
 		if(this.maxUsableAbilities != this.unlockedAbilities) {
 			for(i = 0; i < this.maxUsableAbilities; i++) {
-			console.log(this.currentAbility);
-			console.log(this.usableAbilities[i].abilityNum);
 				if(this.usableAbilities[i].abilityNum == this.currentAbility.abilityNum) {
 					
 					hud.removeChild(this.usableAbilities[i]);

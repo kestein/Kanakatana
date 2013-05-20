@@ -1,10 +1,10 @@
 //onigiri: throws a rice ball out that attracts enemies to it
 //after x amnt of frames, the onigiri goes away
 //when an onigiri is on the map, all enemies.targetOfRage = onigiri
-var KO = Class.create (Ability, {
+var Ko = Class.create (Ability, {
 	initialize:function(width, height, player, handler) {
 		Sprite.call(this, width, height);
-		this.name = "KO";
+		this.name = "Ko";
 		this.abilityNum = 4;
       
       //change these to KO when those drawables are uploaded

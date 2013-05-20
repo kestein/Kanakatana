@@ -244,9 +244,6 @@ var Enemy = Class.create (Sprite, {
 	
 	giveUpOnNode:function() {
 		var tempNode;
-		console.log(this.targetNode);
-		console.log(this.lastVisitedNode);
-		console.log(this.pathReverse);
 		this.pathReverse = !this.pathReverse;
 		tempNode = this.targetNode;
 		this.targetNode = this.lastVisitedNode;
