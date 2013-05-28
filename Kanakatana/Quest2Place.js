@@ -8,8 +8,9 @@ var numEnemies = 0;//total number of enemies that you will fight in the quest
 
 //function startIntroQuest(stage, game, prevAcivityPeople) {
 function startQ2(player) {
-	player.unlockedAbilities += 2;		//is this a hack? it may actually work. will need lvl 3 to see.
-   IQPlayer = player;
+	player.unlockedAbilities += 5;		//is this a hack? it may actually work. will need lvl 3 to see.
+	console.log(player.unlockedAbilities);
+	IQPlayer = player;
    stage_g = stage;
    game_g = game;
    hud_g = hud;
@@ -30,27 +31,25 @@ function startQ2(player) {
 }
 
 var steveS1Line1Q2 = function() {
-   steve.lines = ["Well...", "Pop Quiz time"];
+   steve.lines = ["Well...", "Lets get to it!"];
    sayLines(playerS1Line1Q2, steve);
 }
 
 var playerS1Line1Q2 = function() {
-   IQPlayer.lines = ["Again?", "Seriously, Who decided that", "hiring you was a good idea?"];
+   IQPlayer.lines = ["Again?", "Isnt this a little intesnse?"];
    sayLines(steveS1Line2Q2, IQPlayer);
 }
 
 var steveS1Line2Q2 = function() {
-   steve.lines = ["Oh, you'll find out soon enough", "MUUUHHAHAHAHAHAHAA"];
+   steve.lines = ["Well I was going to give a lecture on the next hirigana,", "but the snails are back in my garden!"];
    sayLines(steveS2Line1Q2, steve);
 }
 
 var steveS2Line1Q2 = function() { 
    loadMap(game_g, "map2.txt", "map1.gif", quest2CombatMap);
    game_g.rootScene.addChild(hud_g);
-   steve.lines = ["If you want to see your precious classroom again you're going to have to prove your worth.",
-               "If you manage to defeat my legion of goons you will be brought back.",
-               "Also, I have tenure.",
-               "BEGONE!!!"];
+   steve.lines = ["You all seem smart. I am sure you will think of something.",
+               "Now go save my tomatos."];
    //sayLines(playerS2Line1, steve);
    setTimeout(runSteveS2Line1Q2, 100);
 }
@@ -60,7 +59,7 @@ var runSteveS2Line1Q2 = function() {
 }
 
 var playerS2Line1Q2 = function() {
-   IQPlayer.lines = ["Somehow, I don't believe him."];
+   IQPlayer.lines = ["I really hope my next teacher is a bit more sane."];
    sayLines(steveS2Line2Q2, IQPlayer);
 }
 
@@ -85,9 +84,8 @@ var checkWinConditionQ2 = function() {
    }
    if(enemiesLeft == 0) {
       IQPlayer.isListeningToNPC = true;
-      steve.lines = ["How did you defeat my legion of goons?!", 
-               "I knew I should have spent more money on training than costumes.",
-               "Bum out."];
+      steve.lines = ["Thank you for saving my garden again.", 
+               "Class is dismissed for the day.","I will bring you back to your homeroom."];
       sayLines(playerS1Line2Q2, steve);
       game.rootScene.removeEventListener('enterframe', checkWinConditionQ2);
    }
@@ -98,7 +96,7 @@ var playerS1Line2Q2 = function() {
    game.rootScene.removeEventListener('enterframe', checkWinConditionQ2);
    game_g.rootScene.removeChild(hud_g);
    loadMap(game_g, "maphome.txt", "maphome.gif", homeMap);
-   IQPlayer.lines = ["What a real jerk move man."];
+   IQPlayer.lines = ["What an intense day."];
    setTimeout(runPlayerS1Line2Q2, 100);
 }
 
@@ -107,7 +105,7 @@ var runPlayerS1Line2Q2 = function() {
 }
 
 var steveS1Line3Q2 = function() {
-   steve.lines = ["Congratulations, you passed the test.", "Most people would beat me up now, but yo-"];
+   steve.lines = ["Well, thats annoying, the door seems to have become a series of bookshelves."];
    sayLines(playerS1Line3Q2, steve);
 }
 
@@ -119,5 +117,4 @@ var playerS1Line3Q2 = function() {
 var endIntroQuestQ2 = function() {
    IQPlayer.isListeningToNPC = false;
    IQPlayer.quests.pop();
-   console.log("You the baddest snail murker this side o da nississippi");
 }

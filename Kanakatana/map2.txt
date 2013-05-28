@@ -36,10 +36,10 @@ rttttttt________ttttttttttttttttttttttttt/
 rttttttt________ttttttttttttttttttttttttt/
 rtttttttt______tttttttttttttttttttttttttt/
 rttttttttttttttttttttttttttt_______tttttt/
-rtttttttttttttttttttttttttt__asssd_tttttt/
-rtttttttttttttttttttttttttt_aggggh_tttttt/
-rtttttttttttttttttttttttttt_jggggh_tttttt/
-rttttttttttttttttttttttttttt_fggggd_ttttt/
-rttttttttttttttttttttttttttt_jkkkkl_ttttt/
-rttttttttttttttttttttttttttt________ttttt/
+rttttttt//////////ttttttttt__asssd_tttttt/
+rtttttttttttttttt/ttttttttt_aggggh_tttttt/
+rtttttttttttttttt/ttttttttt_jggggh_tttttt/
+rtttttttttttttttt/tttttttttt_fggggd_ttttt/
+rtttttttttttttttt/tttttttttt_jkkkkl_ttttt/
+rtttttttttttttttt/tttttttttt________ttttt/
 //////////////////////////////////////////

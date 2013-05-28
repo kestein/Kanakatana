@@ -5,7 +5,7 @@ var AbilityHandler = Class.create (Sprite, {
 		Sprite.call(this, width, height);
 		this.x = 432;
 		this.y = 0;
-		this.maxUsableAbilities = 5;	//possible hack must be less than or equal to unlocked abilities.
+		this.maxUsableAbilities = 4;	//possible hack must be less than or equal to unlocked abilities.
 		this.unlockedAbilities = player.unlockedAbilities;
 		this.usableAbilities = [];
 		this.currentAbility;
@@ -17,6 +17,9 @@ var AbilityHandler = Class.create (Sprite, {
 			for(i = 0; i < this.maxUsableAbilities; i++) {
 				this.addToHud(i,player);
 			}
+		})
+		this.addEventListener('enterframe', function() {
+			this.unlockedAbilities = player.unlockedAbilities;
 		})
 	},
 	//adds an ability to the hud at index i

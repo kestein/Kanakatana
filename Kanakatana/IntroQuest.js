@@ -27,18 +27,22 @@ function startIntroQuest(player) {
 }
 
 var steveS1Line1 = function() {
-   steve.lines = ["Welcome to the first day of class", "Pop quiz!"];
+   steve.lines = ["Welcome to the first day of class", "Today we will be studying the first 5 hirigana",
+   "Hirigana are not only an inportant way of writing Japanese...", "...They are also magical symbols of imense power!",
+   "Master hirigana, and you master the very, very basics of writing and reading Japanese.",
+   "You also get to blow stuff up with your mind!"];
    sayLines(playerS1Line1, steve);
 }
 
 var playerS1Line1 = function() {
-   IQPlayer.lines = ["What!? Are you kidding me?!", "You haven't even lectured us?","How is this fair?"];
+   IQPlayer.lines = ["My first day of training to become a hirigana master. I am so excited!","Though not as excited as Prof. Substitute."];
    sayLines(steveS1Line2, IQPlayer);
 }
 
 var steveS1Line2 = function() {
-   steve.lines = ["Oh, fine. Here is how it works", "You get thrown into a magical dungeon.", "You have some kana with magical powers",
-   "Use these kana to defeat the enemies.", "There. Happy?"];
+   steve.lines = ["Lets start with what you know as the vowels. A, I, U, E, and O.", "Awa starts with A and means bubble. It shields you",
+   "Inazuma starts with I and means lightning. YOU SHOOT LIGHTNING!", "Usagi starts with U and means rabbit. It turns you into a speedy rabbit.",
+   "Enpitsu starts with E, and means Pencil. Launch a giant summoned pencil in front of you."];
    sayLines(steveS2Line1, steve);
 }
 
@@ -46,9 +50,9 @@ var steveS2Line1 = function() {
    loadMap(game_g, "map1.txt", "map1.gif", introQuestCombatMap);
    //loadMap(game_g, "map2.txt", "map1.gif", quest2CombatMap);
    game_g.rootScene.addChild(hud_g);
-   steve.lines = ["If you manage to defeat my legion of goons, you will have proven you know Japanese",
-               "Wait...",
-			   "Maybe I should have thought this out a little more.",
+   steve.lines = ["And now I have teleported you all to various places around the school gardens.",
+               "Clear out the snails to test your new powers",
+			   "It WILL be tough at first, but you will eventually get the hang of it",
                "...",
                "BEGONE!!!"];
    //sayLines(playerS2Line1, steve);
@@ -60,7 +64,9 @@ var runSteveS2Line1 = function() {
 }
 
 var playerS2Line1 = function() {
-   IQPlayer.lines = ["I think we need a new teacher."];
+   IQPlayer.lines = ["Is the problem that the snails are eating the plants?",
+   "Or is the Problem that the snails are giant?",
+   "Oh well, violence solves it either way!"];
    sayLines(steveS2Line2, IQPlayer);
 }
 
@@ -85,9 +91,8 @@ var checkWinCondition = function() {
    }
    if(enemiesLeft == 0) {
       IQPlayer.isListeningToNPC = true;
-      steve.lines = ["How did you defeat my legion of goons?!", 
-               "I knew naming my pet snail 'Legion of goons' wouldnt actually make him powerful",
-               "Bum out."];
+      steve.lines = ["Good job everyone!", 
+               "I will teleport you all back to the clasroom now."];
       sayLines(playerS1Line2, steve);
       game.rootScene.removeEventListener('enterframe', checkWinCondition);
    }
@@ -98,7 +103,7 @@ var playerS1Line2 = function() {
    //game.rootScene.removeEventListener('enterframe', checkWinCondition);
    game_g.rootScene.removeChild(hud_g);
    loadMap(game_g, "maphome.txt", "maphome.gif", homeMap);
-   IQPlayer.lines = ["This is rediculous. I wouldn't be supprised if", " you are replaced by next monday."];
+   IQPlayer.lines = ["I did it!", "Praise the sun."];
    setTimeout(runPlayerS1Line2, 100);
 }
 
@@ -107,12 +112,12 @@ var runPlayerS1Line2 = function() {
 }
 
 var steveS1Line3 = function() {
-   steve.lines = ["Congratulations, you passed the test.", "Most people would beat me up now, but yo-"];
+   steve.lines = ["Congratulations, you passed the test.", "Talk to me when you are ready for your next test."];
    sayLines(playerS1Line3, steve);
 }
 
 var playerS1Line3 = function() {
-   IQPlayer.lines = ["HNGRAAAAAAAAA"];
+   IQPlayer.lines = ["Already?!"];
    sayLines(endIntroQuest, IQPlayer);
 }
 
@@ -121,5 +126,5 @@ var endIntroQuest = function() {
    steve.lines = [];
    IQPlayer.isListeningToNPC = false;
    IQPlayer.quests.pop();
-   console.log("You the baddest snail murker this side o da nississippi");
+   //console.log("You the baddest snail murker this side o da nississippi");
 }
