@@ -16,7 +16,7 @@ var Player = Class.create(Sprite, {
 		this.isListeningToNPC = false;
 		this.isTargeting = false;
 		//abilities
-		this.unlockedAbilities = 9;
+		this.unlockedAbilities = 10;
 		//u
 		this.storeImage;
 		this.storeFrame;

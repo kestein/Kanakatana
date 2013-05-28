@@ -33,6 +33,7 @@ window.onload = function(){
 	game.preload("koru.png");
 	game.preload("kirikabu.png");
 	game.preload("kusari.png");
+	game.preload("ketsueki.png");
 	game.preload("ice.png");
 	game.preload("a.jpg");
 	game.preload("i.jpg");
