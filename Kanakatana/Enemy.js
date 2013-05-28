@@ -87,7 +87,7 @@ var Enemy = Class.create (Sprite, {
 	
 	//sets the enemy's target to the next coordinate in its path. loops back to first target when route is completed
 	changeTarget:function() {
-		console.log(this.lastVisitedNode);
+		//console.log(this.lastVisitedNode);
 		this.lastVisitedNode = this.targetNode;
 		if(!this.pathReverse) {
 			this.targetNode++;
@@ -195,6 +195,9 @@ var Enemy = Class.create (Sprite, {
 		var dx = 0;
 		var dy = 0;
 		var tempSpeed = this.setSpeed();
+		if(this.stunned) {
+			return;
+		}
    if(map.hitTest(this.x, this.y)) {	//top left
 		dx += this.speed;
 		dy += this.speed;

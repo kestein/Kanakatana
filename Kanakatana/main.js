@@ -31,6 +31,8 @@ window.onload = function(){
 	game.preload("katana2.png");
 	game.preload("Inazuma.png");
 	game.preload("koru.png");
+	game.preload("kirikabu.png");
+	game.preload("kusari.png");
 	game.preload("ice.png");
 	game.preload("a.jpg");
 	game.preload("i.jpg");

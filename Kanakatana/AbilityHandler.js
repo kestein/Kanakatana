@@ -50,6 +50,12 @@ var AbilityHandler = Class.create (Sprite, {
 		else if(key == 6) {
 			return new Ko(32, 32, player, this);
 		}
+		else if(key == 7) {
+			return new Ki(32, 32, player, this);
+		}
+		else if(key == 8) {
+			return new Ku(32, 32, player, this);
+		}
 	},
 
 //picks an abilityNum for an ability that is not currently in use
