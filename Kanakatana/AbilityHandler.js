@@ -1,6 +1,3 @@
-
-
-
 // This is an invisible object that is added to the 'hud'. It handles switching out hirigana for romanji, and for
 // swapping hirigana out.
 var AbilityHandler = Class.create (Sprite, {
@@ -46,6 +43,12 @@ var AbilityHandler = Class.create (Sprite, {
 		}
 		else if(key == 4) {
 			return new O(32, 32, player, this);
+		}
+		else if(key == 5) {
+			return new Ka(32, 32, player, this);
+		}
+		else if(key == 6) {
+			return new Ko(32, 32, player, this);
 		}
 	},
 

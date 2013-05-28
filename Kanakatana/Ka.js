@@ -24,7 +24,7 @@ var Ka = Class.create (Ability, {
 				handler.currentAbility = this;
 			}
 			else if(this.ready && this.romanji && handler.currentAbility == this) {
-				this.makeSquids(this.localPlayer);	
+				this.makeKatanas(this.localPlayer);	
 				this.reset();
 				handler.swapAll();
 				handler.pickNewAbility(player);
@@ -42,7 +42,7 @@ var Ka = Class.create (Ability, {
 		})
 	},
 	
-	makeSquids:function(player) {
+	makeKatanas:function(player) {
 		this.s1 = new Katana(50, 50, player, 0);
 		this.s2 = new Katana(50, 50, player, 1);
 		this.s3 = new Katana(50, 50, player, 2);

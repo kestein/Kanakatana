@@ -1,14 +1,14 @@
 // created by the I class. It becomes the "activeTarget" when It is ready to be placed. "activeTarget is a
-// global variable that is used for abilities targeted with a click. This ability places down lightning
-// that damages enemies.
+// global variable that is used for abilities targeted with a click. This ability I makss an "Inazuma" 
+// that becomes the active target. Clicking again anywhere activates the Inazuma and moves it to the click
+// and sets active target to null/
 var Inazuma = Class.create (Sprite, {
 	initialize:function(width, height, player) {
 		Sprite.call(this, width, height);
-		this.name = "Inazuma";
-		this.image = game.assets["i_romanji.png"]
+		this.image = game.assets["Inazuma.png"]
 		this.x = player.x - this.width/2;
 		this.y = player.y - this. height;
-		this.time = 300;
+		this.time = 30;
       
 		this.image = game.assets["Inazuma.png"];
       
@@ -28,7 +28,7 @@ var Inazuma = Class.create (Sprite, {
 	},
 
 	swapFrame:function() {
-		if(this.frame = 0) {
+		if(this.frame == 0) {
 			this.frame = 1;
 		}
 		else {
@@ -39,6 +39,7 @@ var Inazuma = Class.create (Sprite, {
 	decideBehavior:function() {
 		if(this.active == true) {
 			this.collision();
+			this.animate();
 			this.tick();
 		}
 	},
@@ -49,12 +50,20 @@ var Inazuma = Class.create (Sprite, {
 				entities[i].health--;
 			}
 		}
-	}
+	},
 	
 	tick:function() {
 		this.time--;
 		if(this.time <= 0 || Math.abs(this.x) > 10000 || Math.abs(this.y) > 10000) {
+			this.active = false;
 			this.dead = true;
 		}
+	},
+	
+	activate:function() {
+		this.active = true;
+		activeTarget = null;
+		this.x -= this.width/2;
+		this.y -= this.height/2;
 	}
 });

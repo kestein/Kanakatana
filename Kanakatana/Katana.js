@@ -17,7 +17,8 @@ var Katana = Class.create (Sprite, {
 		this.vx = 0;
 		this.vy = 0;
 		this.dead = false;
-		this.damage = 1;
+		this.damage = 2;
+		
 		if(this.direction == 0 ||this.direction == 2) {		//chooses what image file to use
 			this.image = game.assets["katana2.png"];
 		}
@@ -30,9 +31,11 @@ var Katana = Class.create (Sprite, {
 		else{
 			this.frame = 1;
 		}
-		
+		console.log(this.frame);
 		this.addEventListener('enterframe', function() {
 			this.moveKatana();
+			this.collide();
+			//console.log(this.image);
 		})
 	},
 	//moves the pencil in the direction it is facing.
@@ -50,5 +53,14 @@ var Katana = Class.create (Sprite, {
 			this.vx = -this.speed;
 		}
 		this.moveTo(this.x + this.vx , this.y + this.vy);
-	}		
+	},
+	
+	collide:function() {
+		for(var i = 0; i < entities.length; i++) {
+			if(entities[i] instanceof  Enemy && entities[i].intersect(this)) {
+				this.dead = true;
+				entities[i].health-= this.damage;
+			}
+		}
+	}
 });
