@@ -56,7 +56,7 @@ var quest2CombatMap = function(newmap) {
    enemy1.x = 500;
    enemy1.y = 150;
    
-   enemy2 = new Snail(32, 32, [600,600], [400,150], IQPlayer);
+   enemy2 = new Snail(32, 32, [550,600], [400,150], IQPlayer);
    enemy2.image = game.assets["snail.png"];
    //enemy2.name = "Enemy";
    enemy2.x = 300;
@@ -83,7 +83,7 @@ var quest2CombatMap = function(newmap) {
    entities.push(enemy3);
    stage_g.addChild(enemy4);
    entities.push(enemy4);
-   numEnemies += 4;
+   numEnemies += 3;
    
    IQPlayer.x = 64;
    IQPlayer.y = 64;
@@ -95,12 +95,20 @@ var homeMap = function(newmap) {
    var e_len = prevAcivityPeople.length;
    map = newmap;
    stage_g.addChild(map);
+   //remove any enemeies left in entities
+   for(var a = 0; a < entities.length; a++) {
+      if(entities[a] instanceof Enemy) {
+         entities[a].health = 0;
+         entities[a].dead = true;
+         //entities.splice(a, 1);
+      }
+   }
+   cleanEntities(); //in cleanup.js
    for(var h = 0; h < e_len; h ++) {
       entities.push(prevAcivityPeople[h]);
       stage_g.addChild(entities[h]);
    }
    stage_g.addChild(IQPlayer);
-   
    IQPlayer.x = 50;
    IQPlayer.y = 50;
 }
