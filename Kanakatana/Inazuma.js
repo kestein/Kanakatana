@@ -6,6 +6,7 @@ var Inazuma = Class.create (Sprite, {
 	initialize:function(width, height, player) {
 		Sprite.call(this, width, height);
 		this.image = game.assets["Inazuma.png"]
+		this.name = "Inazuma"
 		this.x = player.x - this.width/2;
 		this.y = player.y - this. height;
 		this.time = 30;

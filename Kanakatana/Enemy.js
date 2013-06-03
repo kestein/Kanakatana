@@ -7,12 +7,13 @@ var Enemy = Class.create (Sprite, {
 		//vars for movement.
 		this.xPath = xp;
 		this.yPath = yp;
-		console.log("xp: " + xp + "yp: " + yp);
 		this.pathReverse = false;
 		this.speed = 0;
+		this.enrageable = true;
 		this.name = "Enemy";		//used in collision detection.
 		this.vx = 0;				//dertermines direction to move.
 		this.vy = 0;
+		this.done = false;
 		this.targetNode = 0;
 		this.lastVisitedNode = 0;
 		this.faceToWallCount = 0;
@@ -42,6 +43,7 @@ var Enemy = Class.create (Sprite, {
 			//this.enrage();
 			this.isStunned();
 			this.checkIfDead();
+			this.reduceEnemyCount();
 			
         });
 	},
@@ -226,6 +228,13 @@ var Enemy = Class.create (Sprite, {
 		tempNode = this.targetNode;
 		this.targetNode = this.lastVisitedNode;
 		this.lastVisitedNode = tempNode;
+	},
+	
+	reduceEnemyCount:function() {
+		if(this.dead) {
+			console.log("UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU");
+			
+		}
 	}
 	
 	

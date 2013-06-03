@@ -16,11 +16,7 @@ var Slimeball = Class.create (Sprite, {
 		
 		this.startCoordinates = new this.coordinates(this.y, this.x);
 		this.endCoordinates = new this.coordinates(player.y, player.x);
-		console.log(this.x);
-		console.log(this.y);
-		console.log(this.startCoordinates);
 		this.moveArray = this.calcStraightLine(this.startCoordinates, this.endCoordinates);
-		console.log(this.moveArray[0]);
 		this.addEventListener('enterframe', function() {	
 			//this.collide();
 			this.moveToTarget();
@@ -87,7 +83,7 @@ var Slimeball = Class.create (Sprite, {
 	
 	growOld:function() {
 		if (this.age > 90) {
-		
+			this.dead = true;
 		}
 	}
 });

@@ -4,9 +4,12 @@
 function cleanEntities() {
 	for(var i = 0; i < entities.length; i++) {
 		if(entities[i].dead) {
-			//if(entities[i] instanceof Koru) {console.log("wtf")};
+			if(entities[i] instanceof Enemy) {
+				numEnemies--;
+			}
+			console.log(entities[i].name + " died.")
 			stage.removeChild(entities[i]);
-			entities.pop(entities[i]);
+			entities.splice(i, 1);
 		}
 	}
 }

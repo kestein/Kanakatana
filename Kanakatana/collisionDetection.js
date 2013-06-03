@@ -5,11 +5,11 @@ function checkCollisions(player) {
    var dx = 0;
    var dy = 0;
    for(var t = 0; t < entities.length; t++) {
-		if(entities[t].name == 'Enemy' && player.within(entities[t], entities[t].enrageDistance)) {	//Enemies attack player if close
+		if(entities[t].enrageable && player.within(entities[t], entities[t].enrageDistance)) {	//Enemies attack player if close
 
 			entities[t].enraged = true;
 		}
-		else if(entities[t].name == 'Enemy') {
+		else if(entities[t].enrageable) {
 			entities[t].enraged = false;
 		}
       if(player.intersect(entities[t])) {
@@ -128,9 +128,8 @@ function collideEntities() {
 	for(var i = 0; i < entities.length; i++) {
 		for(var j = 0; j < entities.length; j++) {
 			if(entities[i] instanceof Enpitsu && entities[j] instanceof Enemy && entities[j].intersect(entities[i])) {
-				
-				entities[i].dead = true;
-				entities[j].health-= entities[i].damage;
+					entities[i].dead = true;
+					entities[j].health -= entities[i].damage;
 			}
 		}
 	}

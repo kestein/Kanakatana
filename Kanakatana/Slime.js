@@ -7,7 +7,7 @@ var Slime = Class.create (Enemy, {
 		this.localPlayer = player;
 		this.speed = 3;
 		this.vx = 0;
-		this.name = "Enemy";		//used in collision detection.
+		this.name = "Slime";		//used in collision detection.
 		this.vy = 0;
 		this.targetNode = 0;
 		this.enraged = false;		//determines if headding towards player
@@ -23,7 +23,7 @@ var Slime = Class.create (Enemy, {
 		this.health = 1;
 		
 		this.addEventListener('enterframe', function() {	
-
+			this.clearSlimeballs;
         });
 	},
 	
@@ -39,9 +39,23 @@ var Slime = Class.create (Enemy, {
 	},
 	
 	shootSlime:function() {
+		console.log(this.dead);
+		if(this.dead) {
+			return;
+		}
 		var slimeball = new Slimeball(20, 20, this, this.localPlayer);
 		entities.push(slimeball);
 		stage.addChild(slimeball);
 		this.shotCooldown = this.cooldownMax;
+	},
+	
+	clearSlimeballs:function() {
+		if(this.dead) {
+			for(var i; i < entities.length; i++) {
+				if(entities[i] instanceof Slimeball) {
+					entities[i].dead = true;
+				}
+			}
+		}
 	}
 });

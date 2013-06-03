@@ -192,7 +192,7 @@ var Player = Class.create(Sprite, {
 	
 	hitSlime:function() {
 		for(var i = 0; i < entities.length; i++) {
-			if(entities[i] instanceof Slimeball && this.intersect(entities[i]) ) {
+			if(!this.isListeningToNPC && entities[i] instanceof Slimeball && this.intersect(entities[i]) ) {
 				console.log("hit");
 				entities[i].dead = true;
 				this.x = 50;

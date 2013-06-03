@@ -80,16 +80,19 @@ var steveS2Line2 = function() {
 }
 
 var checkWinCondition = function() {
-   var enemiesLeft = 0;
+//console.log(entities.length);
+   /*var enemiesLeft = 0;
    if(entities.length == 0) {
       enemiesLeft = 0;
    }
    for(var a = 0; a < entities.length; a++) {
       if(entities[a] instanceof Enemy) {
          enemiesLeft += 1;
+		 //console.log(enemiesLeft);
       }
-   }
-   if(enemiesLeft == 0) {
+   }*/
+   console.log(numEnemies);
+   if(numEnemies == 0) {
       IQPlayer.isListeningToNPC = true;
       steve.lines = ["Good job everyone!", 
                "I will teleport you all back to the clasroom now."];
