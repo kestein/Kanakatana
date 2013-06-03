@@ -55,7 +55,6 @@ var steveS2Line1 = function() {
 			   "It WILL be tough at first, but you will eventually get the hang of it",
                "...",
                "BEGONE!!!"];
-   //sayLines(playerS2Line1, steve);
    setTimeout(runSteveS2Line1, 100);
 }
 

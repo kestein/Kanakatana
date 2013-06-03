@@ -11,7 +11,7 @@ function sayLines(nextLine, speaker) {
    bkg.image = game_g.assets["label_bkg.png"];
    bkg.y = game_g.height - 50;
    if(IQPlayer.x > game_g.width/2) {
-      screenOffsetX = IQPlayer.x - game_g.width/2 + 25;
+    //  screenOffsetX = IQPlayer.x - game_g.width/2 + 25;
    }
    if(IQPlayer.x - game_g.width/2)
    bkg.x = 0 + screenOffsetX;
