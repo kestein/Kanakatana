@@ -1,0 +1,45 @@
+21
+q 0 0
+w 0 1
+e 0 2
+r 0 3
+t 0 4
+y 0 5
+u 0 6
+i 0 7
+o 0 8 
+a 1 9
+s 1 10
+d 1 11
+f 1 12
+g 1 13
+h 1 14
+j 1 15
+k 1 16
+l 1 17
+_ 0 18
+/ 1 19
+m 0 20
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt/tttttttttttttttttttttttttttttttt/
+/ttttasdtttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt/ttttttttttttttasssssssssssdttttt/
+/ttttjklttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt__________ttttttttttttttttttttt/ttttttttttttttfggggggggggghttttt/
+/ttttttttttttttttttttttttt/ttttttttttttttttttttttttttttttttttttttttttttt_____tttttttttmmmmmmmmmttttt/ttttttttttttttjkkkkkkkkkkklttttt/
+/ttttttttttttttttttttttttt/tttttttttttttttttttttttttttttttttttttttttttttttttttttttttmmmmmmmmtttttttt/tttttttttttttttttttt/ttttttttttt/
+/ttttttttttttttttttttttttt/tttttttttttttttttttttttttttttttttttttttttttttttttttttttmmmmmmmmtttttttttt/tttttttttttttttttttt/ttttttttttt/
+/ttttttttttttttttttttttttt///////ttttttttttttttttttttttttttt/ttttttttttttttttttttttttmmmmmmmmmmmmmmm/tttttttttttttttttttt/ttttttttttt/
+/ttttttttttttttttttttttttt/tttttttttttttttttttttttttttttt/tt/tttttttttttttttmmmmmmmmmmmttttttmmmmmmm__________ttttttttttt/ttttttttttt/
+/ttttttttttttttttttttttttt/tttttttttttttttttttttttttttttt/tt/ttttttttttttttttttttttttttttttttmmmmm____________ttttttttttt/ttttttttttt/
+/ttttttttttttttttttttttttt/tttttttttttttttttttttttttttttt///////tttttttttttttttttttttttttttttttmmm____________ttttttttttt/ttttttttttt/
+/tttttttttttttttttttttttttttttttttttttttttttttttttttttttt/tt/ttttttttttttttttttttt_______ttttttttm____________ttttttttttttttttttttttt/
+/tttttttttttttttttttttttttttttttttttttttttttttttttttttttt/tt/ttttttttttttttttttttttttttttttttttmmmmm/tttttttttttttttttttttttttttttttt/
+/tttttttttttttttttttttttttttttttttttttttttttttasssdttttttttt/ttttttttttttttttttttttttttttttttttttttt/tttttttttttttttttttttttttttttttt/
+/tttttttttttttttttttttttttttttttttttttttttttttfggghttttttttttttttttttttttttttttttttttttttttttttttttt/tttttttttttttttttttttttttttttttt/
+/tttttttttttttttttttttttttttttttttttttttttttttjkkklttttttttttttttttttttttttttttttttttttttttttttttttt/tttttttttttttttttttttttttttttttt/
+/ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt/tttttttttttttttttttttttttttttttt/
+/ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt/tttttttttttttttttttttttttttttttt/
+/ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt/tttttttttttttttttttttttttttttttt/
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+

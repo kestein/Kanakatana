@@ -48,7 +48,7 @@ var steveS1Line2 = function() {
 
 var steveS2Line1 = function() { 
    loadMap(game_g, "map1.txt", "map1.gif", introQuestCombatMap);
-   //loadMap(game_g, "map2.txt", "map1.gif", quest2CombatMap);
+   //loadMap(game_g, "map3.txt", "map2.gif", introQuestCombatMap);
    game_g.rootScene.addChild(hud_g);
    steve.lines = ["And now I have teleported you all to various places around the school gardens.",
                "Clear out the snails to test your new powers",
