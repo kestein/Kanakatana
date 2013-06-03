@@ -23,12 +23,6 @@ var Snail = Class.create (Enemy, {
 		this.health = 2;
 		
 		this.addEventListener('enterframe', function() {	
-		//this.moveToTarget();
-		//this.checkIfDead();
-		if (!this.stunned){
-				//this.moveToTarget();
-			}
-		
 			
         });
 	},

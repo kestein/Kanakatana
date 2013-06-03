@@ -15,6 +15,7 @@ window.onload = function(){
 	game.preload("maphome.gif");
 	game.preload("snail.png");
 	game.preload("slime.png");
+	game.preload("slimeball.png");
 	game.preload("map1.gif");
 	game.preload("player.png");
 	game.preload("chars.gif");

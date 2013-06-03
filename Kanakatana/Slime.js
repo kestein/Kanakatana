@@ -4,6 +4,7 @@
 var Slime = Class.create (Enemy, {
 	initialize:function(width, height, xp, yp, player) {
 		Enemy.call(this, width, height, xp, yp, player);
+		this.localPlayer = player;
 		this.speed = 3;
 		this.vx = 0;
 		this.name = "Enemy";		//used in collision detection.
@@ -16,21 +17,31 @@ var Slime = Class.create (Enemy, {
 		this.firstCoordinate = this.coordinates(this.xPath[this.targetNode],this.yPath[this.targetNode]);
 		this.moveArrayIndex = 0;
 		this.dead = false;
+		this.shotCooldown = 0;
+		this.cooldownMax = 90;
 		
 		this.health = 1;
 		
 		this.addEventListener('enterframe', function() {	
-		//this.moveToTarget();
-		//this.checkIfDead();
-		if (!this.stunned){
-				//this.moveToTarget();
-			}
-		
-			
+
         });
 	},
 	
 	enrageMode:function() {
-		console.log("Angry Slime!");
+		
+		if(this.shotCooldown <= 0) {
+			this.shootSlime();
+			//console.log(this.localPlayer.x);
+			//console.log(this.localPlayer.y);
+		}
+		this.shotCooldown--;
+		
+	},
+	
+	shootSlime:function() {
+		var slimeball = new Slimeball(20, 20, this, this.localPlayer);
+		entities.push(slimeball);
+		stage.addChild(slimeball);
+		this.shotCooldown = this.cooldownMax;
 	}
 });
