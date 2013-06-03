@@ -33,6 +33,7 @@ var Player = Class.create(Sprite, {
          this.moveToClick();
 		 this.walkAnimation();
 		 this.timeDown();
+		 this.hitSlime();
 		})
 		
    },
@@ -187,6 +188,19 @@ var Player = Class.create(Sprite, {
 		this.image = game.assets["player.png"];
 		this.frame = this.storeFrame;
 		this.speed = this.storeSpeed;
+	},
+	
+	hitSlime:function() {
+		for(var i = 0; i < entities.length; i++) {
+			if(entities[i] instanceof Slimeball && this.intersect(entities[i]) ) {
+				console.log("hit");
+				entities[i].dead = true;
+				this.x = 50;
+				this.y = 50;
+				this.moveArray.length = 0;
+				break;
+			}
+		}
 	}
 	
 	
