@@ -26,6 +26,14 @@ var introQuestCombatMap = function(newmap) {
    stage_g.addChild(enemy2);
    entities.push(enemy2);
    
+   enemy3 = new Slime(30, 40, [150,500], [200,200], IQPlayer);
+   enemy3.image = game.assets["slime.png"];
+   enemy3.name = "Enemy";
+   enemy3.x = 150;
+   enemy3.y = 200;
+   stage_g.addChild(enemy3);
+   entities.push(enemy3);
+   
    IQPlayer.x = 64;
    IQPlayer.y = 64;
 }
