@@ -10,10 +10,7 @@ var Inazuma = Class.create (Sprite, {
 		this.x = player.x - this.width/2;
 		this.y = player.y - this. height;
 		this.time = 30;
-      
 		this.image = game.assets["Inazuma.png"];
-      
-      
 		this.frame = 0;
 		this.active = false;
 		activeTarget = this;
