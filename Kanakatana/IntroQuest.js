@@ -56,6 +56,7 @@ var steveS2Line1 = function() {
                "...",
                "BEGONE!!!"];
    setTimeout(runSteveS2Line1, 100);
+
 }
 
 var runSteveS2Line1 = function() {
@@ -90,7 +91,6 @@ var checkWinCondition = function() {
 		 //console.log(enemiesLeft);
       }
    }*/
-   console.log(numEnemies);
    if(numEnemies == 0) {
       IQPlayer.isListeningToNPC = true;
       steve.lines = ["Good job everyone!", 

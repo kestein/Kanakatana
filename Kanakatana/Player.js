@@ -6,6 +6,7 @@ var Player = Class.create(Sprite, {
 		Sprite.call(this, width, height);
 		/** click to move things **/
 		this.moveArrayIndex = 0;
+		this.image = game.assets["player.png"];
 		this.alive = true;
 		this.frame = 5;
 		this.moveArray = [];
@@ -15,6 +16,7 @@ var Player = Class.create(Sprite, {
 		this.endCoordinate =  this.coordinates(0,0);
 		this.isListeningToNPC = false;
 		this.isTargeting = false;
+		this.credits = 0;
 		//abilities
 		this.unlockedAbilities = 5;
 		//u
@@ -34,6 +36,8 @@ var Player = Class.create(Sprite, {
 		 this.walkAnimation();
 		 this.timeDown();
 		 this.hitSlime();
+		 //console.log(this.frame);
+		    //console.log(this.image);
 		})
 		
    },

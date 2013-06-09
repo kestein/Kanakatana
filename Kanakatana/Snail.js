@@ -7,6 +7,7 @@ var Snail = Class.create (Enemy, {
 		//vars for movement.
 		//this.xPath = xp;
 		//this.yPath = yp;
+		this.image = game.assets["snail.png"];
 		this.speed = 2;
 		this.vx = 0;
 		this.name = "Snail";		//used in collision detection.
@@ -19,7 +20,7 @@ var Snail = Class.create (Enemy, {
 		this.firstCoordinate = this.coordinates(this.xPath[this.targetNode],this.yPath[this.targetNode]);
 		this.moveArrayIndex = 0;
 		this.dead = false;
-		
+		this.creditValue = 100;
 		this.health = 2;
 		
 		this.addEventListener('enterframe', function() {	

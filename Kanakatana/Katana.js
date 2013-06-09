@@ -31,11 +31,9 @@ var Katana = Class.create (Sprite, {
 		else{
 			this.frame = 1;
 		}
-		console.log(this.frame);
 		this.addEventListener('enterframe', function() {
 			this.moveKatana();
 			this.collide();
-			//console.log(this.image);
 		})
 	},
 	//moves the pencil in the direction it is facing.

@@ -37,6 +37,7 @@ window.onload = function(){
 	game.preload("kirikabu.png");
 	game.preload("kusari.png");
 	game.preload("ketsueki.png");
+	game.preload("Credits.png");
 	game.preload("ice.png");
 	game.preload("a.jpg");
 	game.preload("i.jpg");
@@ -77,7 +78,7 @@ window.onload = function(){
     game.onload = function(){	
 		/** player things **/
 		player = new Player(16, 22);
-		player.image = game.assets["player.png"];
+		//player.image = game.assets["player.png"];
       player.portrait = game.assets["player_portrait.png"];
 		player.x = 150;
 		player.y = 10;
@@ -107,6 +108,10 @@ window.onload = function(){
 	  abilityHandler.x = 432;
 	  abilityHandler.y = 0;
 	  //console.log(abilityHandler.x);
+	  
+	  creditSheet = new CreditSheet(100, 80, player);
+	  creditSheet.x = 380;
+	  creditSheet.y = 0;
 	  
       entities = new Array();
       entities.push(steve);
@@ -166,8 +171,9 @@ function checkCollisions(player, entities) {
 		stage.addChild(steve);
 		stage.addChild(jane);
 		hud.addChild(abilityHandler);
+		hud.addChild(creditSheet);
 		game.rootScene.addChild(stage);
-      game.rootScene.addChild(textDisplay);
+		game.rootScene.addChild(textDisplay);
 		
 		game.rootScene.addEventListener('enterframe', function(e) {
 			var x = Math.min((game.width  - 50) / 2 - player.x, 0);

@@ -9,8 +9,8 @@ function cleanEntities() {
 			}
 			console.log(entities[i].name + " died.")
 			stage.removeChild(entities[i]);
-			//entities.pop(entities[i]);
-         entities.splice(i, 1);
+			entities.splice(i, 1);
 		}
 	}
 }
+

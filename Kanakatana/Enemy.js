@@ -27,6 +27,8 @@ var Enemy = Class.create (Sprite, {
 		this.dead = false;
 		this.health = 2;
 		
+		
+		
 		this.slowed = false;
 		this.slowSpeed = 1;
 		
@@ -45,6 +47,10 @@ var Enemy = Class.create (Sprite, {
 			this.checkIfDead();
 			this.reduceEnemyCount();
 			
+        });
+		
+		this.addEventListener('removed', function() {
+			this.addCredits(player);
         });
 	},
 	coordinates: function(X, Y) {
@@ -232,9 +238,13 @@ var Enemy = Class.create (Sprite, {
 	
 	reduceEnemyCount:function() {
 		if(this.dead) {
-			console.log("UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU");
+			//console.log("UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU");
 			
 		}
+	},
+	
+	addCredits: function(player) {
+		player.credits += this.creditValue;
 	}
 	
 	

@@ -73,7 +73,7 @@ var steveS2Line2Q2 = function() {
 }
 
 var checkWinConditionQ2 = function() {
-   var enemiesLeft = 0;
+   /*var enemiesLeft = 0;
    if(entities.length == 0) {
       enemiesLeft = 0;
    }
@@ -81,8 +81,8 @@ var checkWinConditionQ2 = function() {
       if(entities[a] instanceof Enemy) {
          enemiesLeft += 1;
       }
-   }
-   if(enemiesLeft == 0) {
+   }*/
+   if(numEnemies == 0) {
       IQPlayer.isListeningToNPC = true;
       steve.lines = ["Thank you for saving my garden again.", 
                "Class is dismissed for the day.","I will bring you back to your homeroom."];

@@ -5,6 +5,7 @@ var Slime = Class.create (Enemy, {
 	initialize:function(width, height, xp, yp, player) {
 		Enemy.call(this, width, height, xp, yp, player);
 		this.localPlayer = player;
+		this.image = game.assets["slime.png"];
 		this.speed = 3;
 		this.vx = 0;
 		this.name = "Slime";		//used in collision detection.
@@ -19,11 +20,12 @@ var Slime = Class.create (Enemy, {
 		this.dead = false;
 		this.shotCooldown = 0;
 		this.cooldownMax = 90;
+		this.creditValue = 100;
 		
 		this.health = 1;
 		
 		this.addEventListener('enterframe', function() {	
-			this.clearSlimeballs;
+			this.clearSlimeballs();
         });
 	},
 	
