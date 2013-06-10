@@ -40,7 +40,7 @@ function checkCollisions(player) {
          player.quests[player.quests.length - 1](player);
          player.isListeningToNPC = true;
        }
-       if(entities[t] instanceof NPC && !player.isListeningToNPC && player.quests.length > 0 && entities[t].name == "jane") {
+       if(entities[t] instanceof NPC && !player.isListeningToNPC && entities[t].name == "jane") {
          openShop(entities[t], player);
          player.isListeningToNPC = true;
        }
