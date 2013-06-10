@@ -111,6 +111,12 @@ var checkWinConditionsQ3 = function() {
 		}
          IQPlayer.isListeningToNPC =  true;
          IQPlayer.lines = ["...", "Is this a golden watering can?"];
+         if(entities.length > 0) {
+		      for(var i = 0; i < entities.length; i++){
+			       entities[i].dead = true;
+		      }
+		      cleanEntities();
+	      }
          sayLines(steveS2Line2Q3, IQPlayer);
          game.rootScene.removeEventListener('enterframe', checkWinConditionsQ3);
       }
@@ -133,7 +139,7 @@ var steveS2Line3Q3 = function() {
 }
 
 var playerS2Line4Q3 = function() {
-   IQPlayer.lines = ["...", "I better not be there when I get back or I swear..."];
+   IQPlayer.lines = ["...", "You better not be there when I get back or I swear..."];
    sayLines(goHome, IQPlayer);
 }
 
@@ -141,6 +147,7 @@ var goHome = function() {
    game_g.rootScene.removeChild(hud_g);
    setTimeout(loadMap(game_g, "maphome.txt", "maphome.gif", homeMap), 300);
    setTimeout(killSteve, 100);
+   console.log("made it");
    IQPlayer.lines = ["...", "WHERE'D THAT GUY GO?!!", "UGHHHHHH, I'M GONNA GET YOU!"];
    setTimeout(runPlayerS3Line1Q3, 100);
 }
@@ -152,8 +159,8 @@ var killSteve = function() {
          stage_g.removeChild(entities[f]);
          entities.splice(f, 1);
       }
-      console.log(entities);
    }
+   console.log(entities);
 }
 
 var runPlayerS3Line1Q3 = function() {

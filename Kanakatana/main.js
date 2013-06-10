@@ -46,6 +46,7 @@ window.onload = function(){
 	game.preload("ice.png");
 	game.preload("snailice.png");
 	game.preload("slimeice.png");
+   game.preload("store_portrait.png");
 	game.preload("a.jpg");
 	game.preload("i.jpg");
 	game.preload("u.jpg");
@@ -109,7 +110,7 @@ window.onload = function(){
       
       jane = new NPC(32, 32, "test_lines.txt");
       jane.image = game.assets["chars.gif"];
-      jane.portrait = game.assets["chars.gif"];
+      jane.portrait = game.assets["store_portrait.png"];
 	  jane.frame = 7;
 	  jane.name = "jane";
       jane.x = 100;
