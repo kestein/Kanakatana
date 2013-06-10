@@ -95,7 +95,7 @@ var playerS1Line2Q2 = function() {
    //transport us back to the classroom
    game.rootScene.removeEventListener('enterframe', checkWinConditionQ2);
    game_g.rootScene.removeChild(hud_g);
-   loadMap(game_g, "maphome.txt", "maphome.gif", homeMap);
+   setTimeout(loadMap(game_g, "maphome.txt", "maphome.gif", homeMap), 300);
    IQPlayer.lines = ["What an intense day."];
    setTimeout(runPlayerS1Line2Q2, 100);
 }
