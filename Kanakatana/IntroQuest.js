@@ -96,6 +96,13 @@ var checkWinCondition = function() {
       steve.lines = ["Good job everyone!", 
                "I will teleport you all back to the clasroom now."];
       sayLines(playerS1Line2, steve);
+	  if(entities.length > 0) {
+		for(var i = 0; i < entities.length; i++){
+			entities[i].dead = true;
+		}
+		cleanEntities();
+	  }
+	  
       game.rootScene.removeEventListener('enterframe', checkWinCondition);
    }
 }

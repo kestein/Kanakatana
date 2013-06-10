@@ -87,6 +87,12 @@ var checkWinConditionQ2 = function() {
       steve.lines = ["Thank you for saving my garden again.", 
                "Class is dismissed for the day.","I will bring you back to your homeroom."];
       sayLines(playerS1Line2Q2, steve);
+	  if(entities.length > 0) {
+		for(var i = 0; i < entities.length; i++){
+			entities[i].dead = true;
+		}
+		cleanEntities();
+	  }
       game.rootScene.removeEventListener('enterframe', checkWinConditionQ2);
    }
 }
