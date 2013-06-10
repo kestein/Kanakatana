@@ -28,8 +28,6 @@ var Ke = Class.create (Ability, {
 				handler.swapAll();
 				handler.currentAbility = null;
 			}
-			
-			
 		})
 		
 		this.addEventListener('enterframe', function() {
