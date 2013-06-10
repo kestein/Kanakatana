@@ -9,7 +9,7 @@ var Kirikabu = Class.create (Sprite, {
 		this.x = player.x - this.width/2;
 		this.y = player.y - this. height;
 		this.time = 160;
-      
+		this.activeTargetJump = true;
 		this.frame = 0;
 		this.active = false;
 		activeTarget = this;

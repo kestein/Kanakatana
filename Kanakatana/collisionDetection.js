@@ -35,63 +35,7 @@ function checkCollisions(player) {
 			}
 			player.moveArray.length = 0;
 		 }
-		/* if(entities[t] instanceof NPC) {
-			if(player.direction == 0 && player.endCoordinate) {//moving up
-				//diagonal checks
-				if(player.x - player.endCoordinate.x < 0) {//r
-					player.x = entities[t].x - player.width - 1;
-				}
-				if(player.x - player.endCoordinate.x > 0) {//left
-					player.x = entities[t].x + player.width + 1;
-				}
-				//not diagonals
-				else {
-					player.y = entities[t].y + player.height + 1;
-				}
-				player.moveArray.length = 0;
-				//this.isMoving = false;
-			}
-			if(player.direction == 2  && player.endCoordinate) {//moving down
-				if(player.x - player.endCoordinate.x < 0) {//right
-					player.x = entities[t].x - player.width - 1;
-				}
-				if(player.x - player.endCoordinate.x > 0) {//left
-					player.x = entities[t].x + player.width + 1;
-				}
-				else {
-					player.y = entities[t].y - player.height - 1;
-				}
-				player.moveArray.length = 0;
-				//this.isMoving = false;
-			}
-			if(player.direction == 1 && player.endCoordinate) {//moving right
-				if(player.y - player.endCoordinate.y < 0) {//up
-					player.y = entities[t].y + player.height + 1;
-				}
-				if(player.y - player.endCoordinate.y > 0) {//down
-					player.y = entities[t].y - player.height - 1;
-				}
-				else {
-					player.x = entities[t].x - player.width - 1;
-				}
-				player.moveArray.length = 0;
-				//this.isMoving = false;
-			}
-			if(player.direction == 3 && player.endCoordinate) {//moving left
-				if(player.y - player.endCoordinate.y < 0) {
-					player.y = entities[t].y + player.height + 1;
-				}
-				if(player.y - player.endCoordinate.y > 0) {
-					player.y = entities[t].y - player.height - 1;
-				}
-				else {
-					player.x = entities[t].x + player.width + 1;
-				}
-				player.moveArray.length = 0;
-				//this.isMoving = false;
-			}
-			//player.isListeningToNPC = true;
-		 }*/
+		
 		 if(entities[t] instanceof NPC && !player.isListeningToNPC && player.quests.length > 0) {
          player.quests[player.quests.length - 1](player);
          player.isListeningToNPC = true;

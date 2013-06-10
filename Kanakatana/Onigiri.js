@@ -17,7 +17,7 @@
       
       this.addEventListener('enterframe', function() {
          //remove the onigiri after age > 600
-         if(this.age >= 150) {
+         if(this.age >= 270) {
             for(var i = 0; i < entities.length; i++) {
 			      if(entities[i] instanceof Enemy) {
 				      entities[i].targetOfRage = player;

@@ -43,8 +43,8 @@ var I = Class.create (Ability, {
 	
 	makeSquids:function(player) {
 		this.inazuma = new Inazuma(32, 100, player);
-		this.inazuma.x = player.x;
-		this.inazuma.y = player.y;
+		this.inazuma.x = player.x + player.width/2 - this.inazuma.width/2;
+		this.inazuma.y = player.y + player.height - this.inazuma.height;
 		entities.push(this.inazuma);
 		stage.addChild(this.inazuma);
 	}

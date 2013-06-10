@@ -190,10 +190,12 @@ function checkCollisions(player, entities) {
 		//handles player movement while clicking. it adds a modifier to make the movement relative to the map and not the screen
 		game.rootScene.addEventListener('touchstart', function(evt) {
 			if(activeTarget) {
-				activeTarget.x = evt.localX - stage.x;
-				activeTarget.y = evt.localY - stage.y;
-				activeTarget.moveTo(evt.localX - stage.x, evt.localY - stage.y)
-				activeTarget.activate();
+				if(activeTarget.activeTargetJump) {
+					activeTarget.x = evt.localX - stage.x;
+					activeTarget.y = evt.localY - stage.y;
+					activeTarget.moveTo(evt.localX - stage.x, evt.localY - stage.y);
+				}
+				activeTarget.activate(evt.localX - stage.x, evt.localY - stage.y);
 			}
 			if(evt.localX > 34) {		//hack. fix this when implementing ability pannel.
 				player.targetClick(-stage.x + evt.localX - player.width/2, evt.localY - stage.y - player.height/2 );

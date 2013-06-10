@@ -11,6 +11,7 @@ var Player = Class.create(Sprite, {
 		this.frame = 5;
 		this.moveArray = [];
 		this.isMoving = false;
+		this.isLightning = false;
 		this.direction = 2;
 		this.speed = 4;
 		this.endCoordinate =  this.coordinates(0,0);
@@ -36,8 +37,7 @@ var Player = Class.create(Sprite, {
 		 this.walkAnimation();
 		 this.timeDown();
 		 this.hitSlime();
-		 //console.log(this.frame);
-		    //console.log(this.image);
+		 //console.log(this.image);
 		})
 		
    },
@@ -88,7 +88,7 @@ var Player = Class.create(Sprite, {
 	targetClick:function(clickX, clickY) {
 	this.moveArray = [];
 	this.moveArrayIndex = 0;
-		if(this.x == clickX && this.y == clickY) {
+		if(this.x == clickX && this.y == clickY || this.isLightning) {
 			this.isMoving = false;
 		}
 		else {
@@ -164,7 +164,7 @@ var Player = Class.create(Sprite, {
 			//console.log(this.y);
 		}
 	},
-	
+	// turns the player into a bunny when they use Usagi
 	becomeBunny:function() {
 		this.storeImage = this.image;
 		this.storeFrame = this.frame;
@@ -175,7 +175,7 @@ var Player = Class.create(Sprite, {
 		this.bunnyDuration = 100;
 		this.isBunny = true;
 	},
-	
+	//decides when to end the player's bunny form.
 	timeDown:function() {
 	//console.log(player);
 		if (this.bunnyDuration > 0) {
@@ -187,13 +187,13 @@ var Player = Class.create(Sprite, {
 			this.becomeHuman();
 		}
 	},
-	
+	//ends the player's bunny form.
 	becomeHuman:function(player) {
 		this.image = game.assets["player.png"];
 		this.frame = this.storeFrame;
 		this.speed = this.storeSpeed;
 	},
-	
+	//kills player if they hit the slimeball
 	hitSlime:function() {
 		for(var i = 0; i < entities.length; i++) {
 			if(!this.isListeningToNPC && entities[i] instanceof Slimeball && this.intersect(entities[i]) ) {
