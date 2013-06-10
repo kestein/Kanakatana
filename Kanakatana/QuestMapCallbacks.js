@@ -92,10 +92,11 @@ var homeMap = function(newmap) {
    stage_g.addChild(map);
    //remove any enemeies left in entities
    for(var a = 0; a < entities.length; a++) {
-      if(entities[a] instanceof Enemy) {
+      entities[a].dead = true;
+      /*if(entities[a] instanceof Enemy) {
          entities[a].health = 0;
          entities[a].dead = true;
-      }
+      }*/
    }
    cleanEntities(); //in cleanup.js
    for(var h = 0; h < e_len; h ++) {
