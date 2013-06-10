@@ -84,7 +84,7 @@ var Inazuma = Class.create (Sprite, {
 		var vx = 0;
 		var vy = 0;
 		if(this.x > this.targetX) {
-			vy = -this.speed;
+			vx = -this.speed;
 		}
 		else if(this.x < this.targetX) {
 			vx = this.speed;
