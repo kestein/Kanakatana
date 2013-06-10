@@ -52,14 +52,14 @@ var AbilityHandler = Class.create (Sprite, {
 	//takes an integer and returns the proper ability.
 	fetchAbilities:function(key, player) {
 		if(key == 0) {
-			return new A(32, 32, player, this);
+		return new Ke(32, 32, player, this);
+			//return new A(32, 32, player, this);
 		}
 		else if(key == 1) {
 			return new I(32, 32, player, this);
 		}
 		else if(key == 2) {
-		return new Ko(32, 32, player, this);
-			//return new U(32, 32, player, this);
+			return new U(32, 32, player, this);
 		}
 		else if(key == 3) {
 			return new E(32, 32, player, this);

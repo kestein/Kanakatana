@@ -38,7 +38,7 @@ var Ke = Class.create (Ability, {
 	},
 	
 	makeBlood:function(player) {
-		this.ketsueki = new Ketsueki(20, 20, player);
+		this.ketsueki = new Ketsueki(20, 20, player, 4, player);
 		this.ketsueki.x = player.x;
 		this.ketsueki.y = player.y;
 		entities.push(this.ketsueki);
