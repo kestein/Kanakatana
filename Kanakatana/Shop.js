@@ -1,9 +1,9 @@
 var openShop = function(shopKeeper, player) {
-   var bkg = new Sprite(game.width, game.height/6);
+   var bkg = new Sprite(game.width, 60);
    var portrait = new Sprite(60, 60);
    var l = new Label();
    bkg.image = game.assets["label_bkg.png"];
-   bkg.y = game.height - 50;
+   bkg.y = game.height - 60;
   
    portrait.image = shopKeeper.portrait;
    portrait.x = game.width - 60;
