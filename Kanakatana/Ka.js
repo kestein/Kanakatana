@@ -44,17 +44,17 @@ var Ka = Class.create (Ability, {
 	
 	makeKatanas:function(player) {
 		this.s1 = new Katana(50, 50, player, 0);
-		this.s2 = new Katana(50, 50, player, 1);
-		this.s3 = new Katana(50, 50, player, 2);
-		this.s4 = new Katana(50, 50, player, 3);
+		//this.s2 = new Katana(50, 50, player, 1);
+		//this.s3 = new Katana(50, 50, player, 2);
+		//this.s4 = new Katana(50, 50, player, 3);
 		entities.push(this.s1);
 		stage.addChild(this.s1);
-		entities.push(this.s2);
+		/*entities.push(this.s2);
 		stage.addChild(this.s2);
 		entities.push(this.s3);
 		stage.addChild(this.s3);
 		entities.push(this.s4);
-		stage.addChild(this.s4);
+		stage.addChild(this.s4);*/
 	}
 		
 });

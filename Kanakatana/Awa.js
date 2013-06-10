@@ -38,7 +38,10 @@ var Awa = Class.create (Sprite, {
 				entities[i].stunned = true;
 				this.dead = true;
 			}
+         if(entities[i] instanceof Slimeball && this.intersect(entities[i])) {
+            entities[i].dead = true;
+            this.dead = true;
+         }
 		}
 	}
-	
 });
