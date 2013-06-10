@@ -7,7 +7,7 @@ function cleanEntities() {
 			if(entities[i] instanceof Enemy) {
 				numEnemies--;
 			}
-			console.log(entities[i].name + " died.")
+			//console.log(entities[i].name + " died.")
 			stage.removeChild(entities[i]);
 			entities.splice(i, 1);
 		}

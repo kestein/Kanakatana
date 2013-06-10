@@ -8,6 +8,7 @@ var AbilityHandler = Class.create (Sprite, {
 		this.maxUsableAbilities = 3;	//possible hack must be less than or equal to unlocked abilities.
 		this.unlockedAbilities = player.unlockedAbilities;
 		this.usableAbilities = [];
+		this.hackFixTheShopArray = [true, true, true, true, true, false, false, false, false, false];
 		this.currentAbility;
 		this.abilityNum = Math.floor(Math.random() * this.maxUsableAbilities); 
 		var i;
@@ -52,8 +53,7 @@ var AbilityHandler = Class.create (Sprite, {
 	//takes an integer and returns the proper ability.
 	fetchAbilities:function(key, player) {
 		if(key == 0) {
-		return new Ke(32, 32, player, this);
-			//return new A(32, 32, player, this);
+			return new A(32, 32, player, this);
 		}
 		else if(key == 1) {
 			return new I(32, 32, player, this);
@@ -87,23 +87,38 @@ var AbilityHandler = Class.create (Sprite, {
 //picks an abilityNum for an ability that is not currently in use
 	pickUnusedAbility:function() {
 		var unusedAbility = Math.floor(Math.random() * this.unlockedAbilities);
-		while(this.isInUse(unusedAbility, this.usableAbilities)) {
+		console.log("first " + unusedAbility);
+		while(this.isInUse(unusedAbility, this.usableAbilities) ) {
 			unusedAbility = Math.floor(Math.random() * this.unlockedAbilities);
+			console.log("retry " + unusedAbility);
+			
 		}
 		return unusedAbility;
 	},
 	
-	//checks to see if an ability is already in the ability bar.
+	//checks to see if an ability is already in the ability bar. super hach
 	isInUse:function(ability, array) {
 		var i;
 		if(ability == 999) {	//hack A
 			return true;
 		}
+		if(!this.hackFixTheShopArray[ability]) {
+				console.log("redo1 " +ability);
+				return true;
+			}
 		for(i = 0; i < array.length; i++) {
-			if(array[i] == null) {		//hack
+		console.log(this.hackFixTheShopArray[ability])
+		console.log("num check " +ability)
+			
+			if(array[i] == null  && !this.hackFixTheShopArray[ability]) {		//hack
+			console.log("redo2 " +ability);
+				return true;
+			}
+			else if(array[i] == null){
 				return false;
 			}
-			if(array[i].abilityNum == ability) {
+			if(array[i].abilityNum == ability || !this.hackFixTheShopArray[ability]) {
+			
 				return true;
 			}
 		}
