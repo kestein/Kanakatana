@@ -7,6 +7,7 @@ var game;
 var stage;
 var hud;
 var textDisplay;
+var abilityHandler;
 
 window.onload = function(){
     game = new Game(480, 320);//30x20 text files
