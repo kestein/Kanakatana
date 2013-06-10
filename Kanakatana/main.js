@@ -15,6 +15,7 @@ window.onload = function(){
     game.fps = 30;
 	game.preload("maphome.gif");
 	game.preload("snail.png");
+   game.preload("quest_3_obj.png");
 	game.preload("slime.png");
 	game.preload("slimeball.png");
 	game.preload("map1.gif");

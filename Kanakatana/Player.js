@@ -33,9 +33,9 @@ var Player = Class.create(Sprite, {
 		//quests
       this.quests = new Array();
       
+      this.quests.push(startQ3);
       this.quests.push(startQ2);
       this.quests.push(startIntroQuest);
-      this.quests.push(startQ3);
       
 		this.addEventListener('enterframe', function() {
          this.moveToClick();

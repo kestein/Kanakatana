@@ -96,8 +96,65 @@ var playerS2Line1Q3 = function() {
 
 var questStart = function() {
    IQPlayer.isListeningToNPC = false;
+   game.rootScene.addEventListener('enterframe', checkWinConditionsQ3);
 }
 
-var asdf = function() {
+var checkWinConditionsQ3 = function() {
+   for(var a = 0; a < entities.length; a++) {
+      if(IQPlayer.intersect(entities[a]) && entities[a].name == "end" && !IQPlayer.isListeningToNPC) {
+         IQPlayer.isListeningToNPC =  true;
+         IQPlayer.lines = ["...", "Is this a golden watering can?"];
+         sayLines(steveS2Line2Q3, IQPlayer);
+         game.rootScene.removeEventListener('enterframe', checkWinConditionsQ3);
+      }
+   }
+}
+
+var steveS2Line2Q3 = function() {
+   steve.lines = ["Oh wow I'm impressed.", "That was a very high level area.", "I didn't expect you to make it out alive."];
+   sayLines(playerS2Line3Q3, steve);
+}
+
+var playerS2Line3Q3 = function() {
+   IQPlayer.lines = ["You almost sent me to my death for a watering can!?"];
+   sayLines(steveS2Line3Q3, IQPlayer);
+}
+
+var steveS2Line3Q3 = function() {
+   steve.lines = ["Hey. HEY.", "It's a really really GOOD watering can.", "Now the snails will never eat my plants again!"];
+   sayLines(playerS2Line4Q3, steve);
+}
+
+var playerS2Line4Q3 = function() {
+   IQPlayer.lines = ["...", "I better not be there when I get back or I swear..."];
+   sayLines(goHome, IQPlayer);
+}
+
+var goHome = function() {
+   game_g.rootScene.removeChild(hud_g);
+   setTimeout(loadMap(game_g, "maphome.txt", "maphome.gif", homeMap), 300);
+   setTimeout(killSteve, 100);
+   IQPlayer.lines = ["...", "WHERE'D THAT GUY GO?!!", "UGHHHHHH, I'M GONNA GET YOU!"];
+   setTimeout(runPlayerS3Line1Q3, 100);
+}
+
+var killSteve = function() {
+   for(var f = 0; f < entities.length; f++) {
+      if(entities[f].name == "steve") {
+         console.log("steve has been found");
+         stage_g.removeChild(entities[f]);
+         entities.splice(f, 1);
+      }
+      console.log(entities);
+   }
+}
+
+var runPlayerS3Line1Q3 = function() {
+   sayLines(endQuest3, IQPlayer);
+}
+
+var endQuest3 = function() {
    console.log("end of the line pal");
+   IQPlayer.isListeningToNPC = false;
+   IQPlayer.quests.pop();
 }

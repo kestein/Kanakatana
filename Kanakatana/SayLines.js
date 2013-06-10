@@ -39,7 +39,7 @@ function sayLines(nextLine, speaker) {
          textDisplay.removeChild(portrait);
          speaker.linesRead = 0;
          if(queueNextLine !== null) {
-            console.log(queueNextLine);
+            //console.log(queueNextLine);
             queueNextLine();
          }
       }

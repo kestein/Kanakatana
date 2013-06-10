@@ -104,7 +104,7 @@ var quest3CombatMap = function(newmap) {
    enemy2.x = 400;
    enemy2.y = 150;
    
-   enemy3 = new Snail(32, 32, [200,200,600], [200,70,150], IQPlayer);
+   enemy3 = new Snail(32, 32, [400,300,600], [200,70,150], IQPlayer);
    enemy3.x = 500;
    enemy3.y = 150;
    
@@ -140,6 +140,12 @@ var quest3CombatMap = function(newmap) {
    enemyB.x = 1200;
    enemyB.y = 78;
    
+   winner = new Sprite(32, 32);
+   winner.image = game.assets["quest_3_obj.png"];
+   winner.x = 2000;
+   winner.y = 77;
+   winner.name = "end";
+   
    stage_g.addChild(IQPlayer);
    stage_g.addChild(enemy1);
    stage_g.addChild(enemy2);
@@ -163,10 +169,12 @@ var quest3CombatMap = function(newmap) {
    entities.push(enemyA);
    stage_g.addChild(enemyB);
    entities.push(enemyB);
+   stage_g.addChild(winner);
+   entities.push(winner);
    numEnemies += 10;
    
-   IQPlayer.x = 64;
-   IQPlayer.y = 64;
+   IQPlayer.x = 66;
+   IQPlayer.y = 66;
 }
 
 var homeMap = function(newmap) {
@@ -184,7 +192,7 @@ var homeMap = function(newmap) {
       }*/
    }
    cleanEntities(); //in cleanup.js
-   console.log(entities);
+   //console.log(entities);
    activeTarget = null;
    for(var h = 0; h < e_len; h ++) {
       entities.push(prevAcivityPeople[h]);
@@ -193,5 +201,4 @@ var homeMap = function(newmap) {
    stage_g.addChild(IQPlayer);
    IQPlayer.x = 50;
    IQPlayer.y = 50;
-   console.log("got em");
 }

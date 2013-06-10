@@ -22,7 +22,7 @@ var AbilityHandler = Class.create (Sprite, {
 		})
 		this.addEventListener('enterframe', function() {
 			this.unlockedAbilities = player.unlockedAbilities;
-         if(this.age - this.whenButtonWasPressed > 20) {
+         if(this.age - this.whenButtonWasPressed > 15) {
             if(game.input.left) {
                this.usableAbilities[0].dispatchEvent(new Event('touchstart'));
                this.whenButtonWasPressed = this.age;
