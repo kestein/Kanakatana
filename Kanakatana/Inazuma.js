@@ -76,7 +76,7 @@ var Inazuma = Class.create (Sprite, {
 		this.targetX = clickX - this.width/2;
 		this.targetY = clickY - this.height;
 		this.readyToDie = true
-		console.log("ping");
+		//console.log("ping");
 		
 	},
 	
@@ -84,7 +84,7 @@ var Inazuma = Class.create (Sprite, {
 		var vx = 0;
 		var vy = 0;
 		if(this.x > this.targetX) {
-			vy = -this.speed;
+			vx = -this.speed;
 		}
 		else if(this.x < this.targetX) {
 			vx = this.speed;

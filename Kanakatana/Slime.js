@@ -41,7 +41,6 @@ var Slime = Class.create (Enemy, {
 	},
 	
 	shootSlime:function() {
-		console.log(this.dead);
 		if(this.dead) {
 			return;
 		}

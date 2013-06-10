@@ -20,7 +20,7 @@ var Player = Class.create(Sprite, {
 		this.credits = 0;
 		
 		//abilities
-		this.unlockedAbilities = 5;
+		this.unlockedAbilities = 10;
 		//u
 		this.storeImage;
 		this.storeFrame;
@@ -203,7 +203,6 @@ var Player = Class.create(Sprite, {
 	hitSlime:function() {
 		for(var i = 0; i < entities.length; i++) {
 			if(!this.isListeningToNPC && entities[i] instanceof Slimeball && this.intersect(entities[i]) ) {
-				console.log("hit");
 				entities[i].dead = true;
 				this.x = 50;
 				this.y = 50;

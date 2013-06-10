@@ -140,11 +140,44 @@ var openShop = function(shopKeeper, player) {
    keBuy.x = 426;
    keBuy.y = 40;
    
-   textDisplay.addChild(koBuy);
-   textDisplay.addChild(keBuy);
-   textDisplay.addChild(kiBuy);
-   textDisplay.addChild(kuBuy);
-   textDisplay.addChild(kaBuy);
+   //camerons hacks
+   kaShow = true;
+   kiShow = true;
+   kuShow = true;
+   keShow = true;
+   koShow = true;
+   
+	if(abilityHandler.hackFixTheShopArray[5] == true){
+		kaShow = false;
+	}
+	if(abilityHandler.hackFixTheShopArray[6] == true){
+   kiShow = false;
+	}
+   if(abilityHandler.hackFixTheShopArray[7] == true){
+   kuShow = false;
+   }
+   if(abilityHandler.hackFixTheShopArray[8] == true){
+   keShow = false;
+   }
+   if(abilityHandler.hackFixTheShopArray[9] == true){
+   koShow = false;
+   }
+   
+   if(kaShow == true) {
+	textDisplay.addChild(kaBuy);
+   }
+   if(kiShow == true) {
+	textDisplay.addChild(kiBuy);
+   }
+   if(kuShow == true) {
+	textDisplay.addChild(kuBuy);
+   }
+   if(keShow == true) {
+	textDisplay.addChild(keBuy);
+   }
+   if(koShow == true) {
+	textDisplay.addChild(koBuy);
+   }
    
    //Kanji
    var ko = new Sprite(32, 32);
@@ -166,11 +199,29 @@ var openShop = function(shopKeeper, player) {
    ki.y = 75;
    ke.y = 40;
    
-   textDisplay.addChild(ko);
+   
+   /*if(kaShow == true) {
+	textDisplay.addChild(ka);
+   }
+   if(kiShow == true) {
+	textDisplay.addChild(ki);
+   }
+   if(kuShow == true) {
+	textDisplay.addChild(ku);
+   }
+   if(keShow == true) {
+	textDisplay.addChild(ke);
+   }
+   if(koShow == true) {
+	textDisplay.addChild(ko);
+   }*/
+   
    textDisplay.addChild(ka);
-   textDisplay.addChild(ke);
-   textDisplay.addChild(ku);
    textDisplay.addChild(ki);
+   textDisplay.addChild(ku);
+   textDisplay.addChild(ke);
+   textDisplay.addChild(ko);
+   
    
    //Price for each ability
    var koPrice = new Label();
@@ -199,16 +250,28 @@ var openShop = function(shopKeeper, player) {
    kiPrice.text = "" + priceOfKI;
    kaPrice.text = "" + priceOfKA;
    
-   textDisplay.addChild(kaPrice);
-   textDisplay.addChild(kePrice);
-   textDisplay.addChild(kuPrice);
-   textDisplay.addChild(kiPrice);
-   textDisplay.addChild(koPrice);
+   
+   if(kaShow == true) {
+	textDisplay.addChild(kaPrice);
+   }
+   if(kiShow == true) {
+	textDisplay.addChild(kiPrice);
+   }
+   if(kuShow == true) {
+	textDisplay.addChild(kuPrice);
+   }
+   if(keShow == true) {
+	textDisplay.addChild(kePrice);
+   }
+   if(koShow == true) {
+	textDisplay.addChild(koPrice);
+   }
    
    //EventListeners for buy buttons
    koBuy.addEventListener('touchend', function() {
       if(player.credits > priceOfKO) {
          //unlock ability
+		 abilityHandler.hackFixTheShopArray[9] = true;
          player.credits -= priceOfKO;
          credits.text = "Credits: " + player.credits;
          koPrice.visible = false;
@@ -220,6 +283,7 @@ var openShop = function(shopKeeper, player) {
    kaBuy.addEventListener('touchend', function() {
       if(player.credits > priceOfKA) {
          //unlock ability
+		 abilityHandler.hackFixTheShopArray[5] = true;
          player.credits -= priceOfKA;
          credits.text = "Credits: " + player.credits;
          kaPrice.visible = false;
@@ -229,8 +293,9 @@ var openShop = function(shopKeeper, player) {
       }
    });
    keBuy.addEventListener('touchend', function() {
-      if(player.credits > priceOfKE) {
+      if(player.credits >= priceOfKE) {
          //unlock ability
+		 abilityHandler.hackFixTheShopArray[8] = true;
          player.credits -= priceOfKE;
          credits.text = "Credits: " + player.credits;
          kePrice.visible = false;
@@ -240,8 +305,9 @@ var openShop = function(shopKeeper, player) {
       }
    });
    kuBuy.addEventListener('touchend', function() {
-      if(player.credits > priceOfKU) {
+      if(player.credits >= priceOfKU) {
          //unlock ability
+		 abilityHandler.hackFixTheShopArray[7] = true;
          player.credits -= priceOfKU;
          credits.text = "Credits: " + player.credits;
          kuPrice.visible = false;
@@ -251,8 +317,9 @@ var openShop = function(shopKeeper, player) {
       }
    });
    kiBuy.addEventListener('touchend', function() {
-      if(player.credits > priceOfKI) {
+      if(player.credits >= priceOfKI) {
          //unlock ability
+		 abilityHandler.hackFixTheShopArray[6] = true;
          player.credits -= priceOfKI;
          credits.text = "Credits: " + player.credits;
          kiPrice.visible = false;
