@@ -99,6 +99,8 @@ var homeMap = function(newmap) {
       }*/
    }
    cleanEntities(); //in cleanup.js
+   console.log(entities);
+   activeTarget = null;
    for(var h = 0; h < e_len; h ++) {
       entities.push(prevAcivityPeople[h]);
       stage_g.addChild(entities[h]);
@@ -106,4 +108,5 @@ var homeMap = function(newmap) {
    stage_g.addChild(IQPlayer);
    IQPlayer.x = 50;
    IQPlayer.y = 50;
+   console.log("got em");
 }

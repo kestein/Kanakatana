@@ -1,5 +1,5 @@
 function sayLines(nextLine, speaker) {
-   var bkg = new Sprite(game_g.width, game_g.height/6);
+   var bkg = new Sprite(game.width, 80);
    var nxt = new Sprite(30, 30);
    var portrait = new Sprite(60, 60);
    var speaker = speaker;
@@ -9,7 +9,7 @@ function sayLines(nextLine, speaker) {
    var screenOffsetY = 0;
    
    bkg.image = game_g.assets["label_bkg.png"];
-   bkg.y = game_g.height - 50;
+   bkg.y = game_g.height - 60;
    if(IQPlayer.x > game_g.width/2) {
     //  screenOffsetX = IQPlayer.x - game_g.width/2 + 25;
    }
@@ -18,7 +18,7 @@ function sayLines(nextLine, speaker) {
    
    portrait.image = speaker.portrait;
    portrait.x = game_g.width - 60 + screenOffsetX;
-   portrait.y = game_g.height - 47;
+   portrait.y = game_g.height - 57;
    
    nxt.touchEnabled = true;
    nxt.image = game_g.assets["next.png"];

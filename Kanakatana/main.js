@@ -23,12 +23,14 @@ window.onload = function(){
 	game.preload("player_portrait.png");
 	game.preload("label_bkg.png");
 	game.preload("next.png");
-	game.preload("steve_portrait.png")
+	game.preload("steve_portrait.png");
+   game.preload("shop_bkg.png");
 	game.preload("enpitsu1.png");
 	game.preload("enpitsu2.png");
 	game.preload("onigiri.png");
 	game.preload("usagi2.png");
 	game.preload("awa.png");
+   game.preload("buy.png");
 	game.preload("ika.png");
 	game.preload("katana1.png");
 	game.preload("katana2.png");
@@ -38,6 +40,7 @@ window.onload = function(){
 	game.preload("kusari.png");
 	game.preload("ketsueki.png");
 	game.preload("Credits.png");
+   game.preload("close.png");
 	game.preload("ice.png");
 	game.preload("a.jpg");
 	game.preload("i.jpg");
@@ -134,7 +137,7 @@ window.onload = function(){
 	}
 	
    //Use a button press to trigger conversation with NPCs
-function checkCollisions(player, entities) {
+/*function checkCollisions(player, entities) {
    for(var t = 0; t < entities.length; t++) {
       if(player.intersect(entities[t])) {
          player.isMoving = false;
@@ -156,7 +159,7 @@ function checkCollisions(player, entities) {
          }
       }
    }
-}
+}*/
    
 	var replacemap = function(newmap)
 	{

@@ -36,8 +36,12 @@ function checkCollisions(player) {
 			player.moveArray.length = 0;
 		 }
 		
-		 if(entities[t] instanceof NPC && !player.isListeningToNPC && player.quests.length > 0) {
+		 if(entities[t] instanceof NPC && !player.isListeningToNPC && player.quests.length > 0 && entities[t].name == "steve") {
          player.quests[player.quests.length - 1](player);
+         player.isListeningToNPC = true;
+       }
+       if(entities[t] instanceof NPC && !player.isListeningToNPC && player.quests.length > 0 && entities[t].name == "jane") {
+         openShop(entities[t], player);
          player.isListeningToNPC = true;
        }
       }
