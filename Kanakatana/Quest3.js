@@ -102,6 +102,13 @@ var questStart = function() {
 var checkWinConditionsQ3 = function() {
    for(var a = 0; a < entities.length; a++) {
       if(IQPlayer.intersect(entities[a]) && entities[a].name == "end" && !IQPlayer.isListeningToNPC) {
+	  
+		if(entities.length > 0) {
+			for(var i = 0; i < entities.length; i++){
+				entities[i].dead = true;
+			}
+			cleanEntities();
+		}
          IQPlayer.isListeningToNPC =  true;
          IQPlayer.lines = ["...", "Is this a golden watering can?"];
          sayLines(steveS2Line2Q3, IQPlayer);
