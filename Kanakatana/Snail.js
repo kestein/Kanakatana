@@ -50,6 +50,11 @@ var Snail = Class.create (Enemy, {
 		}
 		this.moveTo( this.x + vx, this.y + vy);
 		
+	},
+	
+	returnImage:function() {
+		this.image = game.assets["snail.png"];
+		this.frame = 0;
 	}
 	
 	

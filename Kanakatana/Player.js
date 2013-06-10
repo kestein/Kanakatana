@@ -18,6 +18,7 @@ var Player = Class.create(Sprite, {
 		this.isListeningToNPC = false;
 		this.isTargeting = false;
 		this.credits = 0;
+		
 		//abilities
 		this.unlockedAbilities = 5;
 		//u
@@ -26,7 +27,9 @@ var Player = Class.create(Sprite, {
 		this.storeSpeed;
 		this.isBunny = false;
 		this.bunnyDuration = 0;
-		
+		//ko
+		this.koruMode = false;
+		this.koruDuration = 0;
 		//quests
       this.quests = new Array();
       this.quests.push(startQ2);
@@ -37,6 +40,7 @@ var Player = Class.create(Sprite, {
 		 this.walkAnimation();
 		 this.timeDown();
 		 this.hitSlime();
+		 this.koruDrop();
 		 //console.log(this.image);
 		})
 		
@@ -205,6 +209,24 @@ var Player = Class.create(Sprite, {
 				break;
 			}
 		}
+	},
+	
+	koruDrop:function() {
+		if(this.koruMode) {
+			if(this.koruDuration < 0) {
+				this.koruMode = false;
+			}
+			this.koruDuration--;
+			if(this.koruDuration % 15 == 0) {
+				this.makeKoru();
+			}
+		}
+	},
+	
+	makeKoru: function() {
+		var koru = new Koru(25, 25, this);
+		entities.push(koru);
+		stage.addChild(koru);
 	}
 	
 	

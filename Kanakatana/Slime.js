@@ -60,5 +60,10 @@ var Slime = Class.create (Enemy, {
 				}
 			}
 		}
+	},
+	
+	returnImage:function() {
+		this.image = game.assets["slime.png"];
+		this.frame = 0;
 	}
 });

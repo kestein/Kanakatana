@@ -1,7 +1,7 @@
 // created by the I class. It becomes the "activeTarget" when It is ready to be placed. "activeTarget is a
 // global variable that is used for abilities targeted with a click. This ability I makss an "Inazuma" 
 // that becomes the active target. Clicking again anywhere activates the Inazuma and moves it to the click
-// and sets active target to null/
+// and sets active target to null
 var Inazuma = Class.create (Sprite, {
 	initialize:function(width, height, player) {
 		Sprite.call(this, width, height);
