@@ -17,7 +17,7 @@ window.onload = function(){
 	game.preload("slime.png");
 	game.preload("slimeball.png");
 	game.preload("map1.gif");
-   game.preload("map2.gif");
+	game.preload("map2.gif");
 	game.preload("player.png");
 	game.preload("chars.gif");
 	game.preload("player_portrait.png");
@@ -38,7 +38,8 @@ window.onload = function(){
 	game.preload("kusari.png");
 	game.preload("ketsueki.png");
 	game.preload("Credits.png");
-	game.preload("ice.png");
+	game.preload("snailice.png");
+	game.preload("slimeice.png");
 	game.preload("a.jpg");
 	game.preload("i.jpg");
 	game.preload("u.jpg");

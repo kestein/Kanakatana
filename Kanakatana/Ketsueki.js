@@ -5,8 +5,8 @@ var Ketsueki = Class.create (Sprite, {
 		this.direction = player.direction;
 		this.localPlayer = player;
 		Sprite.call(this, width, height);			
-		this.x = player.x;
-		this.y = player.y;
+		this.x = player.x - player.scene.x;
+		this.y = player.y - player.scene.y;
 		this.name = "Ketsueki";
 		this.speed = 3;
 		this.vx = 0;
@@ -20,10 +20,10 @@ var Ketsueki = Class.create (Sprite, {
 		this.frame = 0;
 		
 		this.addEventListener('enterframe', function() {
-			this.moveBlood();
-			this.collide();
+			//this.moveBlood();
+			//this.collide();
 			//this.x += 1;
-			this.tick();
+			//this.tick();
 
 		})
 	},
@@ -31,7 +31,7 @@ var Ketsueki = Class.create (Sprite, {
 	moveBlood:function() {
 		var vx = 0;
 		var vy = 0;
-		if(this.bloodied || this.age > 80) {
+		if(this.age > 80) {
 			if(this.x > this.localPlayer.x) {
 				vy = -this.speed;
 			}
@@ -45,20 +45,7 @@ var Ketsueki = Class.create (Sprite, {
 				vy = this.speed;
 			}
 		}
-		else {
-			if(this.direction == 0) {
-				vy = -this.speed;
-			}
-			else if(this.direction == 1) {
-				vx = this.speed;
-			}
-			else if(this.direction == 2) {
-				vy = this.speed;
-			}
-			else if(this.direction == 3) {
-				vx = -this.speed;
-			}
-		}
+
 		//console.log(vx + " " + vy);
 		this.moveTo(this.x + vx , this.y + vy);
 		
@@ -77,20 +64,8 @@ var Ketsueki = Class.create (Sprite, {
 		for(var i = 0; i < entities.length; i++) {
 			//console.log(this.intersect(entities[i]));
 			if(entities[i] instanceof Enemy && this.intersect(entities[i])) {
-				if(!this.bloodied) {
 					entities[i].health -= this.damage;
-					this.bloodied = true;
 					this.frame = 1;
-				}
-			}
-			if(entities[i] instanceof Player && this.intersect(entities[i])) {
-				if(this.bloodied) {
-					entities[i].health += this.damage;
-					this.bloodied = true;
-				}
-				if(this.age > 30) {
-					this.dead = true;
-				}
 			}
 		}
 	}

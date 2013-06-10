@@ -5,7 +5,7 @@ var AbilityHandler = Class.create (Sprite, {
 		Sprite.call(this, width, height);
 		this.x = 432;
 		this.y = 0;
-		this.maxUsableAbilities = 4;	//possible hack must be less than or equal to unlocked abilities.
+		this.maxUsableAbilities = 3;	//possible hack must be less than or equal to unlocked abilities.
 		this.unlockedAbilities = player.unlockedAbilities;
 		this.usableAbilities = [];
 		this.currentAbility;
@@ -58,7 +58,8 @@ var AbilityHandler = Class.create (Sprite, {
 			return new I(32, 32, player, this);
 		}
 		else if(key == 2) {
-			return new U(32, 32, player, this);
+		return new Ko(32, 32, player, this);
+			//return new U(32, 32, player, this);
 		}
 		else if(key == 3) {
 			return new E(32, 32, player, this);

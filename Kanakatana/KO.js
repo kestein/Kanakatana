@@ -37,21 +37,8 @@ var Ko = Class.create (Ability, {
 		
 	},
 	makeKoru :function(player) {
-		var koru1 = new Koru(25, 25, player, 0);
-		entities.push(koru1);
-		stage.addChild(koru1);
-		var koru2 = new Koru(25, 25, player, 1);
-		entities.push(koru2);
-		stage.addChild(koru2);
-		var koru3 = new Koru(25, 25, player, 1);
-		entities.push(koru3);
-		stage.addChild(koru3);
-		var koru4 = new Koru(25, 25, player, 1);
-		entities.push(koru4);
-		stage.addChild(koru4);
-		var koru5 = new Koru(25, 25, player, 1);
-		entities.push(koru5);
-		stage.addChild(koru5);
+		player.koruMode = true;
+		player.koruDuration = 150;
 	},
 	
 	randomSpot: function(center) {

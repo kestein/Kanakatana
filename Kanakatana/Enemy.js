@@ -171,6 +171,7 @@ var Enemy = Class.create (Sprite, {
 		else {
 			this.stunned = false;
 			this.stunTimer = 0;
+			this.returnImage();
 		}
 	},
 	//check colission with walls against corners of enemy
