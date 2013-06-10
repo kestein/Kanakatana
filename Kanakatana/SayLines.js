@@ -3,6 +3,7 @@ function sayLines(nextLine, speaker) {
    var nxt = new Sprite(30, 30);
    var portrait = new Sprite(60, 60);
    var speaker = speaker;
+   console.log(speaker.lines);
    var l = new Label();
    var queueNextLine = nextLine;
    var screenOffsetX = 0;
@@ -38,7 +39,7 @@ function sayLines(nextLine, speaker) {
          textDisplay.removeChild(portrait);
          speaker.linesRead = 0;
          if(queueNextLine !== null) {
-            //console.log(queueNextLine);
+            console.log(queueNextLine);
             queueNextLine();
          }
       }

@@ -10,7 +10,7 @@ var textDisplay;
 var abilityHandler;
 
 window.onload = function(){
-    game = new Game(480, 320);//30x20 text files
+    game = new Game(480, 320);//30x20 text files. Each char in the file is 16 pixels
 	
     game.fps = 30;
 	game.preload("maphome.gif");
