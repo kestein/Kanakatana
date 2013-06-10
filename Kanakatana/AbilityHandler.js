@@ -11,6 +11,7 @@ var AbilityHandler = Class.create (Sprite, {
 		this.currentAbility;
 		this.abilityNum = Math.floor(Math.random() * this.maxUsableAbilities); 
 		var i;
+      this.whenButtonWasPressed = 0;
 		
 		
 		this.addEventListener('addedtoscene', function() {
@@ -20,6 +21,24 @@ var AbilityHandler = Class.create (Sprite, {
 		})
 		this.addEventListener('enterframe', function() {
 			this.unlockedAbilities = player.unlockedAbilities;
+         if(this.age - this.whenButtonWasPressed > 15) {
+            if(game.input.left) {
+               this.usableAbilities[0].dispatchEvent(new Event('touchstart'));
+               this.whenButtonWasPressed = this.age;
+            }
+            if(game.input.right) {
+               this.usableAbilities[1].dispatchEvent(new Event('touchstart'));
+               this.whenButtonWasPressed = this.age;
+            }
+            if(game.input.down) {
+               this.usableAbilities[2].dispatchEvent(new Event('touchstart'));
+               this.whenButtonWasPressed = this.age;
+            }
+            if(game.input.up && this.maxUsableAbilities > 3) {
+               this.usableAbilities[3].dispatchEvent(new Event('touchstart'));
+               this.whenButtonWasPressed = this.age;
+            }
+         }
 		})
 	},
 	//adds an ability to the hud at index i
@@ -144,6 +163,6 @@ var AbilityHandler = Class.create (Sprite, {
 		}
 	}
 	
-	
+	//this.usableAbilities[index].dispatchEvent('touchend')
 	
 });

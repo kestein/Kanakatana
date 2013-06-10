@@ -61,8 +61,14 @@ window.onload = function(){
 	game.preload("ko_romanji.png");
    
    
-   game.keybind(81, 'a');		//sets 'q' to the "a button"
-	
+   game.keybind(81, 'left');		//sets 'q' to the "left" button
+   game.keybind(87, 'right');    //sets 'w' to the "right" button
+   game.keybind(69, 'down');     //sets 'e' to the "down" button
+   game.keybind(82, 'up');       //sets 'r' to the "up" button
+	if(game.input.left) {
+      //do some action
+      console.log("beep boop");
+   }
 	
 	var player;
 	var steve;

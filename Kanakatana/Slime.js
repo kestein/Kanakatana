@@ -45,7 +45,8 @@ var Slime = Class.create (Enemy, {
 		if(this.dead) {
 			return;
 		}
-		var slimeball = new Slimeball(20, 20, this, this.localPlayer);
+		//var slimeball = new Slimeball(20, 20, this, this.localPlayer);
+      var slimeball = new Slimeball(20, 20, this, this.targetOfRage);
 		entities.push(slimeball);
 		stage.addChild(slimeball);
 		this.shotCooldown = this.cooldownMax;
