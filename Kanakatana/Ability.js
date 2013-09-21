@@ -9,10 +9,10 @@ var Ability = Class.create (Sprite, {
 		this.image2;
 		this.romanji = false;
 		
-		this.addEventListener('enterframe', function() {
+		this.addEventListener('enterframe', function() {//REFACTOR: set cooldown
 			//this.cooldown();
 		});
-		this.addEventListener('touchstart', function() {
+		this.addEventListener('touchstart', function() {//REFACTOR: remove
 			console.log(ready);
 		});
 	},

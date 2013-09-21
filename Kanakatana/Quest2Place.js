@@ -1,4 +1,4 @@
-var stage_g;
+var stage_g; //REFACTOR: these are global vars again! and they are repeated. 
 var game_g;
 var hud_g;
 var steve;

@@ -6,9 +6,9 @@ var AbilityHandler = Class.create (Sprite, {
 		this.x = 432;
 		this.y = 0;
 		this.maxUsableAbilities = 3;	//possible hack must be less than or equal to unlocked abilities.
-		this.unlockedAbilities = player.unlockedAbilities;
+		this.unlockedAbilities = player.unlockedAbilities;//REFACTOR: remove this
 		this.usableAbilities = [];
-		this.hackFixTheShopArray = [true, true, true, true, true, false, false, false, false, false];
+		this.hackFixTheShopArray = [true, true, true, true, true, false, false, false, false, false];//REFACTOR: Make this the main thing.
 		this.currentAbility;
 		this.abilityNum = Math.floor(Math.random() * this.maxUsableAbilities); 
 		var i;
@@ -21,7 +21,7 @@ var AbilityHandler = Class.create (Sprite, {
 			}
 		})
 		this.addEventListener('enterframe', function() {
-			this.unlockedAbilities = player.unlockedAbilities;
+			this.unlockedAbilities = player.unlockedAbilities;//REFACTOR: remove
          if(this.age - this.whenButtonWasPressed > 15) {
             if(game.input.left) {
                this.usableAbilities[0].dispatchEvent(new Event('touchstart'));
@@ -86,10 +86,10 @@ var AbilityHandler = Class.create (Sprite, {
 
 //picks an abilityNum for an ability that is not currently in use
 	pickUnusedAbility:function() {
-		var unusedAbility = Math.floor(Math.random() * this.unlockedAbilities);
+		var unusedAbility = Math.floor(Math.random() * this.unlockedAbilities);//REFACTOR: remove
 		console.log("first " + unusedAbility);
 		while(this.isInUse(unusedAbility, this.usableAbilities) ) {
-			unusedAbility = Math.floor(Math.random() * this.unlockedAbilities);
+			unusedAbility = Math.floor(Math.random() * this.unlockedAbilities);//REFACTOR: remove
 			console.log("retry " + unusedAbility);
 			
 		}

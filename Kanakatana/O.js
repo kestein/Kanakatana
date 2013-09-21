@@ -14,7 +14,7 @@ var O = Class.create (Ability, {
 		this.ready = false;
 		this.chargeRate = 0.02;
 		this.opacity = 0;
-		this.addEventListener('touchstart', function() {
+		this.addEventListener('touchstart', function() { //REFACTOR: add to Ability class. move.
 			if(this.ready && !this.romanji) {
 			handler.currentAbility = this;
 				handler.swapAll();

@@ -24,7 +24,7 @@ var Awa = Class.create (Sprite, {
 		this.y = player.y - this.height/2 + player.height/2;
 	},
 	
-	tick:function() {
+	tick:function() {//REFACTOR: remove use age maybe
 		this.time--;
 		if(this.time <= 0 || Math.abs(this.x) > 10000 || Math.abs(this.y) > 10000) {
 			this.dead = true;

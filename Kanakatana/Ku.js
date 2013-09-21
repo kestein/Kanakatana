@@ -1,4 +1,6 @@
-//Handles the button the player presses. THis ability throws 4 squids in the cardinal directions. they slow enemies.
+/*Handles the button the player presses. This ability throws 2 horizontal chains
+ that stun and pull enemies
+*/
 var Ku = Class.create (Ability, {
 	initialize:function(width, height, player, handler) {
 		Sprite.call(this, width, height);
@@ -14,7 +16,7 @@ var Ku = Class.create (Ability, {
 		this.ready = false;
 		this.chargeRate = 0.02;
 		this.opacity = 0;
-		this.addEventListener('touchstart', function() {
+		this.addEventListener('touchstart', function() //REFACTOR: move to its own function. in ability.
 			if(this.ready && !this.romanji) {
 				handler.swapAll();
 				handler.currentAbility = this;

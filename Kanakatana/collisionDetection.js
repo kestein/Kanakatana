@@ -1,4 +1,7 @@
 //Takes in an array of entities and sees if a collision happens
+// this should be broken up to simply detect collisions and call othre functions to decide the behavior,
+//by passing the thing it collided with as paramaters. make sure not to check collisions twice.
+//REFACTOR: Change everything
 function checkCollisions(player) {
 
    var ch = 0;

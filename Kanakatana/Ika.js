@@ -1,3 +1,4 @@
+//REFACTOR: This is not part of the game. Remove this.
 var Ika = Class.create (Sprite, {
 	initialize:function(width, height, player, direction) {
 		Sprite.call(this, width, height);				//based on player direction
@@ -11,7 +12,7 @@ var Ika = Class.create (Sprite, {
 		this.dead = false;
 		this.time = 300;
 		
-		this.addEventListener('enterframe', function() {
+		this.addEventListener('enterframe', function() {//REFACTOR: remove
 			this.collision();
 			if(!this.hug) {
 				this.moveSquid();

@@ -1,3 +1,4 @@
+//REFACTOR: add comments
 function loadMap(game, mapname, maptex, callback)
 {
 	var map;

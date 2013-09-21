@@ -2,6 +2,7 @@
 // global variable that is used for abilities targeted with a click. This ability I makss an "Inazuma" 
 // that becomes the active target. Clicking again anywhere activates the Kirikabu
 // and moves it to the click and sets active target to null/
+//REFACTOR: git rid of active target crap. uuse player info instead.
 var Kirikabu = Class.create (Sprite, {
 	initialize:function(width, height, player) {
 		Sprite.call(this, width, height);

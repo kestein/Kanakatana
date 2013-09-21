@@ -1,5 +1,6 @@
 //This acts as an addition to the sprite class since I want the Sprite class for interaction purposes
 //Make a sprite then define the NPC class to extend it ('class NPC extends Sprite' is what I want to do)
+//may get changed in quest system refactor.
 var NPC = Class.create(Sprite, {
    initialize:function(width, height, script){
       Sprite.call(this, width, height);

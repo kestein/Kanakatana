@@ -12,8 +12,8 @@ var A = Class.create (Ability, {
 		this.ready = false;
 		this.chargeRate = 0.02;
 		this.opacity = 0;
-		this.addEventListener('touchstart', function() {
-			if(this.ready && this.romanji && handler.currentAbility == this) {
+		this.addEventListener('touchstart', function() {//REFACTOR: make into function.
+			if(this.ready && this.romanji && handler.currentAbility == this) {	
 				this.makeBubble(player);
 				this.reset();
 				handler.swapAll();
@@ -29,7 +29,7 @@ var A = Class.create (Ability, {
 			}
 		});
 		
-		this.addEventListener('enterframe', function() {
+		this.addEventListener('enterframe', function() {//REFACTOR: add to ability class.
 			this.cooldown();
 		})
 	},

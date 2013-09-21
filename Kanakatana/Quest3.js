@@ -1,4 +1,4 @@
-var stage_g;
+var stage_g;//REFACTOR: repeated global vars. remove.
 var game_g;
 var hud_g;
 var steve;

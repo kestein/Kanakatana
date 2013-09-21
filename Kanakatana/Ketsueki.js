@@ -1,5 +1,5 @@
 //HIRIGANA: Ke
-//this class handles the chain that Ke launches. 
+//REFACTOR: description
 var Ketsueki = Class.create (Sprite, {
 	initialize:function(width, height, player, directionMode, spawn) {
 		if(directionMode == 4) {
@@ -26,7 +26,7 @@ var Ketsueki = Class.create (Sprite, {
 		this.addEventListener('enterframe', function() {
 			this.moveBlood();
 			this.collide(player);
-			//this.x += 1;
+
 			this.tick();
 
 		})

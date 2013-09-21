@@ -1,3 +1,5 @@
+/*REFACTOR: add comments and remove all of the hard coding. eventually add pages. 
+Basically needs a rewrite*/
 var openShop = function(shopKeeper, player) {
    var bkg = new Sprite(game.width, 60);
    var portrait = new Sprite(60, 60);

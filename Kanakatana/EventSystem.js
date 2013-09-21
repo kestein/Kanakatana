@@ -1,6 +1,6 @@
 var stage_g;
 var game_g;
-
+//REFACTOR: remove extrainous stuff and make sure that positions are relative to game size.
 function introQuest(partiesInvolved, stage, game) {
    //The peeps involved with this quest
    var player;

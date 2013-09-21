@@ -2,6 +2,7 @@
 // global variable that is used for abilities targeted with a click. This ability I makss an "Inazuma" 
 // that becomes the active target. Clicking again anywhere activates the Inazuma and moves it to the click
 // and sets active target to null
+//REFACTOR: rework to not use active target as a global variable, use player info instead
 var Inazuma = Class.create (Sprite, {
 	initialize:function(width, height, player) {
 		Sprite.call(this, width, height);
@@ -42,7 +43,7 @@ var Inazuma = Class.create (Sprite, {
 			this.frame = 0;
 		}
 	},
-	
+	//REFACTOR: comment
 	decideBehavior:function() {
 		if(this.active == true) {
 			this.collision();
@@ -61,7 +62,7 @@ var Inazuma = Class.create (Sprite, {
 			}
 		}
 	},
-	
+	//REFACTOR: comment
 	tick:function() {
 		if(this.readyToDie)
 		this.time--;
@@ -70,7 +71,7 @@ var Inazuma = Class.create (Sprite, {
 			this.dead = true;
 		}
 	},
-	
+	//REFACTOR: comment
 	activate:function(clickX, clickY) {
 		this.active = true;
 		this.targetX = clickX - this.width/2;
@@ -79,7 +80,7 @@ var Inazuma = Class.create (Sprite, {
 		//console.log("ping");
 		
 	},
-	
+	//REFACTOR: comment.
 	moveToTarget:function() {
 		var vx = 0;
 		var vy = 0;

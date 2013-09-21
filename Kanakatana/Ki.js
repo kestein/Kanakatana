@@ -17,7 +17,7 @@ var Ki = Class.create (Ability, {
 		this.ready = false;
 		this.chargeRate = 0.02;
 		this.opacity = 0;
-		this.addEventListener('touchstart', function() {
+		this.addEventListener('touchstart', function() { //REFACTOR: move to its own function. temp vars?
 			if(this.ready && !this.romanji) {
 				handler.swapAll();
 				handler.currentAbility = this;

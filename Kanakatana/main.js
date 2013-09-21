@@ -2,20 +2,21 @@
 enchant();
 var map;
 var entities;
-var activeTarget;
+var activeTarget;//REFACTOR: remove this and rewrite
 var game;
 var stage;
 var hud;
-var textDisplay;
-var abilityHandler;
+var textDisplay;//REFACTOR: remove this and rewrite
+var abilityHandler;//REFACTOR: remove remove rthis and rewrite
 
 window.onload = function(){
     game = new Game(480, 320);//30x20 text files. Each char in the file is 16 pixels
 	
     game.fps = 30;
+	//REFACTOR: remove unused images
 	game.preload("maphome.gif");
 	game.preload("snail.png");
-   game.preload("quest_3_obj.png");
+	game.preload("quest_3_obj.png");
 	game.preload("slime.png");
 	game.preload("slimeball.png");
 	game.preload("map1.gif");
@@ -26,13 +27,13 @@ window.onload = function(){
 	game.preload("label_bkg.png");
 	game.preload("next.png");
 	game.preload("steve_portrait.png");
-   game.preload("shop_bkg.png");
+	game.preload("shop_bkg.png");
 	game.preload("enpitsu1.png");
 	game.preload("enpitsu2.png");
 	game.preload("onigiri.png");
 	game.preload("usagi2.png");
 	game.preload("awa.png");
-   game.preload("buy.png");
+	game.preload("buy.png");
 	game.preload("ika.png");
 	game.preload("katana1.png");
 	game.preload("katana2.png");
@@ -42,11 +43,11 @@ window.onload = function(){
 	game.preload("kusari.png");
 	game.preload("ketsueki.png");
 	game.preload("Credits.png");
-   game.preload("close.png");
+	game.preload("close.png");
 	game.preload("ice.png");
 	game.preload("snailice.png");
 	game.preload("slimeice.png");
-   game.preload("store_portrait.png");
+	game.preload("store_portrait.png");
 	game.preload("a.jpg");
 	game.preload("i.jpg");
 	game.preload("u.jpg");
@@ -73,15 +74,11 @@ window.onload = function(){
    game.keybind(87, 'right');    //sets 'w' to the "right" button
    game.keybind(69, 'down');     //sets 'e' to the "down" button
    game.keybind(82, 'up');       //sets 'r' to the "up" button
-	if(game.input.left) {
-      //do some action
-      console.log("beep boop");
-   }
 	
 	var player;
 	var steve;
 	var jane;
-	var enemy1;
+	var enemy1; //REFACTOR: remove?
 	var collidedEntity;
 	var e1;
 	stage = new Group();
@@ -92,40 +89,38 @@ window.onload = function(){
     game.onload = function(){	
 		/** player things **/
 		player = new Player(16, 22);
-		//player.image = game.assets["player.png"];
-      player.portrait = game.assets["player_portrait.png"];
+		player.portrait = game.assets["player_portrait.png"]; //REFACTOR: move to class.
 		player.x = 150;
 		player.y = 10;
-      player.name = "player";
-      player.isListeningToNPC = false;
-      player.linesRead = 0;
+		player.name = "player"; //REFACTOR: move to class.
+		player.isListeningToNPC = false;
+		player.linesRead = 0;
            
-      steve = new NPC(32, 32, "test_lines.txt");
-      steve.image = game.assets["chars.gif"];
-      steve.portrait = game.assets["steve_portrait.png"];
-	  steve.frame = 1;
-     steve.name = "steve";
-      steve.x = 100;
-      steve.y = 30;
+		steve = new NPC(32, 32, "test_lines.txt");//REFACTOR: Comment about variables.
+		steve.image = game.assets["chars.gif"];
+		steve.portrait = game.assets["steve_portrait.png"];
+		steve.frame = 1;
+		steve.name = "steve";
+		steve.x = 100;
+		steve.y = 30;
       
-      jane = new NPC(32, 32, "test_lines.txt");
-      jane.image = game.assets["chars.gif"];
-      jane.portrait = game.assets["store_portrait.png"];
-	  jane.frame = 7;
-	  jane.name = "jane";
-      jane.x = 100;
-      jane.y = 200;
-      jane.lines.push("JK ;)!!");
+		jane = new NPC(32, 32, "test_lines.txt");//REFACTOR: Comment about variables.
+		jane.image = game.assets["chars.gif"];
+		jane.portrait = game.assets["store_portrait.png"];
+		jane.frame = 7;
+		jane.name = "jane";
+		jane.x = 100;
+		jane.y = 200;
+		jane.lines.push("JK ;)!!");
 	  
 	  
-	  abilityHandler = new AbilityHandler(32, 32, player);
-	  abilityHandler.x = 432;
-	  abilityHandler.y = 0;
-	  //console.log(abilityHandler.x);
-	  
-	  creditSheet = new CreditSheet(100, 80, player);
-	  creditSheet.x = 380;
-	  creditSheet.y = 0;
+		abilityHandler = new AbilityHandler(32, 32, player);
+		abilityHandler.x = 432;
+		abilityHandler.y = 0;
+		
+		creditSheet = new CreditSheet(100, 80, player);
+		creditSheet.x = 380;//REFACTOR: Move to class.REFACTOR: scale to game size.
+		creditSheet.y = 0;
 	  
       entities = new Array();
       entities.push(steve);
@@ -134,38 +129,13 @@ window.onload = function(){
 		
 		loadMap(game, "maphome.txt", "maphome.gif", setmap);
     };
-	
+	//REFACTOR: .
 	function setmap(newmap)
 	{
 		map = newmap;
 		init();
 	}
-	
-   //Use a button press to trigger conversation with NPCs
-/*function checkCollisions(player, entities) {
-   for(var t = 0; t < entities.length; t++) {
-      if(player.intersect(entities[t])) {
-         player.isMoving = false;
-         if(player.direction == 0) {//moving up
-            player.y += 5;
-         }
-         if(player.direction == 2) {//moving down
-            player.y -= 5;
-         }
-         if(player.direction == 1) {//moving right
-            player.x -= 5;
-         }
-         if(player.direction == 3) {//moving left
-            player.x += 5;
-         }
-         if(!player.isListeningToNPC) {
-            entities[t].sayLines(stage, game, player);
-            player.isListeningToNPC = true;
-         }
-      }
-   }
-}*/
-   
+   //REFACTOR: .
 	var replacemap = function(newmap)
 	{
 		stage.removeChild(player);
@@ -177,17 +147,18 @@ window.onload = function(){
 		player.x = 50;
 		player.y = 50;
 	}
-   
+   //REFACTOR: Comment.
 	function init()
 	{	
 		stage.addChild(map);
 		stage.addChild(player);
-		stage.addChild(steve);
+		stage.addChild(steve);	//REFACTOR: Should this be here?.
 		stage.addChild(jane);
 		hud.addChild(abilityHandler);
 		hud.addChild(creditSheet);
 		game.rootScene.addChild(stage);
 		game.rootScene.addChild(textDisplay);
+		
 		
 		game.rootScene.addEventListener('enterframe', function(e) {
 			var x = Math.min((game.width  - 50) / 2 - player.x, 0);
@@ -196,15 +167,11 @@ window.onload = function(){
 			y = Math.max(game.height, y + map.height) - map.height;
 			stage.x = x;
 			stage.y = y;
-			if (player.x / 48 == 22 && player.y / 50 == 1)
-			{		
-				loadMap(game, "map2.txt", "map.png", replacemap);
-			}
 		});
 		//handles player movement while clicking. it adds a modifier to make the movement relative to the map and not the screen
 		game.rootScene.addEventListener('touchstart', function(evt) {
 			if(activeTarget) {
-				if(activeTarget.activeTargetJump) {
+				if(activeTarget.activeTargetJump) {		//REFACTOR: Clean this shit up.
 					activeTarget.x = evt.localX - stage.x;
 					activeTarget.y = evt.localY - stage.y;
 					activeTarget.moveTo(evt.localX - stage.x, evt.localY - stage.y);

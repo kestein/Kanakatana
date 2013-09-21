@@ -1,3 +1,4 @@
+//REFACTOR: Think of a cleaner way to add enemies, like a function or something.
 var introQuestCombatMap = function(newmap) {
    stage_g.removeChild(IQPlayer);
    stage_g.removeChild(map);

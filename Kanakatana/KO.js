@@ -4,7 +4,7 @@ var Ko = Class.create (Ability, {
 		Sprite.call(this, width, height);
 		this.name = "Ko";
 		this.abilityNum = 6;
-      
+
 		this.image = game.assets["ko.jpg"];
 		this.image2 = game.assets["ko_romanji.png"];
 		this.frame = 0;
@@ -12,7 +12,7 @@ var Ko = Class.create (Ability, {
 		this.ready = false;
 		this.chargeRate = 0.02;
 		this.opacity = 0;
-		this.addEventListener('touchstart', function() {
+		this.addEventListener('touchstart', function() {//REFACTOR: change to function
 			if(this.ready && !this.romanji) {
 				handler.swapAll();
 				handler.currentAbility = this;

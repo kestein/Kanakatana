@@ -15,7 +15,7 @@
 			}
 		}*/
       
-      this.addEventListener('enterframe', function() {
+      this.addEventListener('enterframe', function() { //REFACTOR: move to its own function.
          //remove the onigiri after age > 600
          if(this.age >= 270) {
             for(var i = 0; i < entities.length; i++) {

@@ -2,6 +2,7 @@
 //this class handles the pencil that E launches. Call it using the width and height of 50 x 50.
 //these dimentions are adjusted according to the direction, then "Sprite.call" is called.
 var Enpitsu = Class.create (Sprite, {
+////REFACTOR: add comments here
 	initialize:function(width, height, player) {
 		this.direction = player.direction;		//used for chosing direction and what image/frame to use.
 		if(this.direction == 0 ||this.direction == 2) {		//chooses what size to make the sprite 
@@ -18,6 +19,7 @@ var Enpitsu = Class.create (Sprite, {
 		this.vy = 0;
 		this.dead = false;
 		this.damage = 1;
+		//REFACTOR: add comments here
 		if(this.direction == 0 ||this.direction == 2) {		//chooses what image file to use
 			this.image = game.assets["enpitsu2.png"];
 		}

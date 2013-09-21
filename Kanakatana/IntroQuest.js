@@ -1,3 +1,4 @@
+//REFACTOR: GLOBAL VARS trim down as much as possible
 var stage_g;
 var game_g;
 var hud_g;
@@ -73,24 +74,9 @@ var playerS2Line1 = function() {
 var steveS2Line2 = function() {
    IQPlayer.isListeningToNPC = false;
    game.rootScene.addEventListener('enterframe', checkWinCondition);
-   /*steve.lines = ["How did you defeat my legion of goons?!", 
-               "I knew I should have spent more money on training than costumes.",
-               "Bum out."];
-   sayLines(playerS1Line2, steve);*/
 }
 
 var checkWinCondition = function() {
-//console.log(entities.length);
-   /*var enemiesLeft = 0;
-   if(entities.length == 0) {
-      enemiesLeft = 0;
-   }
-   for(var a = 0; a < entities.length; a++) {
-      if(entities[a] instanceof Enemy) {
-         enemiesLeft += 1;
-		 //console.log(enemiesLeft);
-      }
-   }*/
    if(numEnemies == 0) {
       IQPlayer.isListeningToNPC = true;
       steve.lines = ["Good job everyone!", 
@@ -109,7 +95,7 @@ var checkWinCondition = function() {
 
 var playerS1Line2 = function() {
    //transport us back to the classroom
-   //game.rootScene.removeEventListener('enterframe', checkWinCondition);
+
    game_g.rootScene.removeChild(hud_g);
    loadMap(game_g, "maphome.txt", "maphome.gif", homeMap);
    IQPlayer.lines = ["I did it!", "Praise the sun."];

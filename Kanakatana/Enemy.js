@@ -36,7 +36,7 @@ var Enemy = Class.create (Sprite, {
 		this.stunTimer = 0;
 		
 		
-		this.addEventListener('enterframe', function() {
+		this.addEventListener('enterframe', function() {//REFACTOR: make sure that things common to all enemies happen here.
 
 			if (!this.stunned){
 				this.moveToTarget();
@@ -53,6 +53,8 @@ var Enemy = Class.create (Sprite, {
 			this.addCredits(player);
         });
 	},
+	
+	//REFACTOR: remove this and implement a new way to move
 	coordinates: function(X, Y) {
 			this.x = X;
 			this.y = Y;
@@ -115,6 +117,7 @@ var Enemy = Class.create (Sprite, {
 	
 	//moves the enemy to their current target. if enraged, it moves toward the player. modifiers handle adjusting speed
 	//when the enemy nears the node.
+	//REFACTOR: change in movement overhaul
 	moveToTarget:function() {
 		
 		var tempSpeed = this.setSpeed();
@@ -175,6 +178,7 @@ var Enemy = Class.create (Sprite, {
 		}
 	},
 	//check colission with walls against corners of enemy
+	//REFACTOR: modify in movement overhaul
 	collideWithWalls: function() {
 		var dx = 0;
 		var dy = 0;
@@ -236,7 +240,7 @@ var Enemy = Class.create (Sprite, {
 		this.targetNode = this.lastVisitedNode;
 		this.lastVisitedNode = tempNode;
 	},
-	
+	//REFACTOR: remove
 	reduceEnemyCount:function() {
 		if(this.dead) {
 			//console.log("UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU");

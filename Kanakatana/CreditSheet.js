@@ -1,3 +1,4 @@
+////REFACTOR: add comments
 var CreditSheet = Class.create (Sprite, {
 	initialize:function(width, height, player) {
 		Sprite.call(this, width, height);
